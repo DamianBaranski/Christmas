@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if status == STATUS_ENUM.REGISTER_EMAIL_SENT %}
+<p>Rejestracja przebiegła pomyślnie</p>
+<p>{{ user_name }} Sprawdź e-mail</p>
+<p>W razie problemów sprawdź SPAM</p> 
+{% elif status == STATUS_ENUM.USER_EXIST %}
+<p>Ten adres email jest już zarejestrowany</p>
+{% elif status == STATUS_ENUM.INTERNAL_ERROR %}
+<p>Wewnętrzy błąd strony, skontaktuj się z adminem</p>
+{% endif %}
+<p>Status: {{status}} </p>
+<p>STATUS_ENUM: {{STATUS_ENUM}} </p>
+<p>STATUS_ENUM.USER_EXIST: {{STATUS_ENUM.USER_EXIST}} </p>
+{% endblock %}

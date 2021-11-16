@@ -1,0 +1,49 @@
+{% load static %}
+
+<html>
+  <head>
+    <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=utf-8" />
+    <link rel="Stylesheet" type="text/css" href={% static 'website/style.css' %} />
+    <script defer="defer" src={% static 'website/odliczanie.js' %}></script>
+  </head>
+  <body onload="countdown({{ draw_date }});">
+    <header>
+      <center>
+        <font face="Comic sans MS" size="25">
+          <a href="http://swieta.ebaranski.pl">List do Mikołaja</a>
+        </font>
+        <br />
+        <table>
+          <tr>
+            <td>Do wielkiego losowania zostało:</td>
+            <td>
+              <div id="zostalo">Div w którym pojawi się odliczany czas</div>
+            </td>
+          </tr>
+        </table>
+      </center>
+    </header>
+    <center>
+    <div class="MainContainer">
+      <br />
+      <table style="color: #ffffff; margin: 0px;" width="100%">
+        <tr>
+          <td>
+            <img src={% static 'website/images/choinka.png' %} alt="Choinka taka świąteczna" />
+          </td>
+          <td>
+		{% block content %}{% endblock %}
+	  </td>
+          <td>
+            <img src={% static 'website/images/mikolaj.png' %} alt="Mikołaj taki super" />
+          </td>
+        </tr>
+      </table>
+    </div>
+    </center>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div id="reniferek" class="renifer"></div>
+    <div class="clouds"></div>
+  </body>
+</html>
