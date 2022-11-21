@@ -1,9 +1,7 @@
 from django import forms
-
-from .models import User
-
+from .models import User, WishlistFile
+    
 class RegisterForm(forms.ModelForm):
-
     class Meta:
         model = User
         fields = ('name', 'surname', 'mail')
@@ -12,4 +10,14 @@ class RegisterForm(forms.ModelForm):
             'name': 'Imię',
             'surname': 'Nazwisko',
             'mail': 'Email'
+        }
+
+class WishlistForm(forms.ModelForm):
+    class Meta:
+        model = WishlistFile
+        fields = ('mail', 'wish_file')
+
+        labels = {
+            'mail': 'Email',
+            'wish_file': 'Plik'
         }

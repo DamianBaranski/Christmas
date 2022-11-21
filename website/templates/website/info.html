@@ -13,5 +13,19 @@
 <p>{{ user_name }}, Twój email został potwierdzony, czekaj na akceptację admina</p>
 {% elif status == STATUS_ENUM.ADMIN_CONFIRMED %}
 <p>Konto {{ user_name }} zostało potwierdzone</p>
+{% elif status == STATUS_ENUM.WRONG_FILE_EXT %}
+<p>Nie mogę przesłać listu ponieważ użyto złego formatu pliku, akceptowane są tylko pliki: pdf, doc, docx, jpg, png, txt, jpeg, rtf, gif, svg</p>
+{% elif status == STATUS_ENUM.WRONG_FILE_SIZE %}
+<p>Nie mogę przesłać listu ponieważ przesłany plik jest za duży, akceptowane są pliki mniejsze niż 3MB</p>
+{% elif status == STATUS_ENUM.FILE_SENT %}
+<p>Plik został przesłany. Sprawdź email i kliknij link w celu potwierdzenia</p>
+{% elif status == STATUS_ENUM.USER_NOT_EXIST %}
+<p>Nie mogę przesłać listu ponieważ adres email nie został zarejestrowany lub potwierdzony</p>
+{% elif status == STATUS_ENUM.NO_WISH_LIST %}
+<p>Nie przesłano listu</p>
+{% elif status == STATUS_ENUM.WISH_LIST %}
+<p>List: <a href='{{ wishlist }}'>link</a> </p>
+{% elif status == STATUS_ENUM.FILE_CONFIRMED %}
+<p>List: <a href='{{ wishlist }}'>link</a> został potwierdzony </p>
 {% endif %}
 {% endblock %}

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -125,5 +126,14 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-PARTY_HOST = 'Swobody'
-DRAW_DATE = '2021, 11, 20'
+MEDIA_URL = '/wishlist/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+PARTY_HOST = 'Agnieszki'
+DRAW_DATE = '2022, 11, 20'
+
+MAIL_LOGIN = 'swiety.miklolaj.u.bartka@gmail.com'
+MAIL_PASSWORD = 'somepassword'
+MAIL_SMTP_SERVER = 'smtp.gmail.com' 
+MAIL_SMTP_PORT = 465
+ADMINS = 'zocha24@gmail.com'
