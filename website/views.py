@@ -71,7 +71,7 @@ def confirm_user(request, action, token):
 
     if action == 'email' and user[0].activation_step == UserActivationSteps.EMAIL:
         new_token=secrets.token_hex(16)
-        admin_registration_mail(settings.ADMINS, user.first().mail, user.first().name, new_token)
+        admin_registration_mail(settings.ADMINS[0][1], user.first().mail, user.first().name, new_token)
         user.update(activation_step=UserActivationSteps.ADMIN, activation_token=new_token)
         context['status'] = STATUS_ENUM.EMAIL_CONFIRMED
         return render(request, 'website/info.html', context)
