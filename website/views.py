@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .forms import RegisterForm, WishlistForm
 from .models import UserActivationSteps, FileActivationSteps, User, WishlistFile
 import secrets
-from swieta import settings
+from christmas_base import settings
 from enum import Enum, auto
 import os
 import datetime

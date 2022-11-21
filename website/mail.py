@@ -5,7 +5,7 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from swieta import settings
+from christmas_base import settings
 
 def send_mail(address, topic, message):
     mail_user = settings.MAIL_LOGIN
@@ -23,20 +23,12 @@ def send_mail(address, topic, message):
     part1 = MIMEText(message, "plain", "utf-8")
     msg.attach(part1)
 
-    #print msg.as_string().encode('ascii')
-    #mail_text = """From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n%s""" % (sent_from, ", ".join(address), topic, message)
-
-   # try:
     server = smtplib.SMTP_SSL(settings.MAIL_SMTP_SERVER, settings.MAIL_SMTP_PORT)
     server.ehlo()
     server.login(mail_user, mail_password)
     server.sendmail(sent_from, [address], msg.as_string())
-#    server.sendmail(sent_from, [address], mail_text)
     server.close()
-
     print('Email sent!')
-    #except:
-    #    print('Something went wrong...')
 
 
 def user_registration_mail(user_mail, token):
