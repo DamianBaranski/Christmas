@@ -61,6 +61,10 @@ form th {
     text-align: left;
 }
 
+#id_wish_file {
+    color:#FFFFFF;
+}
+
 @keyframes move-twink-back {
     from {background-position:0 0;}
     to {background-position:-10000px 5000px;}

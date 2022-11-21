@@ -72,13 +72,15 @@ def confirm_user(request, action, token):
     if action == 'email' and user[0].activation_step == UserActivationSteps.EMAIL:
         new_token=secrets.token_hex(16)
         admin_registration_mail(settings.ADMINS[0][1], user.first().mail, user.first().name, new_token)
-        user.update(activation_step=UserActivationSteps.ADMIN, activation_token=new_token)
         context['status'] = STATUS_ENUM.EMAIL_CONFIRMED
+        context['user_name'] = user.first().name  
+        user.update(activation_step=UserActivationSteps.ADMIN, activation_token=new_token)
         return render(request, 'website/info.html', context)
 
     if action == 'admin' and user[0].activation_step == UserActivationSteps.ADMIN:
+        new_token=secrets.token_hex(16)
         acount_activated_mail(user.first().mail)
-        user.update(activation_step=UserActivationSteps.READY, activation_token='')
+        user.update(activation_step=UserActivationSteps.READY, activation_token=new_token)
         context['status'] = STATUS_ENUM.ADMIN_CONFIRMED
         return render(request, 'website/info.html', context)
 

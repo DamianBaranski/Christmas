@@ -12,9 +12,9 @@ def send_mail(address, topic, message):
     mail_password = settings.MAIL_PASSWORD
     sent_from = mail_user
 
-    print(topic)
-    print(sent_from)
-    print(address)
+    #print(topic)
+    #print(sent_from)
+    #print(address)
     msg = MIMEMultipart("alternative")
     msg["Subject"] = topic
     msg["From"] = sent_from
@@ -33,12 +33,12 @@ def send_mail(address, topic, message):
 
 def user_registration_mail(user_mail, token):
     topic = "Rejestracja na losowanie wigilijne"
-    message = "W celu potwierdzenie rejestracji na losowanie wigilijne kiknij link http://localhost:8000/confirm_user/email/"+token+"/\r\nPo kliknęciu w link czekaj na potwierdzenie od admina";
+    message = "W celu potwierdzenie rejestracji na losowanie wigilijne kliknij link:\r\n\r\nhttps://swieta.ebaranski.pl/confirm_user/email/"+token+"/\r\n\r\nPo kliknęciu w link poczekaj na potwierdzenie od admina";
     send_mail(user_mail, topic, message)
     
 def admin_registration_mail(admin_mail, user_mail, user_name, token):
     topic = "Rejestracja na losowanie wigilijne"
-    message = "Czy potwierdzasz "+user_mail+" "+user_name+" http://localhost:8000/confirm_user/admin/"+token+"/";
+    message = "Czy potwierdzasz "+user_mail+" "+user_name+" https://swieta.ebaranski.pl/confirm_user/admin/"+token+"/";
     send_mail(admin_mail, topic, message)
     
 def acount_activated_mail(user_mail):
@@ -48,7 +48,7 @@ def acount_activated_mail(user_mail):
     
 def wishlist_mail(user_mail, token):
     topic = "List do św Mikołaja"
-    message = "Czy potwierdzasz przesłanie listu do swietego Mikołaja: http://localhost:8000/confirm_wishlist/"+token+"/";
+    message = "Czy potwierdzasz przesłanie listu do Świętego Mikołaja?\r\n\r\nJeśli tak kliknij link:\r\nhttps://swieta.ebaranski.pl/confirm_wishlist/"+token+"/";
     send_mail(user_mail, topic, message)
 
     

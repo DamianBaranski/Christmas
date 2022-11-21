@@ -9,7 +9,7 @@ class RegisterForm(forms.ModelForm):
         labels = {
             'name': 'Imię',
             'surname': 'Nazwisko',
-            'mail': 'Email'
+            'mail': 'E-mail'
         }
 
 class WishlistForm(forms.ModelForm):
@@ -18,6 +18,6 @@ class WishlistForm(forms.ModelForm):
         fields = ('mail', 'wish_file')
 
         labels = {
-            'mail': 'Email',
+            'mail': 'E-mail',
             'wish_file': 'Plik'
         }
