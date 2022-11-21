@@ -15,18 +15,18 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-kbde^sk-=plr44prx)&=3*-+2p7f61g)k5vg8n(koq+zw*iel6'
+SECRET_KEY = 'kbde^sk-=plr44prx)&=3*-+2p7f61g)k5vg8n(koq+zw*iel6kbde^sk-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -130,10 +130,10 @@ MEDIA_URL = '/wishlist/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 PARTY_HOST = 'Agnieszki'
-DRAW_DATE = '2022, 11, 20'
+DRAW_DATE = '2022, 11, 25'
 
 MAIL_LOGIN = 'swiety.miklolaj.u.bartka@gmail.com'
 MAIL_PASSWORD = 'somepassword'
 MAIL_SMTP_SERVER = 'smtp.gmail.com' 
 MAIL_SMTP_PORT = 465
-ADMINS = 'zocha24@gmail.com'
+ADMINS = [('Damian','zocha24@gmail.com')]
