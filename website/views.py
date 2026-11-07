@@ -121,7 +121,8 @@ def wishlist(request):
         return render(request, 'website/wishlist.html', context)
 
     mail = form.cleaned_data['mail']
-    if not User.objects.filter(mail=mail).exists() or User.objects.filter(mail=mail).first().activation_step != UserActivationSteps.READY:
+    user = User.objects.filter(mail=mail).first()
+    if not user or user.activation_step != UserActivationSteps.READY:
         form.add_error('mail', _('Ten adres nie jest zarejestrowany albo konto nie zostało jeszcze potwierdzone.'))
         context['form'] = form
         return render(request, 'website/wishlist.html', context)
@@ -131,8 +132,9 @@ def wishlist(request):
     post.activation_token = secrets.token_hex(16)
     post.activation_step = FileActivationSteps.EMAIL
     post.save()
-    wishlist_mail(mail, post.activation_token, request.LANGUAGE_CODE)
-      
+    # emails always use the language the person registered in
+    wishlist_mail(mail, post.activation_token, user.language)
+
     context['status'] = STATUS_ENUM.FILE_SENT
     return render(request, 'website/info.html', context)
 

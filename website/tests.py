@@ -277,3 +277,36 @@ class PolishPluralTests(TestCase):
             self.assertEqual(f(3), 'Wysłano 3 przypomnienia.')
             self.assertEqual(f(5), 'Wysłano 5 przypomnień.')
             self.assertEqual(f(22), 'Wysłano 22 przypomnienia.')
+
+
+class RegistrationLanguageEmailTests(TestCase):
+    """Every email goes out in the language chosen when registering, not the current page language."""
+
+    def setUp(self):
+        from django.core import mail as outbox
+        self.outbox = outbox
+        self.en_user = make_user(0)
+        self.en_user.language = 'en'
+        self.en_user.save()
+
+    def test_letter_confirmation_uses_registration_language(self):
+        from django.core.files.uploadedfile import SimpleUploadedFile
+        import tempfile
+        from django.test import override_settings
+        with tempfile.TemporaryDirectory() as d, override_settings(MEDIA_ROOT=d):
+            # page is in Polish (default), but the person registered in English
+            self.client.post('/wishlist/', {'mail': 'u0@x.pl', 'wish_file': SimpleUploadedFile('list.txt', b'hi')})
+        self.assertEqual(self.outbox.outbox[0].subject, 'Letter to Santa')
+        self.assertIn('Do you confirm sending your letter to Santa?', self.outbox.outbox[0].body)
+
+    def test_activation_and_reminder_use_registration_language(self):
+        AuthUser.objects.create_user('boss', password='pw', is_staff=True)
+        self.client.login(username='boss', password='pw')
+        waiting = make_user(1, UserActivationSteps.ADMIN)
+        waiting.language = 'en'
+        waiting.save()
+        self.client.post('/admin/approve/%d/' % waiting.pk)
+        self.client.post('/admin/remind/letter/')
+        bodies = [m.body for m in self.outbox.outbox]
+        self.assertIn('Your account is now active.', bodies[0])
+        self.assertTrue(all("haven't received your letter" in b for b in bodies[1:]))
