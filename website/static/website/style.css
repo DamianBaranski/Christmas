@@ -1242,7 +1242,9 @@ body {
 [data-theme="cozy"] .field input,
 [data-theme="cozy"] .field textarea,
 [data-theme="day"] .field input,
-[data-theme="day"] .field textarea {
+[data-theme="day"] .field textarea,
+[data-theme="elves"] .field input,
+[data-theme="elves"] .field textarea {
     color-scheme: light;
 }
 
@@ -1644,3 +1646,7 @@ body {
 @media (max-width: 600px) {
     .north-star { display: none; }
 }
+
+/* home page welcome text (editable in the panel): first paragraph is the lead */
+.intro p + p { margin-top: 8px; }
+.intro p:first-child { font-size: 1.08rem; }

@@ -310,3 +310,48 @@ class RegistrationLanguageEmailTests(TestCase):
         bodies = [m.body for m in self.outbox.outbox]
         self.assertIn('Your account is now active.', bodies[0])
         self.assertTrue(all("haven't received your letter" in b for b in bodies[1:]))
+
+
+class IntroTextTests(TestCase):
+    def test_default_text_when_empty(self):
+        s = SiteSettings.load()
+        s.party_host = 'Działu Controllingu'
+        s.save()
+        r = self.client.get('/')
+        self.assertContains(r, 'Zapraszamy na wigilię u Działu Controllingu')
+        self.client.post('/i18n/setlang/', {'language': 'en', 'next': '/'})
+        self.assertContains(self.client.get('/'), "invited to Christmas Eve at Działu Controllingu")
+
+    def test_custom_text_per_language(self):
+        s = SiteSettings.load()
+        s.intro_pl = 'Pierwszy akapit.\n\nDrugi <b>akapit</b>.'
+        s.intro_en = 'English welcome.'
+        s.save()
+        r = self.client.get('/')
+        self.assertContains(r, '<p>Pierwszy akapit.</p>')
+        self.assertContains(r, 'Drugi &lt;b&gt;akapit&lt;/b&gt;.')   # HTML is escaped
+        self.assertNotContains(r, 'Zapraszamy na wigilię')
+        self.client.post('/i18n/setlang/', {'language': 'en', 'next': '/'})
+        r = self.client.get('/')
+        self.assertContains(r, '<p>English welcome.</p>')
+        self.assertNotContains(r, 'Pierwszy akapit')
+
+    def test_english_falls_back_to_english_default_not_polish_text(self):
+        s = SiteSettings.load()
+        s.intro_pl = 'Tylko po polsku.'
+        s.save()
+        self.client.post('/i18n/setlang/', {'language': 'en', 'next': '/'})
+        r = self.client.get('/')
+        self.assertNotContains(r, 'Tylko po polsku.')
+        self.assertContains(r, "invited to Christmas Eve")
+
+    def test_edit_in_panel(self):
+        AuthUser.objects.create_user('boss', password='pw', is_staff=True)
+        self.client.login(username='boss', password='pw')
+        page = self.client.get('/admin/')
+        self.assertContains(page, 'name="intro_pl"')
+        self.assertContains(page, 'placeholder="Zapraszamy na wigilię u Agnieszki')
+        self.client.post('/admin/event/', {'party_host': 'Agnieszki', 'intro_pl': 'Nowy tekst', 'intro_en': 'New text',
+                                           'gift_budget': '50 zł', 'site_url': 'https://example.com'})
+        s = SiteSettings.load()
+        self.assertEqual((s.intro_pl, s.intro_en), ('Nowy tekst', 'New text'))

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-07 15:53+0100\n"
+"POT-Creation-Date: 2026-11-07 20:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -203,7 +203,7 @@ msgstr ""
 msgid "Data losowania"
 msgstr ""
 
-#: models.py:73 templates/website/register.html:18
+#: models.py:73 templates/website/register.html:22
 msgid "Budżet na prezent"
 msgstr ""
 
@@ -219,12 +219,36 @@ msgstr ""
 msgid "Adres"
 msgstr ""
 
-#: models.py:77 templates/website/register.html:19
+#: models.py:77 templates/website/register.html:23
 msgid "Dodatkowe informacje"
 msgstr ""
 
 #: models.py:78
 msgid "Np. strój, co przynieść, parking."
+msgstr ""
+
+#: models.py:80
+msgid "Tekst powitalny (polski)"
+msgstr ""
+
+#: models.py:81 models.py:83
+msgid ""
+"Pusta linia rozdziela akapity. Zostaw puste, aby użyć tekstu domyślnego."
+msgstr ""
+
+#: models.py:82
+msgid "Tekst powitalny (angielski)"
+msgstr ""
+
+#: models.py:94 templates/website/register.html:13
+#, python-format
+msgid ""
+"Zapraszamy na wigilię u %(party_host)s — spędźmy ten wspaniały, świąteczny "
+"czas razem, przy jednym stole."
+msgstr ""
+
+#: models.py:96 templates/website/register.html:14
+msgid "Zarejestruj się i weź udział w losowaniu prezentów."
 msgstr ""
 
 #: panel.py:57
@@ -476,7 +500,7 @@ msgid ""
 "potwierdzone."
 msgstr ""
 
-#: templates/website/info.html:63 templates/website/register.html:33
+#: templates/website/info.html:63 templates/website/register.html:37
 #: templates/website/wishlist.html:20
 msgid "Zarejestruj się"
 msgstr ""
@@ -729,46 +753,35 @@ msgstr ""
 msgid "Zostań Świętym Mikołajem!"
 msgstr ""
 
-#: templates/website/register.html:10
-#, python-format
-msgid ""
-"Zapraszamy na wigilię u %(party_host)s — spędźmy ten wspaniały, świąteczny "
-"czas razem, przy jednym stole."
-msgstr ""
-
-#: templates/website/register.html:12
-msgid "Zarejestruj się i weź udział w losowaniu prezentów."
-msgstr ""
-
-#: templates/website/register.html:16
+#: templates/website/register.html:20
 msgid "Kiedy"
 msgstr ""
 
-#: templates/website/register.html:17
+#: templates/website/register.html:21
 msgid "Gdzie"
 msgstr ""
 
-#: templates/website/register.html:24
+#: templates/website/register.html:28
 msgid "<strong>Zarejestruj się</strong> poniższym formularzem"
 msgstr ""
 
-#: templates/website/register.html:25
+#: templates/website/register.html:29
 msgid "<strong>Potwierdź e-mail</strong> klikając link z wiadomości"
 msgstr ""
 
-#: templates/website/register.html:26
+#: templates/website/register.html:30
 msgid "<strong>Poczekaj</strong> na akceptację organizatora"
 msgstr ""
 
-#: templates/website/register.html:27
+#: templates/website/register.html:31
 msgid "<strong>Wyślij list</strong> do Mikołaja (opcjonalnie)"
 msgstr ""
 
-#: templates/website/register.html:36
+#: templates/website/register.html:40
 msgid "Masz już konto?"
 msgstr ""
 
-#: templates/website/register.html:36
+#: templates/website/register.html:40
 msgid "Wyślij list do Mikołaja"
 msgstr ""
 
@@ -792,7 +805,7 @@ msgstr ""
 msgid "Nie masz jeszcze konta?"
 msgstr ""
 
-#: views.py:125
+#: views.py:126
 msgid ""
 "Ten adres nie jest zarejestrowany albo konto nie zostało jeszcze "
 "potwierdzone."

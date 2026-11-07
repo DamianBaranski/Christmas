@@ -76,6 +76,24 @@ class SiteSettings(models.Model):
     event_address = models.CharField(_('Adres'), max_length=200, blank=True)
     event_details = models.TextField(_('Dodatkowe informacje'), blank=True,
                                      help_text=_('Np. strój, co przynieść, parking.'))
+    # welcome text on the home page, per language (empty = built-in default text)
+    intro_pl = models.TextField(_('Tekst powitalny (polski)'), blank=True,
+                                help_text=_('Pusta linia rozdziela akapity. Zostaw puste, aby użyć tekstu domyślnego.'))
+    intro_en = models.TextField(_('Tekst powitalny (angielski)'), blank=True,
+                                help_text=_('Pusta linia rozdziela akapity. Zostaw puste, aby użyć tekstu domyślnego.'))
+
+    def intro_for(self, lang):
+        """Custom welcome text for a language, or '' to use the default."""
+        return (self.intro_en if lang == 'en' else self.intro_pl).strip()
+
+    def default_intro(self, lang):
+        """The built-in welcome text in the given language (shown when no custom text is set)."""
+        from django.utils import translation
+        with translation.override(lang):
+            return '{}\n\n{}'.format(
+                _('Zapraszamy na wigilię u %(party_host)s — spędźmy ten wspaniały, świąteczny czas razem, przy jednym stole.')
+                % {'party_host': self.party_host},
+                _('Zarejestruj się i weź udział w losowaniu prezentów.'))
 
     @classmethod
     def load(cls):

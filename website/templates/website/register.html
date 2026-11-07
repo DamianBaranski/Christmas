@@ -6,10 +6,14 @@
 
 {% block content %}
 <h1>{% translate "Zostań Świętym Mikołajem!" %}</h1>
-<p class="lead">
-  {% blocktranslate %}Zapraszamy na wigilię u {{ party_host }} — spędźmy ten wspaniały, świąteczny czas razem, przy jednym stole.{% endblocktranslate %}
-</p>
-<p>{% translate "Zarejestruj się i weź udział w losowaniu prezentów." %}</p>
+<div class="intro">
+  {% if custom_intro %}
+  {{ custom_intro|linebreaks }}
+  {% else %}
+  <p>{% blocktranslate %}Zapraszamy na wigilię u {{ party_host }} — spędźmy ten wspaniały, świąteczny czas razem, przy jednym stole.{% endblocktranslate %}</p>
+  <p>{% translate "Zarejestruj się i weź udział w losowaniu prezentów." %}</p>
+  {% endif %}
+</div>
 
 {% if site.event_at or site.event_address or site.event_details or site.gift_budget %}
 <dl class="event-info">

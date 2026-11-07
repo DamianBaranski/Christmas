@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-07 15:53+0100\n"
+"POT-Creation-Date: 2026-11-07 20:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -232,7 +232,7 @@ msgstr "Host (Polish genitive, e.g. “Agnieszki”)"
 msgid "Data losowania"
 msgstr "Draw date"
 
-#: models.py:73 templates/website/register.html:18
+#: models.py:73 templates/website/register.html:22
 msgid "Budżet na prezent"
 msgstr "Gift budget"
 
@@ -248,13 +248,40 @@ msgstr "Christmas Eve date and time"
 msgid "Adres"
 msgstr "Address"
 
-#: models.py:77 templates/website/register.html:19
+#: models.py:77 templates/website/register.html:23
 msgid "Dodatkowe informacje"
 msgstr "Additional information"
 
 #: models.py:78
 msgid "Np. strój, co przynieść, parking."
 msgstr "E.g. dress code, what to bring, parking."
+
+#: models.py:80
+msgid "Tekst powitalny (polski)"
+msgstr "Welcome text (Polish)"
+
+#: models.py:81 models.py:83
+msgid ""
+"Pusta linia rozdziela akapity. Zostaw puste, aby użyć tekstu domyślnego."
+msgstr ""
+"A blank line separates paragraphs. Leave empty to use the default text."
+
+#: models.py:82
+msgid "Tekst powitalny (angielski)"
+msgstr "Welcome text (English)"
+
+#: models.py:94 templates/website/register.html:13
+#, python-format
+msgid ""
+"Zapraszamy na wigilię u %(party_host)s — spędźmy ten wspaniały, świąteczny "
+"czas razem, przy jednym stole."
+msgstr ""
+"You're invited to Christmas Eve at %(party_host)s — let's spend this "
+"wonderful festive time together, around one table."
+
+#: models.py:96 templates/website/register.html:14
+msgid "Zarejestruj się i weź udział w losowaniu prezentów."
+msgstr "Sign up and join the Secret Santa gift draw."
 
 #: panel.py:57
 msgid "Popraw zaznaczone pola."
@@ -510,7 +537,7 @@ msgstr ""
 "This email address isn't registered, or the account hasn't been approved "
 "yet."
 
-#: templates/website/info.html:63 templates/website/register.html:33
+#: templates/website/info.html:63 templates/website/register.html:37
 #: templates/website/wishlist.html:20
 msgid "Zarejestruj się"
 msgstr "Sign up"
@@ -772,48 +799,35 @@ msgstr ""
 msgid "Zostań Świętym Mikołajem!"
 msgstr "Become Santa Claus!"
 
-#: templates/website/register.html:10
-#, python-format
-msgid ""
-"Zapraszamy na wigilię u %(party_host)s — spędźmy ten wspaniały, świąteczny "
-"czas razem, przy jednym stole."
-msgstr ""
-"You're invited to Christmas Eve at %(party_host)s — let's spend this "
-"wonderful festive time together, around one table."
-
-#: templates/website/register.html:12
-msgid "Zarejestruj się i weź udział w losowaniu prezentów."
-msgstr "Sign up and join the Secret Santa gift draw."
-
-#: templates/website/register.html:16
+#: templates/website/register.html:20
 msgid "Kiedy"
 msgstr "When"
 
-#: templates/website/register.html:17
+#: templates/website/register.html:21
 msgid "Gdzie"
 msgstr "Where"
 
-#: templates/website/register.html:24
+#: templates/website/register.html:28
 msgid "<strong>Zarejestruj się</strong> poniższym formularzem"
 msgstr "<strong>Sign up</strong> using the form below"
 
-#: templates/website/register.html:25
+#: templates/website/register.html:29
 msgid "<strong>Potwierdź e-mail</strong> klikając link z wiadomości"
 msgstr "<strong>Confirm your email</strong> by clicking the link we send you"
 
-#: templates/website/register.html:26
+#: templates/website/register.html:30
 msgid "<strong>Poczekaj</strong> na akceptację organizatora"
 msgstr "<strong>Wait</strong> for the organiser to approve you"
 
-#: templates/website/register.html:27
+#: templates/website/register.html:31
 msgid "<strong>Wyślij list</strong> do Mikołaja (opcjonalnie)"
 msgstr "<strong>Send a letter</strong> to Santa (optional)"
 
-#: templates/website/register.html:36
+#: templates/website/register.html:40
 msgid "Masz już konto?"
 msgstr "Already registered?"
 
-#: templates/website/register.html:36
+#: templates/website/register.html:40
 msgid "Wyślij list do Mikołaja"
 msgstr "Send a letter to Santa"
 
@@ -840,7 +854,7 @@ msgstr ""
 msgid "Nie masz jeszcze konta?"
 msgstr "Don't have an account yet?"
 
-#: views.py:125
+#: views.py:126
 msgid ""
 "Ten adres nie jest zarejestrowany albo konto nie zostało jeszcze "
 "potwierdzone."

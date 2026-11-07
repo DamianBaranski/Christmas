@@ -68,9 +68,18 @@ class EventSettingsForm(forms.ModelForm):
 
     class Meta:
         model = SiteSettings
-        fields = ('party_host', 'event_at', 'event_address', 'event_details', 'draw_at', 'gift_budget', 'site_url')
+        fields = ('party_host', 'intro_pl', 'intro_en', 'event_at', 'event_address', 'event_details',
+                  'draw_at', 'gift_budget', 'site_url')
         widgets = {
+            'intro_pl': forms.Textarea(attrs={'rows': 4}),
+            'intro_en': forms.Textarea(attrs={'rows': 4}),
             'event_at': forms.DateTimeInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
             'draw_at': forms.DateTimeInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
             'event_details': forms.Textarea(attrs={'rows': 3}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # show the default text as a hint, so it's clear what appears when the field is empty
+        for lang in ('pl', 'en'):
+            self.fields['intro_' + lang].widget.attrs['placeholder'] = self.instance.default_intro(lang)
