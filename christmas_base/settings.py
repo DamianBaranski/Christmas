@@ -186,3 +186,22 @@ DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', env('EMAIL_HOST_USER', 'santa@loc
 
 # Organiser who gets "approve this person?" emails
 ORGANISER_EMAIL = env('ORGANISER_EMAIL', '')
+
+# ---- logging --------------------------------------------------------------
+# Print warnings and errors (including full tracebacks of "Server Error (500)")
+# to stderr, so they show up in `journalctl -u christmas` / the gunicorn log
+# even when DEBUG is off.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'plain': {'format': '{asctime} {levelname} {name}: {message}', 'style': '{'},
+    },
+    'handlers': {
+        'console': {'class': 'logging.StreamHandler', 'formatter': 'plain'},
+    },
+    'root': {'handlers': ['console'], 'level': 'WARNING'},
+    'loggers': {
+        'django': {'handlers': ['console'], 'level': env('LOG_LEVEL', 'WARNING'), 'propagate': False},
+    },
+}
