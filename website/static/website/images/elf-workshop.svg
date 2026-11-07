@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380">
+  <style>
+    /* hammer swings down onto the toy every 0.9 s */
+    .hammer-arm { transform-origin: 214px 158px; animation: hammer .9s ease-in infinite; }
+    @keyframes hammer {
+      0%   { transform: rotate(-58deg); }
+      55%  { transform: rotate(-58deg); animation-timing-function: cubic-bezier(.6, 0, 1, 1); }
+      78%  { transform: rotate(6deg); }
+      100% { transform: rotate(-58deg); }
+    }
+    .spark { transform-origin: 262px 196px; animation: spark .9s linear infinite; opacity: 0; }
+    @keyframes spark {
+      0%, 76% { opacity: 0; transform: scale(.4); }
+      80%     { opacity: 1; transform: scale(1.1); }
+      95%     { opacity: 0; transform: scale(1.4); }
+      100%    { opacity: 0; }
+    }
+    .elf-head { transform-origin: 180px 140px; animation: bob .9s ease-in-out infinite; }
+    @keyframes bob { 0%, 70%, 100% { transform: rotate(0deg); } 80% { transform: rotate(2deg) translateY(1px); } }
+    .box { animation: belt 9s linear infinite; }
+    .box2 { animation-delay: -3s; } .box3 { animation-delay: -6s; }
+    @keyframes belt { from { transform: translateX(-60px); } to { transform: translateX(380px); } }
+    .roller { transform-box: fill-box; transform-origin: center; animation: roll 1s linear infinite; }
+    @keyframes roll { to { transform: rotate(360deg); } }
+    .bell { transform-origin: 204px 36px; animation: ring 1.8s ease-in-out infinite; }
+    @keyframes ring { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(12deg); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .hammer-arm { transform: rotate(-30deg); } }
+  </style>
+  <defs>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b07a4f"/><stop offset="1" stop-color="#8a5a37"/>
+    </linearGradient>
+    <linearGradient id="tunic" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#34a866"/><stop offset="1" stop-color="#23804c"/>
+    </linearGradient>
+    <clipPath id="beltClip"><rect x="14" y="230" width="332" height="80"/></clipPath>
+    <g id="gift">
+      <rect width="34" height="28" rx="3"/>
+      <rect x="14" width="6" height="28" fill="#ffd34d"/>
+      <rect y="11" width="34" height="6" fill="#ffd34d"/>
+      <path d="M17 0 q-9 -9 -13 -2 q4 5 13 2 q9 -9 13 -2 q-4 5 -13 2" fill="none" stroke="#ffd34d" stroke-width="3"/>
+    </g>
+  </defs>
+
+  <ellipse cx="180" cy="366" rx="170" ry="10" fill="#000" opacity=".25"/>
+
+  <!-- elf behind the workbench -->
+  <g class="elf-head">
+    <path d="M150 112 L124 98 L146 124 Z" fill="#ffcfa8"/>
+    <path d="M210 112 L236 98 L214 124 Z" fill="#ffcfa8"/>
+    <circle cx="180" cy="114" r="30" fill="#ffd9b8"/>
+    <path d="M152 100 q-6 10 0 18 M208 100 q6 10 0 18" stroke="#8a4b2a" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <circle cx="169" cy="112" r="3.4" fill="#2b2140"/>
+    <circle cx="191" cy="112" r="3.4" fill="#2b2140"/>
+    <circle cx="170" cy="111" r="1.1" fill="#fff"/><circle cx="192" cy="111" r="1.1" fill="#fff"/>
+    <circle cx="163" cy="123" r="6" fill="#ff8a8a" opacity=".55"/>
+    <circle cx="197" cy="123" r="6" fill="#ff8a8a" opacity=".55"/>
+    <circle cx="180" cy="119" r="4" fill="#f5a98a"/>
+    <path d="M171 129 q9 8 18 0" stroke="#2b2140" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <path d="M146 96 Q154 46 198 34 Q184 62 214 96 Z" fill="#d42f3a"/>
+    <path d="M142 90 h76 a7 7 0 0 1 0 14 h-76 a7 7 0 0 1 0 -14 Z" fill="#fff"/>
+    <g fill="#2f9e5f"><circle cx="152" cy="97" r="3"/><circle cx="168" cy="97" r="3"/><circle cx="184" cy="97" r="3"/><circle cx="200" cy="97" r="3"/><circle cx="214" cy="97" r="3"/></g>
+    <g class="bell"><path d="M204 34 v4" stroke="#b8860b" stroke-width="2"/><circle cx="204" cy="44" r="7" fill="#ffd34d"/><circle cx="204" cy="47" r="2" fill="#b8860b"/></g>
+  </g>
+  <rect x="140" y="148" width="80" height="72" rx="26" fill="url(#tunic)"/>
+  <path d="M146 146 l8 12 l8 -12 l8 12 l8 -12 l8 12 l8 -12 l8 12 l8 -12 l6 10 H146 Z" fill="#d42f3a"/>
+  <rect x="140" y="194" width="80" height="10" fill="#2b2140"/>
+  <rect x="172" y="192" width="16" height="14" rx="2" fill="none" stroke="#ffd34d" stroke-width="3"/>
+
+  <!-- left arm holding the drum -->
+  <path d="M146 160 Q130 182 140 204" stroke="url(#tunic)" stroke-width="17" stroke-linecap="round" fill="none"/>
+  <circle cx="141" cy="206" r="8" fill="#ffd9b8"/>
+
+  <!-- workbench -->
+  <rect x="16" y="212" width="328" height="20" rx="4" fill="url(#wood)"/>
+  <rect x="16" y="212" width="328" height="5" rx="3" fill="#c48e60"/>
+  <rect x="30" y="232" width="14" height="128" fill="#7a4a30"/>
+  <rect x="316" y="232" width="14" height="128" fill="#7a4a30"/>
+
+  <!-- toys on the bench -->
+  <g>
+    <ellipse cx="60" cy="196" rx="20" ry="18" fill="#a8693f"/>
+    <circle cx="60" cy="166" r="16" fill="#b8784a"/>
+    <circle cx="47" cy="153" r="6" fill="#b8784a"/><circle cx="73" cy="153" r="6" fill="#b8784a"/>
+    <circle cx="47" cy="153" r="3" fill="#e0a77a"/><circle cx="73" cy="153" r="3" fill="#e0a77a"/>
+    <ellipse cx="60" cy="172" rx="7" ry="5" fill="#e0a77a"/>
+    <circle cx="54" cy="162" r="2" fill="#2b2140"/><circle cx="66" cy="162" r="2" fill="#2b2140"/>
+    <circle cx="60" cy="170" r="2" fill="#2b2140"/>
+    <path d="M50 182 q10 6 20 0" stroke="#d42f3a" stroke-width="5" fill="none"/>
+    <ellipse cx="44" cy="208" rx="7" ry="5" fill="#a8693f"/><ellipse cx="76" cy="208" rx="7" ry="5" fill="#a8693f"/>
+  </g>
+  <g>
+    <rect x="98" y="184" width="40" height="28" fill="#d42f3a"/>
+    <ellipse cx="118" cy="184" rx="20" ry="6" fill="#f3ead8"/>
+    <ellipse cx="118" cy="212" rx="20" ry="6" fill="#b52b25"/>
+    <path d="M98 188 l10 20 l10 -20 l10 20 l10 -20" stroke="#ffd34d" stroke-width="2.5" fill="none"/>
+    <path d="M104 172 l10 10 M132 172 l-10 10" stroke="#8a5a37" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <!-- toy car being hammered -->
+  <g>
+    <path d="M236 196 h54 v12 h-60 Z" fill="#4db8ff"/>
+    <path d="M246 196 l6 -12 h22 l8 12 Z" fill="#3a95d6"/>
+    <rect x="256" y="187" width="9" height="8" fill="#e8f6ff"/><rect x="268" y="187" width="9" height="8" fill="#e8f6ff"/>
+    <circle cx="244" cy="210" r="6" fill="#2b2140"/><circle cx="280" cy="210" r="6" fill="#2b2140"/>
+    <circle cx="244" cy="210" r="2" fill="#ccc"/><circle cx="280" cy="210" r="2" fill="#ccc"/>
+  </g>
+  <g class="spark" fill="#ffe36b">
+    <path d="M262 180 l3 10 l10 -4 l-7 8 l9 6 l-11 0 l-2 10 l-4 -10 l-10 3 l7 -8 l-8 -7 l11 1 Z"/>
+  </g>
+
+  <!-- right arm with hammer -->
+  <g class="hammer-arm">
+    <path d="M214 158 Q236 172 246 190" stroke="url(#tunic)" stroke-width="17" stroke-linecap="round" fill="none"/>
+    <circle cx="247" cy="192" r="8" fill="#ffd9b8"/>
+    <path d="M247 192 L262 172" stroke="#8a5a37" stroke-width="6" stroke-linecap="round"/>
+    <rect x="252" y="160" width="26" height="14" rx="3" fill="#6d7a86" transform="rotate(37 265 167)"/>
+  </g>
+
+  <!-- conveyor with finished presents -->
+  <rect x="10" y="300" width="340" height="16" rx="8" fill="#3a3f4a"/>
+  <g fill="#5c6370">
+    <circle class="roller" cx="24" cy="308" r="6"/><circle class="roller" cx="100" cy="308" r="6"/>
+    <circle class="roller" cx="180" cy="308" r="6"/><circle class="roller" cx="260" cy="308" r="6"/>
+    <circle class="roller" cx="336" cy="308" r="6"/>
+  </g>
+  <g fill="#8a919c"><rect x="22" y="306" width="4" height="4"/><rect x="178" y="306" width="4" height="4"/><rect x="334" y="306" width="4" height="4"/></g>
+  <rect x="40" y="316" width="10" height="46" fill="#3a3f4a"/>
+  <rect x="310" y="316" width="10" height="46" fill="#3a3f4a"/>
+  <g clip-path="url(#beltClip)">
+    <g class="box"><use href="#gift" x="0" y="272" fill="#d42f3a"/></g>
+    <g class="box box2"><use href="#gift" x="0" y="272" fill="#2f9e5f"/></g>
+    <g class="box box3"><use href="#gift" x="0" y="272" fill="#7b5cd6"/></g>
+  </g>
+</svg>

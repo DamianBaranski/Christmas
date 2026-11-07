@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-07 01:09+0100\n"
+"POT-Creation-Date: 2026-11-07 15:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,16 +36,6 @@ msgstr "Secret Santa draw results"
 
 #: draw.py:46
 #, python-brace-format
-#| msgid ""
-#| "{giver},\n"
-#| "\n"
-#| "Święty Mikołaj nie da rady samemu obdarować wszystkich, musisz mu pomóc.\n"
-#| "Zrób prezent dla: {receiver} (do kwoty 50 zł).\n"
-#| "Pod tym adresem sprawdzisz, czy wylosowana osoba przesłała list: {check_url}\n"
-#| "Jeśli jeszcze nie przesłałeś(-aś) swojego listu, możesz to zrobić tutaj: {wishlist_url}\n"
-#| "\n"
-#| "Pozdrawiam\n"
-#| "Święty Mikołaj\n"
 msgid ""
 "{giver},\n"
 "\n"
@@ -66,7 +56,6 @@ msgid "Do zobaczenia na wigilii!"
 msgstr "See you on Christmas Eve!"
 
 #: draw.py:61
-#| msgid "Zostań Świętym Mikołajem!"
 msgid ""
 "Pozdrawiam\n"
 "Święty Mikołaj"
@@ -219,48 +208,51 @@ msgstr "Where: {where}"
 msgid "Wigilia u {host}"
 msgstr "Christmas Eve at {host}"
 
-#: models.py:61
+#: models.py:62
 msgid "Zimowa noc"
 msgstr "Winter night"
 
-#: models.py:62
+#: models.py:63
 msgid "Przytulny kominek"
 msgstr "Cozy fireplace"
 
-#: models.py:63
+#: models.py:64
 msgid "Śnieżny dzień"
 msgstr "Snowy day"
 
-#: models.py:69
+#: models.py:65
+msgid "Wioska elfów"
+msgstr "Elf village"
+
+#: models.py:71
 msgid "Gospodarz (w dopełniaczu, np. „Agnieszki”)"
 msgstr "Host (Polish genitive, e.g. “Agnieszki”)"
 
-#: models.py:70
-#| msgid "Wyniki losowania"
+#: models.py:72
 msgid "Data losowania"
 msgstr "Draw date"
 
-#: models.py:71 templates/website/register.html:18
+#: models.py:73 templates/website/register.html:18
 msgid "Budżet na prezent"
 msgstr "Gift budget"
 
-#: models.py:72
+#: models.py:74
 msgid "Adres strony (do linków w mailach)"
 msgstr "Site address (for links in emails)"
 
-#: models.py:73
+#: models.py:75
 msgid "Data i godzina wigilii"
 msgstr "Christmas Eve date and time"
 
-#: models.py:74
+#: models.py:76
 msgid "Adres"
 msgstr "Address"
 
-#: models.py:75 templates/website/register.html:19
+#: models.py:77 templates/website/register.html:19
 msgid "Dodatkowe informacje"
 msgstr "Additional information"
 
-#: models.py:76
+#: models.py:78
 msgid "Np. strój, co przynieść, parking."
 msgstr "E.g. dress code, what to bring, parking."
 
@@ -272,7 +264,7 @@ msgstr "Please fix the highlighted fields."
 msgid "Zapisano ustawienia wydarzenia."
 msgstr "Event settings saved."
 
-#: panel.py:77
+#: panel.py:77 tests.py:275
 #, python-format
 msgid "Wysłano %(n)d przypomnienie."
 msgid_plural "Wysłano %(n)d przypomnień."
@@ -281,7 +273,6 @@ msgstr[1] "Sent %(n)d reminders."
 
 #: panel.py:79
 #, python-format
-#| msgid "Nadal nie udało się wysłać {} maili."
 msgid "Nie udało się wysłać %(n)d maila."
 msgid_plural "Nie udało się wysłać %(n)d maili."
 msgstr[0] "%(n)d email couldn't be sent."
@@ -309,15 +300,12 @@ msgstr "Tick the confirmation box to run the draw."
 
 #: panel.py:140
 #, python-format
-#| msgid "Losowanie zakończone! Wysłano {} maili."
 msgid "Losowanie zakończone! Wysłano %(n)d mail."
 msgid_plural "Losowanie zakończone! Wysłano %(n)d maili."
 msgstr[0] "Draw complete! %(n)d email sent."
 msgstr[1] "Draw complete! %(n)d emails sent."
 
 #: panel.py:142
-#| msgid ""
-#| "Losowanie zakończone, ale wysłano tylko {}/{} maili. Możesz ponowić wysyłkę."
 msgid ""
 "Losowanie zakończone, ale wysłano tylko {} z {} maili. Możesz ponowić "
 "wysyłkę."
@@ -326,7 +314,6 @@ msgstr ""
 
 #: panel.py:153
 #, python-format
-#| msgid "Nadal nie udało się wysłać {} maili."
 msgid "Nadal nie udało się wysłać %(n)d maila."
 msgid_plural "Nadal nie udało się wysłać %(n)d maili."
 msgstr[0] "%(n)d email still could not be sent."
@@ -360,7 +347,7 @@ msgstr "That exclusion already exists."
 msgid "Usunięto blokadę."
 msgstr "Exclusion removed."
 
-#: templates/base.html:7 templates/base.html:50 templates/website/info.html:74
+#: templates/base.html:7 templates/base.html:64 templates/website/info.html:74
 #: templates/website/info.html:85 templates/website/panel.html:4
 #: templates/website/register.html:4 templates/website/wishlist.html:4
 msgid "List do Mikołaja"
@@ -374,48 +361,48 @@ msgstr "Sending…"
 msgid "Losowanie…"
 msgstr "Drawing…"
 
-#: templates/base.html:52
+#: templates/base.html:66
 msgid "Nawigacja"
 msgstr "Navigation"
 
-#: templates/base.html:53 templates/website/register.html:4
+#: templates/base.html:67 templates/website/register.html:4
 msgid "Rejestracja"
 msgstr "Sign up"
 
-#: templates/base.html:54 templates/website/info.html:17
+#: templates/base.html:68 templates/website/info.html:17
 #: templates/website/wishlist.html:4 templates/website/wishlist.html:17
 msgid "Wyślij list"
 msgstr "Send a letter"
 
-#: templates/base.html:55
+#: templates/base.html:69
 msgid "Panel"
 msgstr "Panel"
 
-#: templates/base.html:57
+#: templates/base.html:71
 msgid "Język"
 msgstr "Language"
 
-#: templates/base.html:72
+#: templates/base.html:86
 msgid "Do wielkiego losowania zostało"
 msgstr "Time left until the big draw"
 
-#: templates/base.html:74
+#: templates/base.html:88
 msgid "dni"
 msgstr "days"
 
-#: templates/base.html:75
+#: templates/base.html:89
 msgid "godz."
 msgstr "hrs"
 
-#: templates/base.html:76
+#: templates/base.html:90
 msgid "min"
 msgstr "min"
 
-#: templates/base.html:77
+#: templates/base.html:91
 msgid "sek"
 msgstr "sec"
 
-#: templates/base.html:79
+#: templates/base.html:93
 msgid "Losowanie już się odbyło"
 msgstr "The draw has already taken place"
 
@@ -572,21 +559,18 @@ msgid "Wyloguj"
 msgstr "Log out"
 
 #: templates/website/panel.html:25
-#| msgid "gotowych do losowania"
 msgid "osoba gotowa do losowania"
 msgid_plural "osób gotowych do losowania"
 msgstr[0] "person ready for the draw"
 msgstr[1] "people ready for the draw"
 
 #: templates/website/panel.html:26
-#| msgid "czeka na akceptację"
 msgid "osoba czeka na akceptację"
 msgid_plural "osób czeka na akceptację"
 msgstr[0] "person waiting for approval"
 msgstr[1] "people waiting for approval"
 
 #: templates/website/panel.html:27
-#| msgid "nie potwierdziło e-maila"
 msgid "osoba bez potwierdzonego e-maila"
 msgid_plural "osób bez potwierdzonego e-maila"
 msgstr[0] "person without a confirmed email"
@@ -605,7 +589,6 @@ msgstr ""
 "(together with a calendar invite)."
 
 #: templates/website/panel.html:36
-#| msgid "Zapisz styl"
 msgid "Zapisz"
 msgstr "Save"
 
@@ -633,17 +616,14 @@ msgstr[0] "Send a reminder to %(n)s person?"
 msgstr[1] "Send a reminder to %(n)s people?"
 
 #: templates/website/panel.html:62
-#| msgid "nie potwierdziło e-maila"
 msgid "Przypomnij o potwierdzeniu e-maila"
 msgstr "Remind to confirm email"
 
 #: templates/website/panel.html:67
-#| msgid "Wyślij list do Mikołaja"
 msgid "Przypomnij o liście do Mikołaja"
 msgstr "Remind to write a letter"
 
 #: templates/website/panel.html:70
-#| msgid "Brak listu"
 msgid "Bez listu:"
 msgstr "Without a letter:"
 
@@ -860,7 +840,7 @@ msgstr ""
 msgid "Nie masz jeszcze konta?"
 msgstr "Don't have an account yet?"
 
-#: views.py:124
+#: views.py:125
 msgid ""
 "Ten adres nie jest zarejestrowany albo konto nie zostało jeszcze "
 "potwierdzone."

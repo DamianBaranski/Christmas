@@ -403,32 +403,32 @@ body {
 
 .tile {
     position: relative;
-    min-width: clamp(62px, 18vw, 84px);
-    padding: 12px 8px 8px;
-    background:
-        linear-gradient(90deg, transparent calc(50% - 4px), rgba(255, 211, 107, 0.35) calc(50% - 4px) calc(50% + 4px), transparent calc(50% + 4px)),
-        linear-gradient(to bottom, #c62f3a, #8f1d27);
-    border: 1px solid rgba(255, 211, 107, 0.45);
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    min-width: clamp(66px, 19vw, 92px);
+    padding: 12px 8px 10px;
+    color: #fff;
+    background: linear-gradient(to bottom, #d23440, #a82230);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .tile span {
-    position: relative;
     display: block;
-    font-size: clamp(1.5rem, 6vw, 2.2rem);
+    font-size: clamp(1.8rem, 7vw, 2.6rem);
     font-weight: 700;
     line-height: 1;
+    letter-spacing: 0.01em;
     font-variant-numeric: tabular-nums;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 }
 
 .tile small {
-    position: relative;
     display: block;
-    margin-top: 4px;
-    color: #ffe3b0;
-    font-size: 0.75rem;
+    margin-top: 6px;
+    color: #fff;
+    opacity: 0.92;
+    font-size: 0.78rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
 }
@@ -1137,8 +1137,26 @@ body {
 }
 
 .decor-fireplace {
-    height: clamp(260px, 48vh, 460px);
+    height: auto;
     bottom: clamp(30px, 6vh, 70px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(10px, 2.6vh, 28px);
+}
+
+.decor-fireplace .fireplace-img {
+    display: block;
+    height: clamp(260px, 48vh, 460px);
+    width: auto;
+}
+
+/* the wreath hangs on the wall above the mantel, ~2x its old size */
+.decor-fireplace .wreath-big {
+    display: block;
+    width: clamp(92px, 17vh, 162px);
+    height: auto;
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.35));
 }
 
 .decor-santa {
@@ -1163,10 +1181,7 @@ body {
 }
 
 [data-theme="cozy"] .tile {
-    background:
-        linear-gradient(90deg, transparent calc(50% - 4px), rgba(242, 196, 109, 0.4) calc(50% - 4px) calc(50% + 4px), transparent calc(50% + 4px)),
-        linear-gradient(to bottom, #a8281f, #741a14);
-    border-color: rgba(242, 196, 109, 0.5);
+    background: linear-gradient(to bottom, #b5302a, #8a2019);
 }
 
 [data-theme="cozy"] .card {
@@ -1338,11 +1353,13 @@ body {
 [data-theme="day"] :focus-visible { outline-color: var(--focus-border); }
 
 [data-theme="day"] .logo {
-    color: #fff;
-    text-shadow: 0 2px 0 #1d3557, 0 4px 14px rgba(29, 53, 87, 0.35);
+    color: #c62f3a;
+    -webkit-text-stroke: 6px #fff;
+    paint-order: stroke fill;
+    text-shadow: 0 6px 16px rgba(29, 53, 87, 0.25);
 }
 
-[data-theme="day"] .logo:hover { color: #fff3c4; }
+[data-theme="day"] .logo:hover { color: #a5222c; }
 
 [data-theme="day"] .nav a { color: #12304f; }
 [data-theme="day"] .nav a:hover { color: #0b2038; background: rgba(255, 255, 255, 0.45); }
@@ -1363,7 +1380,6 @@ body {
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-[data-theme="day"] .tile small { color: #ffe3b0; }
 
 [data-theme="day"] .card {
     box-shadow: 0 20px 50px rgba(29, 53, 87, 0.22);
@@ -1396,32 +1412,65 @@ body {
         0 0 90px 30px rgba(255, 230, 140, 0.45);
 }
 
+.sun::before {
+    content: "";
+    position: absolute;
+    inset: -90%;
+    border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, rgba(255, 244, 190, 0.35) 0 6deg, transparent 6deg 18deg);
+    -webkit-mask: radial-gradient(circle, #000 25%, transparent 70%);
+    mask: radial-gradient(circle, #000 25%, transparent 70%);
+    animation: spin 90s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.mountains {
+    position: absolute;
+    left: 0;
+    bottom: clamp(60px, 10vh, 120px);
+    width: 100%;
+    height: clamp(220px, 46vh, 480px);
+    object-fit: cover;
+    object-position: center bottom;
+}
+
+.village {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: clamp(190px, 36vh, 380px);
+    object-fit: cover;
+    object-position: center bottom;
+}
+
 .cloud {
     position: absolute;
     left: 0;
-    width: 160px;
-    height: 46px;
-    border-radius: 50px;
-    background: #fff;
-    opacity: 0.92;
-    filter: drop-shadow(0 6px 10px rgba(29, 53, 87, 0.1));
+    width: 220px;
+    filter: drop-shadow(0 8px 14px rgba(29, 53, 87, 0.12));
     animation: drift linear infinite;
 }
 
-.cloud::before,
-.cloud::after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    background: #fff;
+.cloud-1 { top: 15vh; width: 240px; animation-duration: 140s; animation-delay: -40s; }
+.cloud-2 { top: 31vh; width: 150px; animation-duration: 190s; animation-delay: -120s; opacity: 0.85; }
+.cloud-3 { top: 6vh;  width: 190px; animation-duration: 165s; animation-delay: -75s; }
+
+@keyframes birds-fly {
+    0%   { transform: translate(-160px, 0); }
+    50%  { transform: translate(55vw, -30px); }
+    100% { transform: translate(calc(100vw + 160px), 10px); }
 }
 
-.cloud::before { width: 70px; height: 70px; top: -36px; left: 26px; }
-.cloud::after  { width: 90px; height: 90px; top: -50px; left: 62px; }
-
-.cloud-1 { top: 16vh; animation-duration: 120s; animation-delay: -30s; }
-.cloud-2 { top: 30vh; transform: scale(0.7); animation-duration: 160s; animation-delay: -95s; opacity: 0.8; }
-.cloud-3 { top: 8vh;  transform: scale(0.85); animation-duration: 140s; animation-delay: -60s; }
+.birds {
+    position: absolute;
+    top: 22vh;
+    left: 0;
+    width: 90px;
+    animation: birds-fly 48s linear infinite;
+    animation-delay: -12s;
+}
 
 .decor-sled {
     height: clamp(170px, 28vh, 270px);
@@ -1442,12 +1491,156 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .cloud { animation: none; left: 10vw; }
+    .cloud, .sun::before { animation: none; }
+    .cloud { left: 10vw; }
     .cloud-2 { left: 55vw; }
     .cloud-3 { left: 75vw; }
+    .birds { display: none; }
 }
 
-/* countdown numbers are always light on the red "gift" tiles */
-.tile { color: #fff; }
+@media (max-width: 600px) {
+    .cloud-1 { width: 150px; }
+    .cloud-3 { width: 120px; }
+    .birds { top: 34vh; }
+}
+
 
 .panel-section > .aside { margin-top: 0; }
+
+/* day theme: smaller props at the edges so the village stays visible */
+[data-theme="day"] .decor-sled {
+    left: 1vw;
+    height: clamp(140px, 21vh, 210px);
+    bottom: clamp(6px, 1.5vh, 16px);
+}
+
+[data-theme="day"] .decor-right {
+    right: 1.5vw;
+    height: clamp(170px, 27vh, 260px);
+    bottom: clamp(6px, 1.5vh, 16px);
+}
+
+/* short screens: keep the big wreath clear of the header logo */
+@media (max-height: 780px) {
+    .decor-fireplace .wreath-big { width: clamp(86px, 15.5vh, 145px); }
+}
+
+/* ==========================================================================
+   Elves theme – Santa's village at the North Pole, elves making toys
+   ========================================================================== */
+
+[data-theme="elves"] {
+    --bg: #1b1035;
+    --gold: #ffd34d;
+    --red: #d42f3a;
+    --red-hover: #e23b47;
+
+    --card: #fffaf2;
+    --card-border: rgba(43, 33, 64, 0.12);
+    --card-text: #2b2140;
+    --card-muted: #6a5f80;
+    --card-heading: #c62f3a;
+    --link: #1f7a4a;
+    --link-hover: #0f5a33;
+    --input-bg: #fff;
+    --input-border: #d9cfe6;
+    --input-text: #2b2140;
+    --placeholder: #a79bbb;
+    --input-hover-border: #b9a9d0;
+    --input-focus-bg: #fff;
+    --focus-border: #1f7a4a;
+    --focus-ring: rgba(31, 122, 74, 0.2);
+    --error-text: #b3261e;
+    --ghost-text: #2b2140;
+    --ghost-bg: rgba(43, 33, 64, 0.06);
+    --ghost-bg-hover: rgba(43, 33, 64, 0.12);
+    --ghost-border: rgba(43, 33, 64, 0.18);
+    --soft-bg: rgba(43, 33, 64, 0.04);
+    --soft-border: rgba(43, 33, 64, 0.12);
+}
+
+[data-theme="elves"] body {
+    background: linear-gradient(to bottom, #120a28 0%, #2a1650 40%, #4b2a6e 70%, #7a4a86 100%) fixed;
+}
+
+[data-theme="elves"] .aurora {
+    background:
+        radial-gradient(ellipse 40% 50% at 25% 40%, rgba(77, 212, 125, 0.32), transparent 70%),
+        radial-gradient(ellipse 35% 45% at 60% 30%, rgba(255, 138, 216, 0.2), transparent 70%),
+        radial-gradient(ellipse 30% 40% at 85% 45%, rgba(77, 184, 255, 0.22), transparent 70%);
+}
+
+.north-star {
+    position: absolute;
+    top: clamp(90px, 13vh, 140px);
+    right: 12vw;
+    width: 14px;
+    height: 14px;
+    background: #fffbe8;
+    clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);
+    transform: scale(3);
+    filter: drop-shadow(0 0 6px #fff6c8) drop-shadow(0 0 16px #ffe27a);
+    animation: north-star 3s ease-in-out infinite;
+}
+
+@keyframes north-star {
+    0%, 100% { transform: scale(3) rotate(0deg); opacity: 0.85; }
+    50%      { transform: scale(3.6) rotate(8deg); opacity: 1; }
+}
+
+[data-theme="elves"] .card {
+    background: var(--card);
+    box-shadow: 0 24px 60px rgba(10, 4, 30, 0.55);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+[data-theme="elves"] .card::before {
+    height: 12px;
+    background: repeating-linear-gradient(-45deg, #d42f3a 0 12px, #fff 12px 24px, #2f9e5f 24px 36px, #fff 36px 48px);
+}
+
+[data-theme="elves"] .logo {
+    text-shadow: 0 0 18px rgba(77, 212, 125, 0.55);
+}
+
+[data-theme="elves"] .nav a.active,
+[data-theme="elves"] .lang-switch button.active {
+    color: #fff;
+    background: var(--red);
+}
+
+[data-theme="elves"] .tile {
+    background: linear-gradient(to bottom, #2f9e5f, #1f7a4a);
+}
+
+.decor-workshop {
+    height: clamp(210px, 37vh, 350px);
+    bottom: clamp(20px, 4vh, 44px);
+}
+
+.decor-santa-elf {
+    height: clamp(230px, 42vh, 400px);
+    bottom: clamp(20px, 4vh, 44px);
+}
+
+.theme-swatch-elves {
+    background:
+        radial-gradient(circle at 82% 26%, #fffbe8 0 3px, rgba(255, 246, 200, 0.4) 4px 9px, transparent 10px),
+        radial-gradient(ellipse 30% 40% at 30% 30%, rgba(77, 212, 125, 0.45), transparent 70%),
+        radial-gradient(ellipse 120% 35% at 50% 100%, #fff 60%, transparent 61%),
+        linear-gradient(to right, transparent 20%, #c98544 20% 34%, transparent 34% 66%, #b5302a 66% 84%, transparent 84%) bottom / 100% 40% no-repeat,
+        linear-gradient(#120a28, #4b2a6e 80%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .north-star { animation: none; }
+}
+
+[data-theme="elves"] .village {
+    height: clamp(170px, 31vh, 330px);
+}
+
+@media (max-width: 600px) {
+    .north-star { display: none; }
+}

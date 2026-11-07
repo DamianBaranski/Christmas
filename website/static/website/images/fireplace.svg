@@ -81,6 +81,4 @@
   <path d="M47 8 Q41 16 47 22 Q53 16 47 8 Z" fill="#ffc34d"/>
   <rect x="286" y="30" width="14" height="26" rx="3" fill="#f3ead8"/>
   <path d="M293 16 Q287 24 293 30 Q299 24 293 16 Z" fill="#ffc34d"/>
-  <circle cx="170" cy="40" r="16" fill="none" stroke="#2f7a4a" stroke-width="8"/>
-  <path d="M164 56 l6 -8 l6 8" fill="#c4302b"/>
 </svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a9c9ea"/><stop offset="1" stop-color="#cfe3f6"/>
+    </linearGradient>
+    <linearGradient id="near" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fb6e0"/><stop offset="1" stop-color="#d7e8f8"/>
+    </linearGradient>
+    <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eaf5ff" stop-opacity="0"/><stop offset="1" stop-color="#eaf5ff" stop-opacity=".9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- far range -->
+  <path d="M0 330 L120 230 L210 290 L330 150 L450 270 L560 210 L680 300 L800 170 L930 280 L1040 200 L1160 290 L1290 140 L1410 260 L1500 210 L1600 270 V520 H0 Z" fill="url(#far)"/>
+  <g fill="#fff" opacity=".95">
+    <path d="M330 150 L300 186 L318 182 L330 196 L344 180 L364 190 Z"/>
+    <path d="M800 170 L770 206 L790 200 L802 214 L816 198 L834 208 Z"/>
+    <path d="M1290 140 L1258 178 L1278 172 L1292 188 L1306 170 L1326 180 Z"/>
+    <path d="M120 230 L100 248 L114 246 L124 256 L134 246 L146 252 Z"/>
+    <path d="M1040 200 L1018 220 L1032 218 L1042 228 L1052 218 L1066 224 Z"/>
+  </g>
+
+  <!-- near range -->
+  <path d="M0 400 L150 290 L260 360 L400 250 L520 350 L640 300 L760 380 L900 280 L1030 370 L1150 300 L1280 360 L1420 260 L1600 380 V520 H0 Z" fill="url(#near)"/>
+  <g fill="#fff">
+    <path d="M150 290 L122 312 L140 310 L152 322 L166 308 L184 316 Z"/>
+    <path d="M400 250 L366 280 L388 274 L402 290 L418 272 L440 284 Z"/>
+    <path d="M900 280 L870 306 L890 300 L902 314 L916 300 L936 308 Z"/>
+    <path d="M1420 260 L1386 290 L1408 284 L1422 300 L1438 282 L1462 294 Z"/>
+    <path d="M640 300 L620 318 L634 316 L644 326 L654 316 L666 322 Z"/>
+  </g>
+  <rect x="0" y="300" width="1600" height="220" fill="url(#haze)"/>
+</svg>

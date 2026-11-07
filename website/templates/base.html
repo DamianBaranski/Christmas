@@ -18,16 +18,30 @@
       <img class="window" src="{% static 'website/images/window.svg' %}" alt="" />
       <div class="floor"></div>
       <div class="fire-glow"></div>
-      <img class="decor decor-left decor-fireplace" src="{% static 'website/images/fireplace.svg' %}" alt="" />
+      <div class="decor decor-left decor-fireplace">
+        <img class="wreath-big" src="{% static 'website/images/wreath.svg' %}" alt="" />
+        <img class="fireplace-img" src="{% static 'website/images/fireplace.svg' %}" alt="" />
+      </div>
       <img class="decor decor-santa" src="{% static 'website/images/santa-chair.svg' %}" alt="" />
       <img class="decor decor-table" src="{% static 'website/images/cocoa.svg' %}" alt="" />
       <canvas id="snow" class="snow" data-mode="embers"></canvas>
+      {% elif theme == 'elves' %}
+      <div class="aurora"></div>
+      <div class="stars"></div>
+      <div class="stars stars-twinkle"></div>
+      <div class="north-star"></div>
+      <img class="village" src="{% static 'website/images/elf-village.svg' %}" alt="" />
+      <img class="decor decor-left decor-workshop" src="{% static 'website/images/elf-workshop.svg' %}" alt="" />
+      <img class="decor decor-right decor-santa-elf" src="{% static 'website/images/santa-elf.svg' %}" alt="" />
+      <canvas id="snow" class="snow" data-mode="snow"></canvas>
       {% elif theme == 'day' %}
       <div class="sun"></div>
-      <div class="cloud cloud-1"></div>
-      <div class="cloud cloud-2"></div>
-      <div class="cloud cloud-3"></div>
-      <img class="hills" src="{% static 'website/images/village.svg' %}" alt="" />
+      <img class="mountains" src="{% static 'website/images/mountains.svg' %}" alt="" />
+      <img class="cloud cloud-1" src="{% static 'website/images/cloud.svg' %}" alt="" />
+      <img class="cloud cloud-2" src="{% static 'website/images/cloud.svg' %}" alt="" />
+      <img class="cloud cloud-3" src="{% static 'website/images/cloud.svg' %}" alt="" />
+      <img class="birds" src="{% static 'website/images/birds.svg' %}" alt="" />
+      <img class="village" src="{% static 'website/images/village.svg' %}" alt="" />
       <img class="decor decor-left decor-sled" src="{% static 'website/images/sled.svg' %}" alt="" />
       <img class="decor decor-right" src="{% static 'website/images/snowman.svg' %}" alt="" />
       <canvas id="snow" class="snow" data-mode="snow"></canvas>

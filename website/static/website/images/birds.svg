@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60">
+  <style>
+    .w { transform-box: fill-box; transform-origin: center; animation: flap .6s ease-in-out infinite alternate; }
+    .w2 { animation-delay: .2s; } .w3 { animation-delay: .4s; }
+    @keyframes flap { from { transform: scaleY(1); } to { transform: scaleY(-.5); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <g fill="none" stroke="#1d3557" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".75">
+    <path class="w" d="M10 30 Q18 20 26 30 Q34 20 42 30"/>
+    <path class="w w2" d="M52 14 Q58 6 64 14 Q70 6 76 14"/>
+    <path class="w w3" d="M78 40 Q84 33 90 40 Q96 33 102 40"/>
+  </g>
+</svg>

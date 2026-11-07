@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 400">
+  <style>
+    .wave { transform-origin: 184px 190px; animation: wave 1.6s ease-in-out infinite; }
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg); }
+      25%      { transform: rotate(-14deg); }
+      50%      { transform: rotate(4deg); }
+      75%      { transform: rotate(-14deg); }
+    }
+    .santa-head { transform-origin: 128px 150px; animation: tilt 3.2s ease-in-out infinite; }
+    @keyframes tilt { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(3deg); } }
+    .pompom { transform-origin: 186px 70px; animation: flop 3.2s ease-in-out infinite; }
+    @keyframes flop { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(8deg); } }
+    .elf { animation: hop .7s ease-in-out infinite alternate; }
+    @keyframes hop { from { transform: translateY(0); } to { transform: translateY(-7px); } }
+    .stack { transform-origin: 284px 210px; animation: sway 1.4s ease-in-out infinite; }
+    @keyframes sway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <linearGradient id="coat" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d63a33"/><stop offset="1" stop-color="#a5241f"/>
+    </linearGradient>
+    <linearGradient id="tunic2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#34a866"/><stop offset="1" stop-color="#23804c"/>
+    </linearGradient>
+    <pattern id="stripes" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" fill="#fff"/><rect width="10" height="5" fill="#d42f3a"/>
+    </pattern>
+  </defs>
+
+  <ellipse cx="190" cy="388" rx="165" ry="10" fill="#000" opacity=".25"/>
+
+  <!-- ===== Santa ===== -->
+  <!-- legs & boots -->
+  <rect x="100" y="300" width="26" height="66" fill="#b52b25"/>
+  <rect x="134" y="300" width="26" height="66" fill="#b52b25"/>
+  <path d="M96 360 H128 V388 H82 Q78 372 96 360 Z" fill="#1d1d24"/>
+  <path d="M132 360 H164 Q182 372 178 388 H132 Z" fill="#1d1d24"/>
+  <rect x="96" y="356" width="34" height="8" rx="3" fill="#f7f1e6"/>
+  <rect x="130" y="356" width="34" height="8" rx="3" fill="#f7f1e6"/>
+  <!-- coat -->
+  <path d="M76 196 Q62 292 78 312 H182 Q198 292 184 196 Q130 168 76 196 Z" fill="url(#coat)"/>
+  <rect x="74" y="300" width="112" height="18" rx="9" fill="#f7f1e6"/>
+  <rect x="123" y="182" width="14" height="122" fill="#f7f1e6"/>
+  <rect x="70" y="250" width="120" height="16" fill="#1d1d24"/>
+  <rect x="117" y="246" width="26" height="24" rx="3" fill="none" stroke="#ffd34d" stroke-width="4"/>
+
+  <!-- left arm holding the long list -->
+  <path d="M80 200 Q60 226 70 252" stroke="url(#coat)" stroke-width="24" stroke-linecap="round" fill="none"/>
+  <path d="M38 252 H100 V350 Q100 364 86 366 H56 Q44 368 40 378 Q30 392 18 386 Q8 378 18 368 Q26 362 38 366 Z" fill="#fff9ec" stroke="#e2d5bd" stroke-width="1.5"/>
+  <g stroke="#b39d86" stroke-width="2.4" stroke-linecap="round">
+    <path d="M46 268 h44"/><path d="M46 280 h36"/><path d="M46 292 h46"/><path d="M46 304 h32"/>
+    <path d="M46 316 h42"/><path d="M46 328 h38"/><path d="M46 340 h44"/><path d="M46 352 h30"/>
+  </g>
+  <g fill="#2f9e5f"><path d="M88 266 l3 3 l6 -7" stroke="#2f9e5f" stroke-width="2.6" fill="none"/><path d="M84 290 l3 3 l6 -7" stroke="#2f9e5f" stroke-width="2.6" fill="none"/></g>
+  <path d="M80 302 l8 8 M88 302 l-8 8" stroke="#d42f3a" stroke-width="2.6"/>
+  <ellipse cx="69" cy="252" rx="34" ry="7" fill="#efe2c6"/>
+  <circle cx="69" cy="250" r="11" fill="#1d1d24"/>
+  <rect x="58" y="236" width="22" height="8" rx="3" fill="#f7f1e6"/>
+
+  <!-- head -->
+  <g class="santa-head">
+    <path d="M94 128 Q88 206 130 222 Q172 206 166 128 Q154 156 130 156 Q106 156 94 128 Z" fill="#fbf7f0"/>
+    <circle cx="130" cy="128" r="32" fill="#ffd9b8"/>
+    <path d="M94 128 Q88 206 130 222 Q172 206 166 128 Q158 168 130 168 Q102 168 94 128 Z" fill="#fbf7f0"/>
+    <circle cx="112" cy="138" r="8" fill="#ff9c8a" opacity=".55"/>
+    <circle cx="148" cy="138" r="8" fill="#ff9c8a" opacity=".55"/>
+    <path d="M114 122 q6 -6 12 0 M134 122 q6 -6 12 0" stroke="#3b2418" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="130" cy="134" r="7" fill="#f0957e"/>
+    <path d="M130 142 q-14 -5 -26 5 q12 7 26 0 q14 7 26 0 q-12 -10 -26 -5" fill="#fff"/>
+    <path d="M122 156 q8 6 16 0" stroke="#c0392b" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M96 104 C98 70 128 54 156 60 C182 66 192 86 196 112 L184 114 C178 96 170 86 160 82 C164 92 166 100 164 104 Z" fill="#c4302b"/>
+    <rect x="92" y="98" width="76" height="18" rx="9" fill="#fbf7f0"/>
+    <g class="pompom"><circle cx="192" cy="116" r="11" fill="#fbf7f0"/></g>
+  </g>
+
+  <!-- right arm waving -->
+  <g class="wave">
+    <path d="M184 196 Q212 176 216 138" stroke="url(#coat)" stroke-width="24" stroke-linecap="round" fill="none"/>
+    <rect x="204" y="132" width="24" height="9" rx="4" fill="#f7f1e6" transform="rotate(-10 216 136)"/>
+    <path d="M206 128 q-2 -18 8 -20 q4 -10 10 -2 q8 -2 8 8 q6 2 2 10 Z" fill="#1d1d24"/>
+  </g>
+
+  <!-- ===== Elf carrying presents ===== -->
+  <g class="elf">
+    <path d="M270 352 q-6 12 -18 10 q-6 -2 -2 -6 q4 2 8 -2 Z" fill="#d42f3a"/>
+    <path d="M298 352 q6 12 18 10 q6 -2 2 -6 q-4 2 -8 -2 Z" fill="#d42f3a"/>
+    <rect x="266" y="312" width="12" height="44" fill="url(#stripes)"/>
+    <rect x="290" y="312" width="12" height="44" fill="url(#stripes)"/>
+    <path d="M258 262 Q252 312 262 320 H306 Q316 312 310 262 Q284 250 258 262 Z" fill="url(#tunic2)"/>
+    <path d="M258 316 l7 -8 l7 8 l7 -8 l7 8 l7 -8 l7 8 l7 -8 l6 8 V322 H258 Z" fill="#d42f3a"/>
+    <rect x="258" y="290" width="52" height="8" fill="#2b2140"/>
+    <rect x="278" y="288" width="12" height="12" rx="2" fill="none" stroke="#ffd34d" stroke-width="2.5"/>
+    <!-- arms up holding the stack -->
+    <path d="M262 270 Q248 248 256 226" stroke="url(#tunic2)" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <path d="M306 270 Q320 248 312 226" stroke="url(#tunic2)" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <circle cx="257" cy="222" r="6" fill="#ffd9b8"/><circle cx="311" cy="222" r="6" fill="#ffd9b8"/>
+    <!-- head -->
+    <path d="M266 244 L248 236 L264 254 Z" fill="#ffcfa8"/>
+    <path d="M302 244 L320 236 L304 254 Z" fill="#ffcfa8"/>
+    <circle cx="284" cy="244" r="20" fill="#ffd9b8"/>
+    <circle cx="277" cy="243" r="2.6" fill="#2b2140"/><circle cx="291" cy="243" r="2.6" fill="#2b2140"/>
+    <circle cx="272" cy="251" r="4" fill="#ff8a8a" opacity=".55"/><circle cx="296" cy="251" r="4" fill="#ff8a8a" opacity=".55"/>
+    <path d="M278 253 q6 6 12 0" stroke="#2b2140" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <path d="M264 234 h40 a5 5 0 0 1 0 10 h-40 a5 5 0 0 1 0 -10 Z" fill="#fff"/>
+    <path d="M266 236 Q270 216 286 214 Q300 216 304 236 Z" fill="#2f9e5f"/>
+    <!-- stack of presents -->
+    <g class="stack">
+      <rect x="250" y="190" width="68" height="30" rx="3" fill="#d42f3a"/>
+      <rect x="280" y="190" width="8" height="30" fill="#ffd34d"/>
+      <rect x="258" y="160" width="52" height="30" rx="3" fill="#4db8ff"/>
+      <rect x="280" y="160" width="8" height="30" fill="#fff"/>
+      <rect x="266" y="134" width="36" height="26" rx="3" fill="#7b5cd6"/>
+      <rect x="280" y="134" width="8" height="26" fill="#ffd34d"/>
+      <path d="M284 134 q-12 -12 -17 -3 q5 7 17 3 q12 -12 17 -3 q-5 7 -17 3" fill="none" stroke="#ffd34d" stroke-width="4"/>
+    </g>
+  </g>
+</svg>

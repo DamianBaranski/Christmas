@@ -57,10 +57,12 @@ class SiteSettings(models.Model):
     THEME_WINTER = 'winter'
     THEME_COZY = 'cozy'
     THEME_DAY = 'day'
+    THEME_ELVES = 'elves'
     THEME_CHOICES = [
         (THEME_WINTER, _('Zimowa noc')),
         (THEME_COZY, _('Przytulny kominek')),
         (THEME_DAY, _('Śnieżny dzień')),
+        (THEME_ELVES, _('Wioska elfów')),
     ]
 
     theme = models.CharField(max_length=20, choices=THEME_CHOICES, default=THEME_WINTER)

@@ -1,9 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 380">
   <style>
-    .head { transform-origin: 150px 150px; animation: nod 5s ease-in-out infinite; }
-    @keyframes nod { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-3deg); } }
-    .letter { transform-origin: 150px 205px; animation: read 5s ease-in-out infinite; }
-    @keyframes read { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(-3deg); } }
+    /* 10 s loop: read the letter, look up at the viewer over the glasses, blink, read again */
+    .head   { transform-origin: 150px 160px; animation: head 10s ease-in-out infinite; }
+    .letter { transform-origin: 150px 230px; animation: letter 10s ease-in-out infinite; }
+    .brows  { animation: brows 10s ease-in-out infinite; }
+    .pupils { animation: look 10s ease-in-out infinite; }
+    .blink  { transform-origin: 150px 106px; animation: blink 10s linear infinite; }
+    .cheeks { animation: cheeks 10s ease-in-out infinite; }
+
+    @keyframes head {
+      0%, 26%   { transform: rotate(-8deg) translate(-2px, 3px); }
+      34%       { transform: rotate(5deg) translateY(-5px); }
+      42%       { transform: rotate(6deg) translateY(-3px); }
+      46%       { transform: rotate(6deg) translateY(-6px); }
+      50%       { transform: rotate(5deg) translateY(-3px); }
+      54%       { transform: rotate(6deg) translateY(-6px); }
+      62%       { transform: rotate(4deg) translateY(-4px); }
+      72%, 100% { transform: rotate(-8deg) translate(-2px, 3px); }
+    }
+    @keyframes letter {
+      0%, 26%   { transform: rotate(-7deg); }
+      34%, 62%  { transform: rotate(0deg) translateY(9px); }
+      72%, 100% { transform: rotate(-7deg); }
+    }
+    @keyframes brows {
+      0%, 30%, 66%, 100% { transform: translateY(0); }
+      38%, 60%           { transform: translateY(-3px); }
+    }
+    @keyframes look {
+      0%, 26%, 72%, 100% { transform: translate(-1px, 2.5px); }
+      34%, 62%           { transform: translate(1px, -1px); }
+    }
+    @keyframes blink {
+      0%, 14%, 16.5%, 47%, 49.5%, 100% { transform: scaleY(1); }
+      15%, 48% { transform: scaleY(0.1); }
+    }
+    @keyframes cheeks {
+      0%, 30%, 66%, 100% { opacity: .45; }
+      40%, 58%           { opacity: .75; }
+    }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
   <defs>
@@ -54,17 +89,32 @@
     <path d="M114 112 Q108 172 150 192 Q192 172 186 112 Q172 136 150 136 Q128 136 114 112 Z" fill="#fbf7f0"/>
     <circle cx="150" cy="112" r="30" fill="#ffd9b8"/>
     <path d="M114 112 Q108 172 150 192 Q192 172 186 112 Q176 150 150 150 Q124 150 114 112 Z" fill="#fbf7f0"/>
-    <circle cx="132" cy="120" r="7" fill="#ff9c8a" opacity=".45"/>
-    <circle cx="168" cy="120" r="7" fill="#ff9c8a" opacity=".45"/>
-    <path d="M136 106 q5 4 10 0 M154 106 q5 4 10 0" stroke="#3b2418" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <g class="cheeks">
+      <circle cx="132" cy="120" r="7" fill="#ff9c8a"/>
+      <circle cx="168" cy="120" r="7" fill="#ff9c8a"/>
+    </g>
+    <g class="blink">
+      <g class="pupils" fill="#3b2418">
+        <ellipse cx="141" cy="106" rx="3" ry="3.4"/>
+        <ellipse cx="159" cy="106" rx="3" ry="3.4"/>
+        <circle cx="142" cy="105" r="1" fill="#fff"/>
+        <circle cx="160" cy="105" r="1" fill="#fff"/>
+      </g>
+    </g>
     <g fill="none" stroke="#c9a03c" stroke-width="2">
       <circle cx="140" cy="106" r="8"/><circle cx="160" cy="106" r="8"/><path d="M148 106 h4"/>
     </g>
     <circle cx="150" cy="118" r="6" fill="#f0957e"/>
     <path d="M150 124 q-12 -4 -22 4 q10 6 22 0 q12 6 22 0 q-10 -8 -22 -4" fill="#fff"/>
-    <path d="M118 90 C120 58 148 42 172 48 C198 54 210 80 218 108 L206 112 C198 92 188 80 176 76 C182 84 184 92 182 94 Z" fill="#c4302b"/>
-    <rect x="114" y="84" width="72" height="16" rx="8" fill="#fbf7f0"/>
-    <circle cx="214" cy="114" r="10" fill="#fbf7f0"/>
+    <g class="brows" stroke-linecap="round" fill="none">
+      <g stroke="#d8cbbb" stroke-width="7"><path d="M131 98 q9 -6 18 -1"/><path d="M151 97 q9 -5 18 1"/></g>
+      <g stroke="#fffdf8" stroke-width="5"><path d="M131 98 q9 -6 18 -1"/><path d="M151 97 q9 -5 18 1"/></g>
+    </g>
+    <g transform="translate(0 -6)">
+      <path d="M118 90 C120 58 148 42 172 48 C198 54 210 80 218 108 L206 112 C198 92 188 80 176 76 C182 84 184 92 182 94 Z" fill="#c4302b"/>
+      <rect x="114" y="84" width="72" height="16" rx="8" fill="#fbf7f0"/>
+      <circle cx="214" cy="114" r="10" fill="#fbf7f0"/>
+    </g>
   </g>
 
   <!-- arms holding a letter -->
