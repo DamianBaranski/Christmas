@@ -22,23 +22,31 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 def _load_env_file(path):
-    """Minimal .env reader: KEY=VALUE lines, # comments. Real env vars win."""
+    """Minimal .env reader: KEY=VALUE lines, # comments.
+
+    Values are kept in a dict instead of os.environ: under Apache/mod_wsgi Python
+    often runs with an ASCII locale and can't put non-ASCII text (e.g. a sender
+    name like "Święty Mikołaj") into the process environment.
+    """
+    values = {}
     if not os.path.exists(path):
-        return
-    with open(path, encoding='utf-8') as f:
+        return values
+    with open(path, encoding='utf-8-sig') as f:
         for line in f:
             line = line.strip()
             if not line or line.startswith('#') or '=' not in line:
                 continue
             key, value = line.split('=', 1)
-            os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+            values[key.strip()] = value.strip().strip('"').strip("'")
+    return values
 
 
-_load_env_file(os.path.join(BASE_DIR, '.env'))
+_ENV_FILE = _load_env_file(os.path.join(BASE_DIR, '.env'))
 
 
 def env(key, default=None):
-    return os.environ.get(key, default)
+    """Real environment variables win over values from .env."""
+    return os.environ.get(key, _ENV_FILE.get(key, default))
 
 
 def env_bool(key, default=False):
