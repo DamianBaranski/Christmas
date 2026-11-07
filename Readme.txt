@@ -1,7 +1,9 @@
 List do Mikołaja – Secret Santa site
 ====================================
 
-Setup (first time):
+Deploying to a server: see DEPLOY.md
+
+Setup for local development (first time):
   python3 -m venv venv
   venv/bin/pip install -r requirements.txt
   cp .env.example .env          # then fill in SECRET_KEY, email settings, ...
