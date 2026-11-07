@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 380">
+  <style>
+    .head { transform-origin: 150px 150px; animation: nod 5s ease-in-out infinite; }
+    @keyframes nod { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-3deg); } }
+    .letter { transform-origin: 150px 205px; animation: read 5s ease-in-out infinite; }
+    @keyframes read { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(-3deg); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <linearGradient id="velvet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2f7a55"/><stop offset="1" stop-color="#1d5038"/>
+    </linearGradient>
+    <linearGradient id="coat" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d63a33"/><stop offset="1" stop-color="#a5241f"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="150" cy="364" rx="135" ry="10" fill="#000" opacity=".28"/>
+
+  <!-- armchair -->
+  <rect x="40" y="52" width="220" height="230" rx="46" fill="url(#velvet)"/>
+  <g fill="#16402c">
+    <circle cx="95" cy="110" r="4"/><circle cx="150" cy="96" r="4"/><circle cx="205" cy="110" r="4"/>
+    <circle cx="95" cy="170" r="4"/><circle cx="150" cy="160" r="4"/><circle cx="205" cy="170" r="4"/>
+  </g>
+  <rect x="52" y="234" width="196" height="62" rx="16" fill="#25664a"/>
+  <rect x="30" y="288" width="240" height="46" rx="12" fill="#1d5038"/>
+  <path d="M30 318 H270" stroke="#e9c46a" stroke-width="3"/>
+  <rect x="44" y="334" width="14" height="22" rx="3" fill="#5a3320"/>
+  <rect x="242" y="334" width="14" height="22" rx="3" fill="#5a3320"/>
+
+  <!-- santa: legs and boots -->
+  <path d="M98 250 H142 V330 H104 Z" fill="#b52b25"/>
+  <path d="M158 250 H202 L196 330 H158 Z" fill="#b52b25"/>
+  <rect x="96" y="320" width="50" height="10" rx="3" fill="#f7f1e6"/>
+  <rect x="154" y="320" width="50" height="10" rx="3" fill="#f7f1e6"/>
+  <path d="M98 330 H146 V348 H86 Q84 336 98 330 Z" fill="#1d1d24"/>
+  <path d="M154 330 H202 Q216 336 214 348 H154 Z" fill="#1d1d24"/>
+
+  <!-- body -->
+  <ellipse cx="150" cy="212" rx="64" ry="62" fill="url(#coat)"/>
+  <rect x="143" y="160" width="14" height="112" fill="#f7f1e6"/>
+  <rect x="88" y="222" width="124" height="16" fill="#1d1d24"/>
+  <rect x="138" y="219" width="24" height="22" rx="3" fill="none" stroke="#e9c46a" stroke-width="4"/>
+
+  <!-- chair arms (in front of body sides) -->
+  <rect x="18" y="168" width="64" height="150" rx="28" fill="url(#velvet)"/>
+  <rect x="218" y="168" width="64" height="150" rx="28" fill="url(#velvet)"/>
+  <ellipse cx="50" cy="176" rx="30" ry="12" fill="#3a8a63"/>
+  <ellipse cx="250" cy="176" rx="30" ry="12" fill="#3a8a63"/>
+
+  <!-- head -->
+  <g class="head">
+    <path d="M114 112 Q108 172 150 192 Q192 172 186 112 Q172 136 150 136 Q128 136 114 112 Z" fill="#fbf7f0"/>
+    <circle cx="150" cy="112" r="30" fill="#ffd9b8"/>
+    <path d="M114 112 Q108 172 150 192 Q192 172 186 112 Q176 150 150 150 Q124 150 114 112 Z" fill="#fbf7f0"/>
+    <circle cx="132" cy="120" r="7" fill="#ff9c8a" opacity=".45"/>
+    <circle cx="168" cy="120" r="7" fill="#ff9c8a" opacity=".45"/>
+    <path d="M136 106 q5 4 10 0 M154 106 q5 4 10 0" stroke="#3b2418" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <g fill="none" stroke="#c9a03c" stroke-width="2">
+      <circle cx="140" cy="106" r="8"/><circle cx="160" cy="106" r="8"/><path d="M148 106 h4"/>
+    </g>
+    <circle cx="150" cy="118" r="6" fill="#f0957e"/>
+    <path d="M150 124 q-12 -4 -22 4 q10 6 22 0 q12 6 22 0 q-10 -8 -22 -4" fill="#fff"/>
+    <path d="M118 90 C120 58 148 42 172 48 C198 54 210 80 218 108 L206 112 C198 92 188 80 176 76 C182 84 184 92 182 94 Z" fill="#c4302b"/>
+    <rect x="114" y="84" width="72" height="16" rx="8" fill="#fbf7f0"/>
+    <circle cx="214" cy="114" r="10" fill="#fbf7f0"/>
+  </g>
+
+  <!-- arms holding a letter -->
+  <path d="M96 168 Q82 200 112 214" stroke="#b52b25" stroke-width="22" fill="none" stroke-linecap="round"/>
+  <path d="M204 168 Q218 200 188 214" stroke="#b52b25" stroke-width="22" fill="none" stroke-linecap="round"/>
+  <g class="letter">
+    <rect x="114" y="182" width="72" height="50" rx="3" fill="#fffaf0" stroke="#e2d5bd"/>
+    <g stroke="#b39d86" stroke-width="2" stroke-linecap="round">
+      <path d="M122 194 h40"/><path d="M122 203 h54"/><path d="M122 212 h48"/><path d="M122 221 h30"/>
+    </g>
+    <path d="M168 220 q4 -6 8 0 q4 -6 8 0 l-8 8 z" fill="#c4302b"/>
+  </g>
+  <rect x="104" y="208" width="18" height="10" rx="4" fill="#fbf7f0"/>
+  <rect x="178" y="208" width="18" height="10" rx="4" fill="#fbf7f0"/>
+  <circle cx="116" cy="222" r="9" fill="#1d1d24"/>
+  <circle cx="184" cy="222" r="9" fill="#1d1d24"/>
+</svg>

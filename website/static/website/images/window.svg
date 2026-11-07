@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 300">
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b1d45"/><stop offset="1" stop-color="#2b4f86"/>
+    </linearGradient>
+    <linearGradient id="curtain" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7d1d16"/><stop offset=".5" stop-color="#b8322a"/><stop offset="1" stop-color="#7d1d16"/>
+    </linearGradient>
+    <clipPath id="glass"><rect x="58" y="44" width="164" height="196"/></clipPath>
+  </defs>
+
+  <rect x="46" y="32" width="188" height="220" rx="4" fill="#5a3422"/>
+  <g clip-path="url(#glass)">
+    <rect x="58" y="44" width="164" height="196" fill="url(#night)"/>
+    <circle cx="180" cy="86" r="18" fill="#fbf1cf"/>
+    <circle cx="180" cy="86" r="30" fill="#fbf1cf" opacity=".15"/>
+    <g fill="#fff">
+      <circle cx="80" cy="70" r="1.5"/><circle cx="120" cy="60" r="1"/><circle cx="140" cy="96" r="1.5"/>
+      <circle cx="96" cy="120" r="2"/><circle cx="200" cy="140" r="1.5"/><circle cx="160" cy="150" r="2"/>
+      <circle cx="74" cy="160" r="1.5"/><circle cx="130" cy="176" r="2"/><circle cx="206" cy="186" r="1.5"/>
+    </g>
+    <path d="M58 210 Q110 186 160 204 Q200 190 222 198 V240 H58 Z" fill="#dbe7f7"/>
+    <g fill="#173a3a">
+      <path d="M86 206 l10 -28 l10 28 z"/><path d="M180 202 l8 -22 l8 22 z"/>
+    </g>
+  </g>
+  <path d="M140 44 V240 M58 142 H222" stroke="#5a3422" stroke-width="8"/>
+  <path d="M58 236 Q90 224 120 234 Q150 224 180 234 Q206 226 222 232 V240 H58 Z" fill="#fff" opacity=".85"/>
+  <path d="M58 52 Q60 46 66 46 L70 48 L64 54 Z M216 48 Q222 46 222 52 L216 54 Z" fill="#fff" opacity=".6"/>
+
+  <rect x="34" y="250" width="212" height="14" rx="3" fill="#7a4a30"/>
+  <rect x="34" y="250" width="212" height="4" rx="2" fill="#94603f"/>
+
+  <rect x="20" y="16" width="240" height="10" rx="5" fill="#3a2418"/>
+  <path d="M24 22 Q60 22 70 60 Q56 130 70 200 Q50 240 30 270 Q12 200 24 22 Z" fill="url(#curtain)"/>
+  <path d="M256 22 Q220 22 210 60 Q224 130 210 200 Q230 240 250 270 Q268 200 256 22 Z" fill="url(#curtain)"/>
+  <path d="M30 150 q20 6 42 -4" stroke="#e9c46a" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M250 150 q-20 6 -42 -4" stroke="#e9c46a" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+</svg>

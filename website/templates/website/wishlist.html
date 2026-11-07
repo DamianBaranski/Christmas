@@ -1,17 +1,21 @@
 {% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "Wyślij list" %} · {% translate "List do Mikołaja" %}{% endblock %}
+{% block nav_wishlist %}active{% endblock %}
 
 {% block content %}
-<p>W celu przesłania listu do Świętego, wypełnij poniższy formularz.
-<p>List możesz przesłać w formie dokumentu tekstowego (pdf, doc, docx, rtf, txt itp.)
-<p>lub w formie graficznej (jpg, gif, svg, png itp.).
-<p>Pisanie listu nie jest obowiązkowe, ale może pomóc Mikołajowi w znalezieniu odpowiedniego prezentu.
+<h1>{% translate "Napisz list do Mikołaja" %}</h1>
+<p class="lead">
+  {% translate "List nie jest obowiązkowy, ale może pomóc Mikołajowi w znalezieniu odpowiedniego prezentu." %}
+</p>
+<p>{% translate "Prześlij go jako dokument (pdf, doc, docx, rtf, txt) lub obrazek (jpg, png, gif, svg), maksymalnie 3 MB." %}</p>
 
-<form action="/wishlist/" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <table>
-    {{ form }}
-    </table>
-    <input type="submit" value="Submit">
+<form action="{% url 'wishlist' %}" method="post" enctype="multipart/form-data" class="form" novalidate>
+  {% csrf_token %}
+  {% include "website/_form.html" %}
+  <button type="submit" class="btn btn-primary">{% translate "Wyślij list" %}</button>
 </form>
 
+<p class="aside">{% translate "Nie masz jeszcze konta?" %} <a href="{% url 'register' %}">{% translate "Zarejestruj się" %} →</a></p>
 {% endblock %}

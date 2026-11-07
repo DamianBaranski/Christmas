@@ -1,31 +1,89 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 {% if status == STATUS_ENUM.REGISTER_EMAIL_SENT %}
-<p>Rejestracja przebiegła pomyślnie :)</p>
-<p>{{ user_name }} sprawdź e-mail.</p>
-<p>W razie problemów sprawdź SPAM.</p> 
+<div class="status status-success">
+  <div class="status-icon" aria-hidden="true">✉️</div>
+  <h1>{% translate "Rejestracja przebiegła pomyślnie!" %}</h1>
+  <p>{% blocktranslate %}{{ user_name }}, sprawdź skrzynkę e-mail i kliknij link potwierdzający.{% endblocktranslate %}</p>
+  <p class="aside">{% translate "Nie widzisz wiadomości? Zajrzyj do folderu SPAM." %}</p>
+</div>
 {% elif status == STATUS_ENUM.USER_EXIST %}
-<p>Ten adres email jest już zarejestrowany</p>
+<div class="status status-warning">
+  <div class="status-icon" aria-hidden="true">🔔</div>
+  <h1>{% translate "Ten adres jest już zarejestrowany" %}</h1>
+  <p>{% translate "Możesz od razu wysłać list do Mikołaja." %}</p>
+  <a class="btn btn-primary" href="{% url 'wishlist' %}">{% translate "Wyślij list" %}</a>
+</div>
 {% elif status == STATUS_ENUM.INTERNAL_ERROR %}
-<p>Wewnętrzy błąd strony, skontaktuj się z adminem</p>
+<div class="status status-error">
+  <div class="status-icon" aria-hidden="true">⚠️</div>
+  <h1>{% translate "Coś poszło nie tak" %}</h1>
+  <p>{% translate "Link mógł wygasnąć lub być nieprawidłowy. Jeśli problem się powtarza, skontaktuj się z organizatorem." %}</p>
+  <a class="btn" href="{% url 'register' %}">{% translate "Wróć na stronę główną" %}</a>
+</div>
 {% elif status == STATUS_ENUM.EMAIL_CONFIRMED %}
-<p>{{ user_name }}, Twój email został potwierdzony, czekaj na akceptację admina</p>
+<div class="status status-success">
+  <div class="status-icon" aria-hidden="true">✅</div>
+  <h1>{% translate "E-mail potwierdzony" %}</h1>
+  <p>{% blocktranslate %}{{ user_name }}, dziękujemy! Teraz poczekaj na akceptację organizatora — dostaniesz wiadomość, gdy konto będzie aktywne.{% endblocktranslate %}</p>
+</div>
 {% elif status == STATUS_ENUM.ADMIN_CONFIRMED %}
-<p>Konto {{ user_name }} zostało potwierdzone</p>
+<div class="status status-success">
+  <div class="status-icon" aria-hidden="true">🎅</div>
+  <h1>{% translate "Konto zaakceptowane" %}</h1>
+  <p>{% blocktranslate %}Konto {{ user_name }} zostało potwierdzone.{% endblocktranslate %}</p>
+</div>
 {% elif status == STATUS_ENUM.WRONG_FILE_EXT %}
-<p>Nie mogę przesłać listu ponieważ użyto złego formatu pliku, akceptowane są tylko pliki: pdf, doc, docx, jpg, png, txt, jpeg, rtf, gif, svg</p>
+<div class="status status-error">
+  <div class="status-icon" aria-hidden="true">📄</div>
+  <h1>{% translate "Nieobsługiwany format pliku" %}</h1>
+  <p>{% translate "Akceptowane są tylko pliki: pdf, doc, docx, jpg, jpeg, png, gif, svg, txt, rtf." %}</p>
+  <a class="btn btn-primary" href="{% url 'wishlist' %}">{% translate "Spróbuj ponownie" %}</a>
+</div>
 {% elif status == STATUS_ENUM.WRONG_FILE_SIZE %}
-<p>Nie mogę przesłać listu ponieważ przesłany plik jest za duży, akceptowane są pliki mniejsze niż 3MB</p>
+<div class="status status-error">
+  <div class="status-icon" aria-hidden="true">📦</div>
+  <h1>{% translate "Plik jest za duży" %}</h1>
+  <p>{% translate "Maksymalny rozmiar pliku to 3 MB." %}</p>
+  <a class="btn btn-primary" href="{% url 'wishlist' %}">{% translate "Spróbuj ponownie" %}</a>
+</div>
 {% elif status == STATUS_ENUM.FILE_SENT %}
-<p>Plik został przesłany. Sprawdź email i kliknij link w celu potwierdzenia</p>
+<div class="status status-success">
+  <div class="status-icon" aria-hidden="true">📬</div>
+  <h1>{% translate "List wysłany!" %}</h1>
+  <p>{% translate "Sprawdź skrzynkę e-mail i kliknij link, aby potwierdzić przesłanie listu." %}</p>
+</div>
 {% elif status == STATUS_ENUM.USER_NOT_EXIST %}
-<p>Nie mogę przesłać listu ponieważ adres email nie został zarejestrowany lub potwierdzony</p>
+<div class="status status-error">
+  <div class="status-icon" aria-hidden="true">🔍</div>
+  <h1>{% translate "Nie znaleziono konta" %}</h1>
+  <p>{% translate "Ten adres e-mail nie jest zarejestrowany albo konto nie zostało jeszcze potwierdzone." %}</p>
+  <a class="btn btn-primary" href="{% url 'register' %}">{% translate "Zarejestruj się" %}</a>
+</div>
 {% elif status == STATUS_ENUM.NO_WISH_LIST %}
-<p>Nie przesłano listu</p>
+<div class="status status-warning">
+  <div class="status-icon" aria-hidden="true">📭</div>
+  <h1>{% translate "Brak listu" %}</h1>
+  <p>{% translate "Ta osoba nie przesłała listu do Mikołaja." %}</p>
+</div>
 {% elif status == STATUS_ENUM.WISH_LIST %}
-<p>List: <a href='{{ wishlist }}'>link</a> </p>
+<div class="status status-success">
+  <div class="status-icon" aria-hidden="true">📜</div>
+  <h1>{% translate "List do Mikołaja" %}</h1>
+  <a class="btn btn-primary" href="{{ wishlist }}" target="_blank" rel="noopener">{% translate "Otwórz list" %}</a>
+</div>
 {% elif status == STATUS_ENUM.FILE_CONFIRMED %}
-<p>List: <a href='{{ wishlist }}'>link</a> został potwierdzony </p>
+<div class="status status-success">
+  <div class="status-icon" aria-hidden="true">✅</div>
+  <h1>{% translate "List został potwierdzony" %}</h1>
+  <a class="btn btn-primary" href="{{ wishlist }}" target="_blank" rel="noopener">{% translate "Zobacz swój list" %}</a>
+</div>
+{% else %}
+<div class="status">
+  <h1>{% translate "List do Mikołaja" %}</h1>
+  <a class="btn btn-primary" href="{% url 'register' %}">{% translate "Przejdź do rejestracji" %}</a>
+</div>
 {% endif %}
 {% endblock %}

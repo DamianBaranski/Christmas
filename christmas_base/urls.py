@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.urls import include, path
-from django.conf import settings
-from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('website.urls')),
-    path('admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('admin/db/', admin.site.urls),
+    path('i18n/', include('django.conf.urls.i18n')),
+]
+# Uploaded letters are served by website.views.letter (/letters/<name>/)
 
 

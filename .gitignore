@@ -12,3 +12,9 @@ media
 # Python # 
 *.py[cod] 
 *$py.class 
+
+# Local secrets #
+.env
+
+# Editor swap files #
+*.swp

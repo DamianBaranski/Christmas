@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 420">
+  <defs>
+    <radialGradient id="s" cx=".38" cy=".32" r=".75">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".7" stop-color="#e6effa"/>
+      <stop offset="1" stop-color="#b7cbe6"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="150" cy="400" rx="115" ry="12" fill="#0b1630" opacity=".35"/>
+
+  <g stroke="#6b3e26" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M104 206 L44 168 M62 180 L52 158 M62 180 L40 184"/>
+    <path d="M196 206 L256 166 M238 178 L250 156 M238 178 L262 184"/>
+  </g>
+
+  <circle cx="150" cy="330" r="72" fill="url(#s)"/>
+  <circle cx="150" cy="214" r="54" fill="url(#s)"/>
+  <circle cx="150" cy="126" r="40" fill="url(#s)"/>
+
+  <g fill="#1d2233">
+    <circle cx="150" cy="202" r="5"/>
+    <circle cx="150" cy="224" r="5"/>
+    <circle cx="150" cy="246" r="5"/>
+    <circle cx="150" cy="300" r="5.5"/>
+    <circle cx="150" cy="326" r="5.5"/>
+  </g>
+
+  <circle cx="137" cy="118" r="4.5" fill="#1d2233"/>
+  <circle cx="163" cy="118" r="4.5" fill="#1d2233"/>
+  <path d="M150 128 L186 136 L150 139 Z" fill="#f28c28"/>
+  <g fill="#1d2233">
+    <circle cx="134" cy="144" r="2.5"/><circle cx="142" cy="149" r="2.5"/>
+    <circle cx="151" cy="151" r="2.5"/><circle cx="160" cy="148" r="2.5"/>
+  </g>
+  <circle cx="128" cy="134" r="6" fill="#ff8a8a" opacity=".35"/>
+  <circle cx="172" cy="134" r="6" fill="#ff8a8a" opacity=".35"/>
+
+  <path d="M110 160 Q150 180 190 160 L192 176 Q150 196 108 176 Z" fill="#d42f3a"/>
+  <path d="M164 174 L178 236 L160 240 L150 180 Z" fill="#d42f3a"/>
+  <g stroke="#fff" stroke-width="3" opacity=".85">
+    <path d="M128 168 L126 184"/><path d="M150 172 L150 188"/><path d="M172 168 L174 184"/>
+    <path d="M166 200 L176 198"/><path d="M168 216 L178 214"/>
+  </g>
+
+  <rect x="106" y="86" width="88" height="10" rx="4" fill="#1d2233"/>
+  <rect x="120" y="36" width="60" height="54" rx="3" fill="#1d2233"/>
+  <rect x="120" y="74" width="60" height="10" fill="#d42f3a"/>
+  <path d="M170 79 q8 -10 16 -4 q-8 2 -16 4 q6 -12 -4 -14 q-2 8 4 14" fill="#2f9e5f"/>
+  <circle cx="170" cy="79" r="3.5" fill="#e23b3b"/>
+  <circle cx="175" cy="82" r="3" fill="#e23b3b"/>
+</svg>

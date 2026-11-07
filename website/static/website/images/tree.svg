@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 420">
+  <style>
+    .l { animation: tw 1.4s ease-in-out infinite alternate; }
+    .d1 { animation-delay: .35s; } .d2 { animation-delay: .7s; } .d3 { animation-delay: 1.05s; }
+    @keyframes tw { from { opacity: .35; } to { opacity: 1; } }
+    .star { transform-origin: 150px 40px; animation: pulse 2.6s ease-in-out infinite; }
+    @keyframes pulse { 50% { transform: scale(1.1); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2f9e5f"/>
+      <stop offset="1" stop-color="#0f5130"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#ffe9a3" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#ffd36b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect x="136" y="355" width="28" height="40" fill="#6b3e26"/>
+
+  <path d="M150 160 L28 368 Q150 396 272 368 Z" fill="url(#g)"/>
+  <path d="M28 368 Q150 396 272 368 Q150 384 28 368 Z" fill="#eef6ff"/>
+  <path d="M150 105 L52 282 Q150 304 248 282 Z" fill="url(#g)"/>
+  <path d="M52 282 Q150 304 248 282 Q150 293 52 282 Z" fill="#eef6ff"/>
+  <path d="M150 52 L84 192 Q150 208 216 192 Z" fill="url(#g)"/>
+  <path d="M84 192 Q150 208 216 192 Q150 200 84 192 Z" fill="#eef6ff"/>
+
+  <g fill="none" stroke="#ffd36b" stroke-width="3" stroke-linecap="round">
+    <path d="M100 150 Q150 172 196 140"/>
+    <path d="M78 240 Q150 270 226 228"/>
+    <path d="M56 330 Q150 362 250 318"/>
+  </g>
+
+  <g>
+    <circle cx="118" cy="168" r="9" fill="#e23b3b"/>
+    <circle cx="182" cy="176" r="8" fill="#4aa3ff"/>
+    <circle cx="96" cy="262" r="10" fill="#ffd36b"/>
+    <circle cx="160" cy="254" r="9" fill="#e23b3b"/>
+    <circle cx="214" cy="270" r="9" fill="#c86bff"/>
+    <circle cx="80" cy="348" r="10" fill="#4aa3ff"/>
+    <circle cx="140" cy="340" r="10" fill="#ffd36b"/>
+    <circle cx="200" cy="352" r="11" fill="#e23b3b"/>
+    <g fill="#fff" opacity=".7">
+      <circle cx="115" cy="165" r="2.5"/><circle cx="179" cy="173" r="2.5"/>
+      <circle cx="93" cy="259" r="3"/><circle cx="157" cy="251" r="2.5"/>
+      <circle cx="211" cy="267" r="2.5"/><circle cx="77" cy="345" r="3"/>
+      <circle cx="137" cy="337" r="3"/><circle cx="197" cy="349" r="3"/>
+    </g>
+  </g>
+
+  <g>
+    <circle class="l" cx="112" cy="155" r="4" fill="#ff6b6b"/>
+    <circle class="l d1" cx="150" cy="162" r="4" fill="#ffe36b"/>
+    <circle class="l d2" cx="186" cy="148" r="4" fill="#6bd1ff"/>
+    <circle class="l d3" cx="92" cy="248" r="4" fill="#7dff9a"/>
+    <circle class="l" cx="130" cy="257" r="4" fill="#ff6b6b"/>
+    <circle class="l d1" cx="190" cy="250" r="4" fill="#ffe36b"/>
+    <circle class="l d2" cx="70" cy="335" r="4" fill="#6bd1ff"/>
+    <circle class="l d3" cx="110" cy="348" r="4" fill="#ff6b6b"/>
+    <circle class="l" cx="172" cy="349" r="4" fill="#7dff9a"/>
+    <circle class="l d1" cx="230" cy="333" r="4" fill="#ffe36b"/>
+  </g>
+
+  <circle cx="150" cy="40" r="44" fill="url(#glow)"/>
+  <polygon class="star" fill="#ffd36b" stroke="#fff3c4" stroke-width="2" stroke-linejoin="round"
+    points="150,12 157.1,30.3 176.6,31.3 161.4,43.7 166.5,62.7 150,52 133.5,62.7 138.6,43.7 123.4,31.3 142.9,30.3"/>
+
+  <rect x="56" y="370" width="52" height="42" rx="3" fill="#d42f3a"/>
+  <rect x="78" y="370" width="8" height="42" fill="#ffd36b"/>
+  <rect x="56" y="386" width="52" height="8" fill="#ffd36b"/>
+  <path d="M82 370 q-16 -16 -22 -4 q6 8 22 4 q16 -16 22 -4 q-6 8 -22 4" fill="none" stroke="#ffd36b" stroke-width="4"/>
+  <rect x="188" y="378" width="48" height="34" rx="3" fill="#2f7fd8"/>
+  <rect x="208" y="378" width="8" height="34" fill="#fff"/>
+  <path d="M212 378 q-12 -12 -17 -3 q5 6 17 3 q12 -12 17 -3 q-5 6 -17 3" fill="none" stroke="#fff" stroke-width="3.5"/>
+</svg>

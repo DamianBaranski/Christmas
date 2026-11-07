@@ -1,49 +1,98 @@
-{% load static %}
-
-<html>
+{% load static i18n %}<!doctype html>
+{% get_current_language as LANG %}
+<html lang="{{ LANG }}" data-theme="{{ theme|default:'winter' }}">
   <head>
-    <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=utf-8" />
-    <link rel="Stylesheet" type="text/css" href={% static 'website/style.css' %} />
-    <script defer="defer" src={% static 'website/odliczanie.js' %}></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{% translate "List do Mikołaja" %}{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Lobster&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'website/style.css' %}" />
+    <script defer src="{% static 'website/odliczanie.js' %}"></script>
   </head>
-  <body onload="countdown({{ draw_date }});">
-    <header>
-      <center>
-        <font face="Comic sans MS" size="25">
-          <a href="/">List do Mikołaja</a>
-        </font>
-        <br />
-        <table>
-          <tr>
-            <td>Do wielkiego losowania zostało:</td>
-            <td>
-              <div id="zostalo">Div w którym pojawi się odliczany czas</div>
-            </td>
-          </tr>
-        </table>
-      </center>
-    </header>
-    <center>
-    <div class="MainContainer">
-      <br />
-      <table style="color: #ffffff; margin: 0px;" width="100%">
-        <tr>
-          <td>
-            <img src={% static 'website/images/choinka.png' %} alt="Choinka taka świąteczna" />
-          </td>
-          <td>
-		{% block content %}{% endblock %}
-	  </td>
-          <td>
-            <img src={% static 'website/images/mikolaj.png' %} alt="Mikołaj taki super" />
-          </td>
-        </tr>
-      </table>
+  <body data-sending="{% translate 'Wysyłanie…' %}" data-drawing="{% translate 'Losowanie…' %}">
+    <div class="sky" aria-hidden="true">
+      {% if theme == 'cozy' %}
+      <div class="wall"></div>
+      <img class="window" src="{% static 'website/images/window.svg' %}" alt="" />
+      <div class="floor"></div>
+      <div class="fire-glow"></div>
+      <img class="decor decor-left decor-fireplace" src="{% static 'website/images/fireplace.svg' %}" alt="" />
+      <img class="decor decor-santa" src="{% static 'website/images/santa-chair.svg' %}" alt="" />
+      <img class="decor decor-table" src="{% static 'website/images/cocoa.svg' %}" alt="" />
+      <canvas id="snow" class="snow" data-mode="embers"></canvas>
+      {% elif theme == 'day' %}
+      <div class="sun"></div>
+      <div class="cloud cloud-1"></div>
+      <div class="cloud cloud-2"></div>
+      <div class="cloud cloud-3"></div>
+      <img class="hills" src="{% static 'website/images/village.svg' %}" alt="" />
+      <img class="decor decor-left decor-sled" src="{% static 'website/images/sled.svg' %}" alt="" />
+      <img class="decor decor-right" src="{% static 'website/images/snowman.svg' %}" alt="" />
+      <canvas id="snow" class="snow" data-mode="snow"></canvas>
+      {% else %}
+      <div class="aurora"></div>
+      <div class="stars"></div>
+      <div class="stars stars-twinkle"></div>
+      <div class="moon"></div>
+      <img id="sleigh" class="sleigh" src="{% static 'website/images/sleigh.svg' %}" alt="" />
+      <img class="hills" src="{% static 'website/images/hills.svg' %}" alt="" />
+      <img class="decor decor-left" src="{% static 'website/images/tree.svg' %}" alt="" />
+      <img class="decor decor-right" src="{% static 'website/images/snowman.svg' %}" alt="" />
+      <canvas id="snow" class="snow" data-mode="snow"></canvas>
+      {% endif %}
     </div>
-    </center>
-    <div class="stars"></div>
-    <div class="twinkling"></div>
-    <div id="reniferek" class="renifer"></div>
-    <div class="clouds"></div>
+
+    <div class="lights" aria-hidden="true">{% for _ in "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" %}<i></i>{% endfor %}</div>
+
+    <header class="site-header">
+      <a class="logo" href="{% url 'register' %}">{% translate "List do Mikołaja" %}</a>
+      <div class="header-right">
+        <nav class="nav" aria-label="{% translate 'Nawigacja' %}">
+          <a href="{% url 'register' %}" class="{% block nav_register %}{% endblock %}">{% translate "Rejestracja" %}</a>
+          <a href="{% url 'wishlist' %}" class="{% block nav_wishlist %}{% endblock %}">{% translate "Wyślij list" %}</a>
+          {% if user.is_staff %}<a href="{% url 'panel' %}" class="{% block nav_panel %}{% endblock %}">{% translate "Panel" %}</a>{% endif %}
+        </nav>
+        <form class="lang-switch" action="{% url 'set_language' %}" method="post" aria-label="{% translate 'Język' %}">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+          {% get_available_languages as LANGUAGES %}
+          {% for code, name in LANGUAGES %}
+          <button type="submit" name="language" value="{{ code }}" lang="{{ code }}" title="{{ name }}"
+                  {% if code == LANG %}aria-current="true" class="active"{% endif %}>{{ code|upper }}</button>
+          {% endfor %}
+        </form>
+      </div>
+    </header>
+
+    {% block countdown %}
+    {% if site.draw_at %}
+    <section class="countdown" aria-live="polite">
+      <p class="countdown-label">{% translate "Do wielkiego losowania zostało" %}</p>
+      <div id="zostalo" class="countdown-tiles" data-draw-date="{{ site.draw_at|date:'c' }}">
+        <div class="tile"><span data-unit="days">–</span><small>{% translate "dni" %}</small></div>
+        <div class="tile"><span data-unit="hours">–</span><small>{% translate "godz." %}</small></div>
+        <div class="tile"><span data-unit="minutes">–</span><small>{% translate "min" %}</small></div>
+        <div class="tile"><span data-unit="seconds">–</span><small>{% translate "sek" %}</small></div>
+      </div>
+      <p id="zostalo-done" class="countdown-done" hidden>{% translate "Losowanie już się odbyło" %} 🎁</p>
+    </section>
+    {% endif %}
+    {% endblock %}
+
+    <main class="stage">
+      <div class="card {% block card_class %}{% endblock %}">
+        <img class="holly" src="{% static 'website/images/holly.svg' %}" alt="" />
+        {% if messages %}
+        <div class="messages">
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}" role="status">{{ message }}</div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% block content %}{% endblock %}
+      </div>
+    </main>
   </body>
 </html>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 360">
+  <style>
+    .steam { animation: rise 3.2s ease-in-out infinite; opacity: 0; }
+    .s2 { animation-delay: 1.05s; } .s3 { animation-delay: 2.1s; }
+    @keyframes rise {
+      0%   { opacity: 0; transform: translateY(8px); }
+      30%  { opacity: .75; }
+      100% { opacity: 0; transform: translateY(-26px); }
+    }
+    .flame { transform-origin: 196px 148px; animation: fl .5s ease-in-out infinite alternate; }
+    @keyframes fl { from { transform: scale(1, 1); } to { transform: scale(.85, 1.12); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .steam { opacity: .5; } }
+  </style>
+  <defs>
+    <radialGradient id="cg">
+      <stop offset="0" stop-color="#ffcf6b" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#ffcf6b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="130" cy="352" rx="110" ry="8" fill="#000" opacity=".25"/>
+  <rect x="44" y="214" width="12" height="138" rx="3" fill="#5a3320"/>
+  <rect x="204" y="214" width="12" height="138" rx="3" fill="#5a3320"/>
+  <rect x="50" y="300" width="160" height="8" rx="3" fill="#5a3320"/>
+  <rect x="20" y="200" width="220" height="18" rx="5" fill="#7a4a30"/>
+  <rect x="20" y="200" width="220" height="5" rx="3" fill="#94603f"/>
+
+  <rect x="34" y="186" width="116" height="14" rx="2" fill="#2f6b4f"/>
+  <rect x="34" y="186" width="6" height="14" fill="#e9c46a"/>
+  <rect x="42" y="172" width="100" height="14" rx="2" fill="#a8322a"/>
+  <rect x="136" y="172" width="6" height="14" fill="#e9c46a"/>
+
+  <g fill="none" stroke="#f3ead8" stroke-width="4" stroke-linecap="round">
+    <path class="steam" d="M74 112 q-8 -10 0 -20 q8 -10 0 -20"/>
+    <path class="steam s2" d="M90 114 q-8 -10 0 -20 q8 -10 0 -20"/>
+    <path class="steam s3" d="M106 112 q-8 -10 0 -20 q8 -10 0 -20"/>
+  </g>
+  <path d="M120 136 q26 2 24 18 q-2 14 -26 12" fill="none" stroke="#c4302b" stroke-width="7"/>
+  <path d="M60 122 H122 L118 166 Q117 172 110 172 H72 Q65 172 64 166 Z" fill="#c4302b"/>
+  <ellipse cx="91" cy="122" rx="31" ry="6" fill="#6b3e26"/>
+  <ellipse cx="91" cy="121" rx="26" ry="4" fill="#f6ead6"/>
+  <rect x="76" y="114" width="9" height="8" rx="2" fill="#fff"/>
+  <rect x="92" y="112" width="9" height="8" rx="2" fill="#ffe6ec"/>
+  <g fill="#fff" opacity=".9">
+    <path d="M78 140 l3 6 l3 -6 l-3 -2 z"/><path d="M96 150 l3 6 l3 -6 l-3 -2 z"/>
+    <circle cx="104" cy="136" r="2"/><circle cx="76" cy="156" r="2"/>
+  </g>
+
+  <circle cx="196" cy="150" r="44" fill="url(#cg)"/>
+  <rect x="172" y="146" width="48" height="54" rx="8" fill="#f3ead8" opacity=".25" stroke="#f3ead8" stroke-opacity=".5" stroke-width="2"/>
+  <rect x="182" y="158" width="28" height="42" rx="3" fill="#f6ecd8"/>
+  <path d="M196 158 v-6" stroke="#3a2418" stroke-width="2"/>
+  <path class="flame" d="M196 132 Q188 144 196 152 Q204 144 196 132 Z" fill="#ffb84d"/>
+  <path class="flame" d="M196 140 Q192 146 196 151 Q200 146 196 140 Z" fill="#fff3c0"/>
+  <path d="M172 178 h48" stroke="#c4302b" stroke-width="5"/>
+
+  <path d="M152 200 q4 -14 14 -10 q-2 8 -14 10 z" fill="#2f7a4a"/>
+  <circle cx="160" cy="196" r="3" fill="#c4302b"/>
+</svg>

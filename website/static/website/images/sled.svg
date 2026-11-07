@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 280">
+  <ellipse cx="160" cy="268" rx="140" ry="10" fill="#1d3557" opacity=".12"/>
+
+  <!-- presents -->
+  <rect x="70" y="120" width="86" height="70" rx="4" fill="#d9534f"/>
+  <rect x="106" y="120" width="14" height="70" fill="#ffd36b"/>
+  <rect x="70" y="148" width="86" height="12" fill="#ffd36b"/>
+  <path d="M113 120 q-24 -22 -32 -6 q8 12 32 6 q24 -22 32 -6 q-8 12 -32 6" fill="none" stroke="#ffd36b" stroke-width="6"/>
+
+  <rect x="164" y="138" width="80" height="52" rx="4" fill="#4fa3a5"/>
+  <rect x="198" y="138" width="12" height="52" fill="#fff"/>
+  <rect x="164" y="158" width="80" height="10" fill="#fff"/>
+
+  <rect x="150" y="80" width="62" height="52" rx="4" fill="#5b8bd9" transform="rotate(8 181 106)"/>
+  <rect x="176" y="80" width="10" height="52" fill="#fff" transform="rotate(8 181 106)"/>
+  <path d="M185 82 q-16 -16 -22 -4 q6 9 22 4 q16 -16 22 -4 q-6 9 -22 4" fill="none" stroke="#fff" stroke-width="5" transform="rotate(8 181 106)"/>
+
+  <rect x="96" y="66" width="48" height="50" rx="4" fill="#f4c95d" transform="rotate(-6 120 91)"/>
+  <rect x="114" y="66" width="10" height="50" fill="#d9534f" transform="rotate(-6 120 91)"/>
+  <rect x="96" y="86" width="48" height="10" fill="#d9534f" transform="rotate(-6 120 91)"/>
+
+  <!-- sled -->
+  <rect x="50" y="190" width="214" height="16" rx="5" fill="#c0392b"/>
+  <rect x="50" y="210" width="214" height="16" rx="5" fill="#a5241f"/>
+  <g fill="#7a3a2c">
+    <rect x="76" y="226" width="10" height="24"/>
+    <rect x="150" y="226" width="10" height="24"/>
+    <rect x="224" y="226" width="10" height="24"/>
+  </g>
+  <path d="M36 252 H262 Q300 252 298 222 Q296 204 280 206" fill="none" stroke="#c9a03c" stroke-width="8" stroke-linecap="round"/>
+  <path d="M50 196 Q20 200 14 236" fill="none" stroke="#c9a03c" stroke-width="4" stroke-linecap="round"/>
+  <path d="M14 236 Q8 252 26 252" fill="none" stroke="#c9a03c" stroke-width="4" stroke-linecap="round"/>
+  <path d="M264 198 Q296 186 306 150 Q312 130 296 126" fill="none" stroke="#7a4a30" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- snow on top -->
+  <path d="M74 122 Q90 114 112 120 Q134 112 156 122 L156 128 Q113 120 74 128 Z" fill="#fff"/>
+  <path d="M164 140 Q186 132 204 138 Q226 132 244 140 L244 146 Q204 138 164 146 Z" fill="#fff"/>
+</svg>

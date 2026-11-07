@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse, Http404
+from django.urls import reverse
+from django.conf import settings as django_settings
 from .forms import RegisterForm, WishlistForm
 from .models import UserActivationSteps, FileActivationSteps, User, WishlistFile
 import secrets
 from christmas_base import settings
 from enum import Enum, auto
+from django.utils.translation import gettext as _
 import os
-import datetime
+from django.utils import timezone
 from .mail import *
 
 class STATUS_ENUM(Enum):
@@ -24,10 +27,8 @@ class STATUS_ENUM(Enum):
     FILE_CONFIRMED = auto()
 
 def getGlobalContext():
-    return {'party_host': settings.PARTY_HOST,
-            'draw_date': settings.DRAW_DATE,
-            'STATUS_ENUM': STATUS_ENUM.__members__,
-            }
+    # site settings (host, dates, theme) come from website.context_processors.site
+    return {'STATUS_ENUM': STATUS_ENUM.__members__}
 
 #used to register new user
 def register(request):
@@ -39,8 +40,8 @@ def register(request):
 
     form = RegisterForm(request.POST)
     if not form.is_valid():
-        context['status'] = STATUS_ENUM.INTERNAL_ERROR
-        return render(request, 'website/info.html', context)
+        context['form'] = form
+        return render(request, 'website/register.html', context)
 
     mail = form.cleaned_data['mail']
     if User.objects.filter(mail=mail).exists():
@@ -50,9 +51,10 @@ def register(request):
     post = form.save(commit=False)
     post.activation_token = secrets.token_hex(16)
     post.activation_step = UserActivationSteps.EMAIL
+    post.language = request.LANGUAGE_CODE
     post.save()
-    
-    user_registration_mail(mail, post.activation_token)
+
+    user_registration_mail(mail, post.activation_token, post.language)
     
     context = getGlobalContext()
     context['status'] = STATUS_ENUM.REGISTER_EMAIL_SENT
@@ -71,7 +73,8 @@ def confirm_user(request, action, token):
 
     if action == 'email' and user[0].activation_step == UserActivationSteps.EMAIL:
         new_token=secrets.token_hex(16)
-        admin_registration_mail(settings.ADMINS[0][1], user.first().mail, user.first().name, new_token)
+        if settings.ORGANISER_EMAIL:
+            admin_registration_mail(settings.ORGANISER_EMAIL, user.first().mail, user.first().name, new_token)
         context['status'] = STATUS_ENUM.EMAIL_CONFIRMED
         context['user_name'] = user.first().name  
         user.update(activation_step=UserActivationSteps.ADMIN, activation_token=new_token)
@@ -79,7 +82,7 @@ def confirm_user(request, action, token):
 
     if action == 'admin' and user[0].activation_step == UserActivationSteps.ADMIN:
         new_token=secrets.token_hex(16)
-        acount_activated_mail(user.first().mail)
+        acount_activated_mail(user.first().mail, user.first().language)
         user.update(activation_step=UserActivationSteps.READY, activation_token=new_token)
         context['status'] = STATUS_ENUM.ADMIN_CONFIRMED
         return render(request, 'website/info.html', context)
@@ -96,8 +99,8 @@ def confirm_wishlist(request, token):
         context['status'] = STATUS_ENUM.INTERNAL_ERROR
         return render(request, 'website/info.html', context)
         
-    wishlistfile.update(activation_step=UserActivationSteps.ADMIN, uploaded_at=datetime.datetime.now())
-    context['wishlist'] = settings.MEDIA_URL+wishlistfile.first().wish_file.name
+    wishlistfile.update(activation_step=FileActivationSteps.READY, uploaded_at=timezone.now())
+    context['wishlist'] = reverse('letter', args=[wishlistfile.first().wish_file.name])
     context['status'] = STATUS_ENUM.FILE_CONFIRMED
     return render(request, 'website/info.html', context)
     
@@ -112,34 +115,23 @@ def wishlist(request):
       
     form = WishlistForm(request.POST, request.FILES)
 
-    if not form.is_valid():     
-        context['status'] = STATUS_ENUM.INTERNAL_ERROR
-        return render(request, 'website/info.html', context)
-        
-    #check file type
-    ext = os.path.splitext(form.files['wish_file'].name)[1] 
-    valid_extensions = ['.pdf', '.doc', '.docx', '.jpg', '.png', '.txt', '.jpeg', '.rtf', '.gif', '.svg']
-    if not ext.lower() in valid_extensions:
-        context['status'] = STATUS_ENUM.WRONG_FILE_EXT
-        return render(request, 'website/info.html', context)
-        
-    #check file size
-    if form.files['wish_file'].size > 3*1024*1024:
-        context['status'] = STATUS_ENUM.WRONG_FILE_SIZE
-        return render(request, 'website/info.html', context)
- 	
+    # file type/size are validated in WishlistForm.clean_wish_file
+    if not form.is_valid():
+        context['form'] = form
+        return render(request, 'website/wishlist.html', context)
+
     mail = form.cleaned_data['mail']
-    print(mail)
     if not User.objects.filter(mail=mail).exists() or User.objects.filter(mail=mail).first().activation_step != UserActivationSteps.READY:
-        context['status'] = STATUS_ENUM.USER_NOT_EXIST
-        return render(request, 'website/info.html', context)
+        form.add_error('mail', _('Ten adres nie jest zarejestrowany albo konto nie zostało jeszcze potwierdzone.'))
+        context['form'] = form
+        return render(request, 'website/wishlist.html', context)
 
     #everything is ok, send mail with confirmation
     post = form.save(commit=False)
     post.activation_token = secrets.token_hex(16)
     post.activation_step = FileActivationSteps.EMAIL
     post.save()
-    wishlist_mail(mail, post.activation_token)
+    wishlist_mail(mail, post.activation_token, request.LANGUAGE_CODE)
       
     context['status'] = STATUS_ENUM.FILE_SENT
     return render(request, 'website/info.html', context)
@@ -160,9 +152,23 @@ def checkwishlist(request, token):
     
     wishlist = WishlistFile.objects.filter(mail=mail).order_by('-uploaded_at').first().wish_file.name    
     context['status'] = STATUS_ENUM.WISH_LIST
-    context['wishlist'] = settings.MEDIA_URL+wishlist
+    context['wishlist'] = reverse('letter', args=[wishlist])
     return render(request, 'website/info.html', context)
 
 #used to display information to user
 def info(request):
     return render(request, 'website/info.html', getGlobalContext() )
+
+
+#used to show an uploaded letter (works the same in development and production)
+def letter(request, name):
+    if name != os.path.basename(name) or not WishlistFile.objects.filter(wish_file=name).exists():
+        raise Http404
+    path = os.path.join(django_settings.MEDIA_ROOT, name)
+    if not os.path.isfile(path):
+        raise Http404
+    response = FileResponse(open(path, 'rb'))
+    # uploads are untrusted (e.g. SVG with scripts): never let them run as part of the site
+    response['Content-Security-Policy'] = 'sandbox'
+    response['X-Content-Type-Options'] = 'nosniff'
+    return response

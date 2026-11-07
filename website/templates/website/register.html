@@ -1,23 +1,37 @@
 {% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "Rejestracja" %} · {% translate "List do Mikołaja" %}{% endblock %}
+{% block nav_register %}active{% endblock %}
 
 {% block content %}
-<p>Pragniemy zaprosić was na wigilę u {{ party_host }}, na spędzenie tego wspaniałego i świątecznego czasu razem, przy jednym stole. 
-<br />
-<br />Chcesz dołączyć i zostać Świętym Mikołajem? 
-<br />Zarejestruj się już dziś i weź udział w losowaniu. 
-<br />
-<br />Aby się zarejestrować, wypełnij formularz:</p>
+<h1>{% translate "Zostań Świętym Mikołajem!" %}</h1>
+<p class="lead">
+  {% blocktranslate %}Zapraszamy na wigilię u {{ party_host }} — spędźmy ten wspaniały, świąteczny czas razem, przy jednym stole.{% endblocktranslate %}
+</p>
+<p>{% translate "Zarejestruj się i weź udział w losowaniu prezentów." %}</p>
 
-<form action="/register/" method="post">
-    {% csrf_token %}
-    <table>
-    {{ form }}
-    </table>
-    <input type="submit" value="Submit">
+{% if site.event_at or site.event_address or site.event_details or site.gift_budget %}
+<dl class="event-info">
+  {% if site.event_at %}<div><dt>📅 {% translate "Kiedy" %}</dt><dd>{{ site.event_at|date:"l, j E Y, H:i" }}</dd></div>{% endif %}
+  {% if site.event_address %}<div><dt>📍 {% translate "Gdzie" %}</dt><dd>{{ site.event_address }}</dd></div>{% endif %}
+  {% if site.gift_budget %}<div><dt>🎁 {% translate "Budżet na prezent" %}</dt><dd>{{ site.gift_budget }}</dd></div>{% endif %}
+  {% if site.event_details %}<div class="event-info-wide"><dt>ℹ️ {% translate "Dodatkowe informacje" %}</dt><dd>{{ site.event_details|linebreaksbr }}</dd></div>{% endif %}
+</dl>
+{% endif %}
+
+<ol class="steps">
+  <li><span>{% translate "<strong>Zarejestruj się</strong> poniższym formularzem" %}</span></li>
+  <li><span>{% translate "<strong>Potwierdź e-mail</strong> klikając link z wiadomości" %}</span></li>
+  <li><span>{% translate "<strong>Poczekaj</strong> na akceptację organizatora" %}</span></li>
+  <li><span>{% translate "<strong>Wyślij list</strong> do Mikołaja (opcjonalnie)" %}</span></li>
+</ol>
+
+<form action="{% url 'register' %}" method="post" class="form" novalidate>
+  {% csrf_token %}
+  {% include "website/_form.html" %}
+  <button type="submit" class="btn btn-primary">{% translate "Zarejestruj się" %}</button>
 </form>
 
-<br />
-<br />
-<br />Aby wysłać list Świętemu Mikołajowi <a href="wishlist">Kliknij&#160;tutaj</a>
-
+<p class="aside">{% translate "Masz już konto?" %} <a href="{% url 'wishlist' %}">{% translate "Wyślij list do Mikołaja" %} →</a></p>
 {% endblock %}

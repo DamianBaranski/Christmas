@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "Panel organizatora" %} · {% translate "List do Mikołaja" %}{% endblock %}
+{% block nav_panel %}active{% endblock %}
+{% block card_class %}card-wide{% endblock %}
+{% block countdown %}{% endblock %}
+
+{% block content %}
+<div class="panel-head">
+  <div>
+    <h1>{% translate "Panel organizatora" %}</h1>
+    <p class="aside">{% blocktranslate with username=user.get_username %}Zalogowano jako <strong>{{ username }}</strong> · wigilia u {{ party_host }}{% endblocktranslate %}</p>
+  </div>
+  <div class="panel-head-actions">
+    <a class="btn btn-small" href="{% url 'admin:index' %}">{% translate "Baza danych" %}</a>
+    <form method="post" action="{% url 'admin:logout' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-small">{% translate "Wyloguj" %}</button>
+    </form>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><span>{{ ready|length }}</span><small>{% blocktranslate count n=ready|length %}osoba gotowa do losowania{% plural %}osób gotowych do losowania{% endblocktranslate %}</small></div>
+  <div class="stat{% if waiting_admin %} stat-attention{% endif %}"><span>{{ waiting_admin|length }}</span><small>{% blocktranslate count n=waiting_admin|length %}osoba czeka na akceptację{% plural %}osób czeka na akceptację{% endblocktranslate %}</small></div>
+  <div class="stat"><span>{{ waiting_email|length }}</span><small>{% blocktranslate count n=waiting_email|length %}osoba bez potwierdzonego e-maila{% plural %}osób bez potwierdzonego e-maila{% endblocktranslate %}</small></div>
+</div>
+
+<section class="panel-section">
+  <h2>{% translate "Wydarzenie" %}</h2>
+  <p class="aside">{% translate "Te informacje pojawiają się na stronie głównej i w mailu z wynikiem losowania (razem z zaproszeniem do kalendarza)." %}</p>
+  <form method="post" action="{% url 'panel_event' %}" class="form event-form" novalidate>
+    {% csrf_token %}
+    {% include "website/_form.html" with form=event_form %}
+    <button type="submit" class="btn btn-primary">{% translate "Zapisz" %}</button>
+  </form>
+</section>
+
+<section class="panel-section">
+  <h2>{% translate "Styl strony" %}</h2>
+  <form method="post" action="{% url 'panel_theme' %}" class="theme-picker">
+    {% csrf_token %}
+    {% for value, label in theme_choices %}
+    <label class="theme-option">
+      <input type="radio" name="theme" value="{{ value }}" {% if site_settings.theme == value %}checked{% endif %} />
+      <span class="theme-swatch theme-swatch-{{ value }}" aria-hidden="true"></span>
+      <span class="theme-name">{{ label }}</span>
+      <a class="theme-preview" href="{% url 'register' %}?theme={{ value }}" target="_blank" rel="noopener">{% translate "Podgląd" %} ↗</a>
+    </label>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">{% translate "Zapisz styl" %}</button>
+  </form>
+</section>
+
+<section class="panel-section">
+  <h2>{% translate "Przypomnienia" %}</h2>
+  <div class="reminders">
+    <form method="post" action="{% url 'panel_remind_confirm' %}"
+          data-confirm="{% blocktranslate count n=waiting_email|length %}Wysłać przypomnienie do {{ n }} osoby?{% plural %}Wysłać przypomnienie do {{ n }} osób?{% endblocktranslate %}">
+      {% csrf_token %}
+      <button type="submit" class="btn" {% if not waiting_email %}disabled{% endif %}>✉️ {% translate "Przypomnij o potwierdzeniu e-maila" %} ({{ waiting_email|length }})</button>
+    </form>
+    <form method="post" action="{% url 'panel_remind_letter' %}"
+          data-confirm="{% blocktranslate count n=without_letter|length %}Wysłać przypomnienie do {{ n }} osoby?{% plural %}Wysłać przypomnienie do {{ n }} osób?{% endblocktranslate %}">
+      {% csrf_token %}
+      <button type="submit" class="btn" {% if not without_letter %}disabled{% endif %}>📜 {% translate "Przypomnij o liście do Mikołaja" %} ({{ without_letter|length }})</button>
+    </form>
+  </div>
+  {% if without_letter %}<p class="aside">{% translate "Bez listu:" %} {% for u in without_letter %}{{ u.name }} {{ u.surname }}{% if not forloop.last %}, {% endif %}{% endfor %}.</p>{% endif %}
+</section>
+
+{% if waiting_admin %}
+<section class="panel-section">
+  <h2>{% translate "Czekają na akceptację" %}</h2>
+  <ul class="people">
+    {% for u in waiting_admin %}
+    <li>
+      <span><strong>{{ u.name }} {{ u.surname }}</strong> <small>{{ u.mail }}</small></span>
+      <form method="post" action="{% url 'panel_approve' u.pk %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-small btn-primary">{% translate "Akceptuj" %}</button>
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+<section class="panel-section">
+  <h2>{% translate "Losowanie" %}</h2>
+
+  {% if last_run %}
+  <div class="alert alert-{% if failed %}warning{% else %}success{% endif %}">
+    {% blocktranslate with date=last_run.created_at|date:"d.m.Y H:i" total=pairs|length %}Ostatnie losowanie: <strong>{{ date }}</strong> — wysłano {{ sent_count }} z {{ total }} maili.{% endblocktranslate %}
+  </div>
+  {% if failed %}
+  <ul class="people">
+    {% for p in failed %}
+    <li><span><strong>{{ p.giver.name }} {{ p.giver.surname }}</strong> <small>{{ p.error }}</small></span></li>
+    {% endfor %}
+  </ul>
+  <form method="post" action="{% url 'panel_resend' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">{% translate "Wyślij ponownie nieudane" %}</button>
+  </form>
+  {% endif %}
+  <details class="spoiler">
+    <summary>{% translate "Pokaż wylosowane pary (spoiler!)" %}</summary>
+    <ul class="people">
+      {% for p in pairs %}
+      <li><span>{{ p.giver.name }} {{ p.giver.surname }} → <strong>{{ p.receiver.name }} {{ p.receiver.surname }}</strong></span>{% if not p.sent %}<small class="error">{% translate "niewysłane" %}</small>{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </details>
+  {% endif %}
+
+  <p>{% translate "Uczestnicy:" %} <strong>{{ ready|length }}</strong>{% if ready %} — {% for u in ready %}{{ u.name }} {{ u.surname }}{% if not forloop.last %}, {% endif %}{% endfor %}{% endif %}.</p>
+  <p class="aside">{% translate "Blokady:" %} {{ exclusions|length }} — <a href="#blokady">{% translate "zarządzaj" %}</a>.</p>
+  {% if draw_possible is False %}
+  <div class="alert alert-error">{% translate "Przy obecnych blokadach losowanie jest niemożliwe. Usuń część blokad poniżej." %}</div>
+  {% endif %}
+
+  <form method="post" action="{% url 'panel_draw' %}" class="draw-form" data-confirm="{% if last_run %}{% translate 'Losowanie już się odbyło. Na pewno losować od nowa i wysłać nowe maile do wszystkich?' %}{% else %}{% translate 'Uruchomić losowanie i wysłać maile?' %}{% endif %}">
+    {% csrf_token %}
+    <label class="check">
+      <input type="checkbox" name="confirm" value="yes" required />
+      <span>{% blocktranslate count n=ready|length %}Rozumiem, że {{ n }} osoba dostanie e-mail z wynikiem losowania.{% plural %}Rozumiem, że każda z {{ n }} osób dostanie e-mail z wynikiem losowania.{% endblocktranslate %}{% if last_run %} {% translate "Poprzednie wyniki przestaną obowiązywać." %}{% endif %}</span>
+    </label>
+    <button type="submit" class="btn btn-primary" {% if ready|length < 2 or draw_possible is False %}disabled{% endif %}>
+      {% if last_run %}{% translate "Losuj ponownie i wyślij" %}{% else %}🎲 {% translate "Losuj i wyślij maile" %}{% endif %}
+    </button>
+    {% if ready|length < 2 %}<p class="aside">{% translate "Do losowania potrzeba co najmniej 2 potwierdzonych osób." %}</p>{% endif %}
+  </form>
+</section>
+
+<section class="panel-section" id="blokady">
+  <h2>{% translate "Blokady" %}</h2>
+  <p class="aside">{% translate "Osoba po lewej nie wylosuje osoby po prawej — np. partnerzy albo osoby mieszkające razem." %}</p>
+
+  {% if exclusions %}
+  <ul class="people">
+    {% for e in exclusions %}
+    <li>
+      <span><strong>{{ e.giver.name }} {{ e.giver.surname }}</strong> <span class="muted">{% translate "nie losuje" %}</span> <strong>{{ e.receiver.name }} {{ e.receiver.surname }}</strong></span>
+      <form method="post" action="{% url 'panel_exclusion_delete' e.pk %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-small">{% translate "Usuń" %}</button>
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>{% translate "Brak blokad — każdy może wylosować każdego." %}</p>
+  {% endif %}
+
+  {% if all_users|length >= 2 %}
+  <form method="post" action="{% url 'panel_exclusion_add' %}" class="exclusion-form">
+    {% csrf_token %}
+    <div class="field">
+      <label for="ex-giver">{% translate "Kto" %}</label>
+      <select id="ex-giver" name="giver" required>
+        <option value="">— {% translate "wybierz" %} —</option>
+        {% for u in all_users %}<option value="{{ u.pk }}">{{ u.name }} {{ u.surname }}</option>{% endfor %}
+      </select>
+    </div>
+    <span class="exclusion-arrow" aria-hidden="true">{% translate "nie losuje" %}</span>
+    <div class="field">
+      <label for="ex-receiver">{% translate "Kogo" %}</label>
+      <select id="ex-receiver" name="receiver" required>
+        <option value="">— {% translate "wybierz" %} —</option>
+        {% for u in all_users %}<option value="{{ u.pk }}">{{ u.name }} {{ u.surname }}</option>{% endfor %}
+      </select>
+    </div>
+    <label class="check exclusion-both">
+      <input type="checkbox" name="both" value="yes" checked />
+      <span>{% translate "W obie strony (żadna z tych osób nie wylosuje drugiej)" %}</span>
+    </label>
+    <button type="submit" class="btn btn-primary">{% translate "Dodaj blokadę" %}</button>
+  </form>
+  {% else %}
+  <div class="alert alert-info">
+    {% blocktranslate with n=all_users|length %}Formularz dodawania blokad pojawi się, gdy zarejestrują się co najmniej 2 osoby (teraz: {{ n }}).{% endblocktranslate %}
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

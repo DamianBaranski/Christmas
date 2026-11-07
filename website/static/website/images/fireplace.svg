@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 420">
+  <style>
+    .f1 { transform-origin: 170px 352px; animation: flick 0.9s ease-in-out infinite alternate; }
+    .f2 { transform-origin: 170px 352px; animation: flick 0.7s ease-in-out infinite alternate-reverse; }
+    .f3 { transform-origin: 170px 352px; animation: flick 1.1s ease-in-out infinite alternate; }
+    @keyframes flick {
+      from { transform: scale(1, 1) skewX(0deg); }
+      to   { transform: scale(0.94, 1.08) skewX(3deg); }
+    }
+    .bl { animation: tw 1.5s ease-in-out infinite alternate; }
+    .bl2 { animation-delay: .75s; }
+    @keyframes tw { from { opacity: .45; } to { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <pattern id="brick" width="40" height="20" patternUnits="userSpaceOnUse">
+      <rect width="40" height="20" fill="#9a4430"/>
+      <path d="M0 0.5 H40 M0 10.5 H40 M0.5 0 V10 M20.5 10 V20" stroke="#6e2c20" stroke-width="1.5"/>
+    </pattern>
+    <radialGradient id="inner" cx=".5" cy=".9" r=".8">
+      <stop offset="0" stop-color="#ff9a3c" stop-opacity=".9"/>
+      <stop offset=".5" stop-color="#7a2a10" stop-opacity=".6"/>
+      <stop offset="1" stop-color="#1a0b06"/>
+    </radialGradient>
+    <linearGradient id="flameO" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#ff5a1f"/><stop offset="1" stop-color="#ffb347"/>
+    </linearGradient>
+    <linearGradient id="flameY" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#ffd25e"/><stop offset="1" stop-color="#fff3c0"/>
+    </linearGradient>
+    <g id="stocking">
+      <path d="M0 0 H32 V52 Q32 62 44 66 Q58 71 56 82 Q53 94 38 91 L10 86 Q0 84 0 72 Z"/>
+      <rect x="-3" y="-4" width="38" height="15" rx="4" fill="#f7f1e6"/>
+    </g>
+  </defs>
+
+  <rect x="24" y="78" width="292" height="300" fill="url(#brick)"/>
+  <path d="M90 378 V262 Q90 210 170 210 Q250 210 250 262 V378 Z" fill="#2a1209" stroke="#5e2618" stroke-width="8"/>
+  <path d="M96 378 V264 Q96 216 170 216 Q244 216 244 264 V378 Z" fill="url(#inner)"/>
+
+  <g>
+    <path class="f3" d="M170 352 C126 330 132 286 152 258 C150 290 168 292 166 244 C196 270 214 318 170 352 Z" fill="url(#flameO)"/>
+    <path class="f1" d="M140 354 C118 338 124 312 136 296 C138 314 150 316 150 300 C162 320 160 344 140 354 Z" fill="url(#flameO)"/>
+    <path class="f1" d="M202 354 C222 338 216 312 204 296 C202 314 190 316 190 300 C178 320 180 344 202 354 Z" fill="url(#flameO)"/>
+    <path class="f2" d="M170 352 C146 338 150 306 164 288 C164 306 176 308 176 290 C190 310 192 338 170 352 Z" fill="url(#flameY)"/>
+  </g>
+  <rect x="118" y="350" width="104" height="14" rx="7" fill="#6b3e26" transform="rotate(-6 170 357)"/>
+  <rect x="118" y="352" width="104" height="14" rx="7" fill="#5a3320" transform="rotate(7 170 359)"/>
+  <circle cx="122" cy="351" r="6" fill="#8b5a3c"/>
+  <circle cx="220" cy="363" r="6" fill="#8b5a3c"/>
+
+  <rect x="0" y="378" width="340" height="24" rx="3" fill="#6d6259"/>
+  <rect x="0" y="378" width="340" height="5" fill="#8a7e74"/>
+
+  <rect x="6" y="56" width="328" height="26" rx="4" fill="#5a3422"/>
+  <rect x="6" y="56" width="328" height="6" rx="3" fill="#7a4a30"/>
+
+  <g fill="#c4302b"><use href="#stocking" x="58" y="86"/></g>
+  <g fill="#2f7a4a"><use href="#stocking" x="150" y="86"/></g>
+  <g fill="#c4302b"><use href="#stocking" x="242" y="86"/></g>
+  <g fill="#fff" opacity=".9">
+    <circle cx="76" cy="120" r="3"/><circle cx="86" cy="136" r="3"/><circle cx="72" cy="150" r="3"/>
+    <circle cx="260" cy="120" r="3"/><circle cx="270" cy="136" r="3"/><circle cx="256" cy="150" r="3"/>
+  </g>
+  <g stroke="#e9c46a" stroke-width="3" fill="none"><path d="M162 118 l20 0 M162 132 l20 0 M162 146 l20 0"/></g>
+
+  <path d="M10 82 Q50 104 90 84 Q130 104 170 84 Q210 104 250 84 Q290 104 330 82" stroke="#1f5e38" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M10 82 Q50 104 90 84 Q130 104 170 84 Q210 104 250 84 Q290 104 330 82" stroke="#2f8a52" stroke-width="5" fill="none" stroke-dasharray="2 7" stroke-linecap="round"/>
+  <g>
+    <circle class="bl" cx="30" cy="91" r="4" fill="#ffd34d"/>
+    <circle class="bl bl2" cx="70" cy="93" r="4" fill="#ffe9a8"/>
+    <circle class="bl" cx="110" cy="93" r="4" fill="#ffd34d"/>
+    <circle class="bl bl2" cx="150" cy="91" r="4" fill="#ffe9a8"/>
+    <circle class="bl" cx="190" cy="93" r="4" fill="#ffd34d"/>
+    <circle class="bl bl2" cx="230" cy="93" r="4" fill="#ffe9a8"/>
+    <circle class="bl" cx="270" cy="93" r="4" fill="#ffd34d"/>
+    <circle class="bl bl2" cx="310" cy="91" r="4" fill="#ffe9a8"/>
+  </g>
+
+  <rect x="40" y="22" width="14" height="34" rx="3" fill="#f3ead8"/>
+  <path d="M47 8 Q41 16 47 22 Q53 16 47 8 Z" fill="#ffc34d"/>
+  <rect x="286" y="30" width="14" height="26" rx="3" fill="#f3ead8"/>
+  <path d="M293 16 Q287 24 293 30 Q299 24 293 16 Z" fill="#ffc34d"/>
+  <circle cx="170" cy="40" r="16" fill="none" stroke="#2f7a4a" stroke-width="8"/>
+  <path d="M164 56 l6 -8 l6 8" fill="#c4302b"/>
+</svg>
