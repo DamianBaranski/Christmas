@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% block title %}{% translate "List do Mikołaja" %}{% endblock %}</title>
+    <title>{% block title %}{{ site_title }}{% endblock %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Lobster&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -64,7 +64,7 @@
     <div class="lights" aria-hidden="true">{% for _ in "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" %}<i></i>{% endfor %}</div>
 
     <header class="site-header">
-      <a class="logo" href="{% url 'register' %}">{% translate "List do Mikołaja" %}</a>
+      <a class="logo" href="{% url 'register' %}">{{ site_title }}</a>
       <div class="header-right">
         <nav class="nav" aria-label="{% translate 'Nawigacja' %}">
           <a href="{% url 'register' %}" class="{% block nav_register %}{% endblock %}">{% translate "Rejestracja" %}</a>

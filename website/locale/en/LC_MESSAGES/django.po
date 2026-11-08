@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 17:42+0100\n"
+"POT-Creation-Date: 2026-11-08 17:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: context_processors.py:19 templates/website/info.html:76
+msgid "List do Mikołaja"
+msgstr "Letter to Santa"
+
+#: context_processors.py:19
+#| msgid "Zostań Świętym Mikołajem!"
+msgid "Zostań Mikołajem"
+msgstr "Become Santa"
 
 #: draw.py:30 templates/website/panel.html:135
 msgid "Do losowania potrzeba co najmniej 2 potwierdzonych osób."
@@ -36,13 +45,6 @@ msgstr "Secret Santa draw results"
 
 #: draw.py:46
 #, python-brace-format
-#| msgid ""
-#| "{giver},\n"
-#| "\n"
-#| "Święty Mikołaj nie da rady samemu obdarować wszystkich, musisz mu pomóc.\n"
-#| "Zrób prezent dla: {receiver} (budżet: {budget}).\n"
-#| "Pod tym adresem sprawdzisz, czy wylosowana osoba przesłała list: {check_url}\n"
-#| "Jeśli jeszcze nie przesłałeś(-aś) swojego listu, możesz to zrobić tutaj: {wishlist_url}\n"
 msgid ""
 "{giver},\n"
 "\n"
@@ -56,13 +58,6 @@ msgstr ""
 
 #: draw.py:56
 #, python-brace-format
-#| msgid ""
-#| "{giver},\n"
-#| "\n"
-#| "Święty Mikołaj nie da rady samemu obdarować wszystkich, musisz mu pomóc.\n"
-#| "Zrób prezent dla: {receiver} (budżet: {budget}).\n"
-#| "Pod tym adresem sprawdzisz, czy wylosowana osoba przesłała list: {check_url}\n"
-#| "Jeśli jeszcze nie przesłałeś(-aś) swojego listu, możesz to zrobić tutaj: {wishlist_url}\n"
 msgid ""
 "Pod tym adresem sprawdzisz, czy wylosowana osoba przesłała list: {check_url}\n"
 "Jeśli jeszcze nie przesłałeś(-aś) swojego listu, możesz to zrobić tutaj: {wishlist_url}\n"
@@ -244,7 +239,6 @@ msgid "Wioska elfów"
 msgstr "Elf village"
 
 #: models.py:70
-#| msgid "List do Mikołaja"
 msgid "Listy do Mikołaja"
 msgstr "Letters to Santa"
 
@@ -401,12 +395,6 @@ msgstr "That exclusion already exists."
 #: panel.py:194
 msgid "Usunięto blokadę."
 msgstr "Exclusion removed."
-
-#: templates/base.html:7 templates/base.html:67 templates/website/info.html:76
-#: templates/website/info.html:87 templates/website/panel.html:4
-#: templates/website/register.html:4 templates/website/wishlist.html:4
-msgid "List do Mikołaja"
-msgstr "Letter to Santa"
 
 #: templates/base.html:14
 msgid "Wysyłanie…"

@@ -1,4 +1,4 @@
-from django.utils.translation import get_language
+from django.utils.translation import get_language, gettext as _
 
 from .models import SiteSettings
 
@@ -15,4 +15,6 @@ def site(request):
         'theme': preview if preview in dict(SiteSettings.THEME_CHOICES) else s.theme,
         'party_host': s.party_host,
         'custom_intro': s.intro_for(get_language()),
+        # site name in the tab, header logo and page titles
+        'site_title': _('List do Mikołaja') if s.letters_enabled else _('Zostań Mikołajem'),
     }

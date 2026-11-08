@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 17:42+0100\n"
+"POT-Creation-Date: 2026-11-08 17:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: context_processors.py:19 templates/website/info.html:76
+msgid "List do Mikołaja"
+msgstr ""
+
+#: context_processors.py:19
+msgid "Zostań Mikołajem"
+msgstr ""
 
 #: draw.py:30 templates/website/panel.html:135
 msgid "Do losowania potrzeba co najmniej 2 potwierdzonych osób."
@@ -356,12 +364,6 @@ msgstr ""
 
 #: panel.py:194
 msgid "Usunięto blokadę."
-msgstr ""
-
-#: templates/base.html:7 templates/base.html:67 templates/website/info.html:76
-#: templates/website/info.html:87 templates/website/panel.html:4
-#: templates/website/register.html:4 templates/website/wishlist.html:4
-msgid "List do Mikołaja"
 msgstr ""
 
 #: templates/base.html:14

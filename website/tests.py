@@ -406,3 +406,19 @@ class LettersToggleTests(TestCase):
         self.client.post('/admin/event/', {'party_host': 'Agnieszki', 'gift_budget': '50 zł', 'site_url': 'https://example.com',
                                            'letters_enabled': 'on'})
         self.assertTrue(SiteSettings.load().letters_enabled)
+
+
+class SiteTitleTests(TestCase):
+    def test_title_follows_letters_switch(self):
+        r = self.client.get('/')
+        self.assertContains(r, '<title>Rejestracja · List do Mikołaja</title>')
+        self.assertContains(r, 'class="logo" href="/register/">List do Mikołaja</a>')
+        s = SiteSettings.load()
+        s.letters_enabled = False
+        s.save()
+        r = self.client.get('/')
+        self.assertContains(r, '<title>Rejestracja · Zostań Mikołajem</title>')
+        self.assertContains(r, 'class="logo" href="/register/">Zostań Mikołajem</a>')
+        self.assertNotContains(r, 'List do Mikołaja')
+        self.client.post('/i18n/setlang/', {'language': 'en', 'next': '/'})
+        self.assertContains(self.client.get('/'), 'class="logo" href="/register/">Become Santa</a>')
