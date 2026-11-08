@@ -61,13 +61,15 @@
       {% csrf_token %}
       <button type="submit" class="btn" {% if not waiting_email %}disabled{% endif %}>✉️ {% translate "Przypomnij o potwierdzeniu e-maila" %} ({{ waiting_email|length }})</button>
     </form>
+    {% if site_settings.letters_enabled %}
     <form method="post" action="{% url 'panel_remind_letter' %}"
           data-confirm="{% blocktranslate count n=without_letter|length %}Wysłać przypomnienie do {{ n }} osoby?{% plural %}Wysłać przypomnienie do {{ n }} osób?{% endblocktranslate %}">
       {% csrf_token %}
       <button type="submit" class="btn" {% if not without_letter %}disabled{% endif %}>📜 {% translate "Przypomnij o liście do Mikołaja" %} ({{ without_letter|length }})</button>
     </form>
+    {% endif %}
   </div>
-  {% if without_letter %}<p class="aside">{% translate "Bez listu:" %} {% for u in without_letter %}{{ u.name }} {{ u.surname }}{% if not forloop.last %}, {% endif %}{% endfor %}.</p>{% endif %}
+  {% if without_letter and site_settings.letters_enabled %}<p class="aside">{% translate "Bez listu:" %} {% for u in without_letter %}{{ u.name }} {{ u.surname }}{% if not forloop.last %}, {% endif %}{% endfor %}.</p>{% endif %}
 </section>
 
 {% if waiting_admin %}

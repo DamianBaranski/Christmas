@@ -355,3 +355,54 @@ class IntroTextTests(TestCase):
                                            'gift_budget': '50 zł', 'site_url': 'https://example.com'})
         s = SiteSettings.load()
         self.assertEqual((s.intro_pl, s.intro_en), ('Nowy tekst', 'New text'))
+
+
+class LettersToggleTests(TestCase):
+    def disable(self):
+        s = SiteSettings.load()
+        s.letters_enabled = False
+        s.save()
+
+    def test_enabled_by_default(self):
+        r = self.client.get('/')
+        self.assertContains(r, 'href="/wishlist/"')
+        self.assertEqual(self.client.get('/wishlist/').status_code, 200)
+
+    def test_disabled_hides_everything_letter_related(self):
+        self.disable()
+        r = self.client.get('/')
+        self.assertNotContains(r, 'href="/wishlist/"')
+        self.assertNotContains(r, 'Wyślij list')
+        r = self.client.get('/wishlist/', follow=True)
+        self.assertRedirects(r, '/register/')
+        self.assertContains(r, 'Wysyłanie listów do Mikołaja jest w tym roku wyłączone.')
+        # posting a letter is refused too
+        self.client.post('/wishlist/', {'mail': 'x@x.pl'})
+        from .models import WishlistFile
+        self.assertEqual(WishlistFile.objects.count(), 0)
+
+    def test_draw_mail_without_letter_links_when_disabled(self):
+        from django.core import mail as outbox
+        from .draw import send_draw_mail
+        a, b = make_user(0), make_user(1)
+        send_draw_mail(a, b)
+        self.assertIn('/checkwishlist/', outbox.outbox[0].body)
+        self.disable()
+        send_draw_mail(a, b)
+        self.assertNotIn('/checkwishlist/', outbox.outbox[1].body)
+        self.assertNotIn('/wishlist/', outbox.outbox[1].body)
+        self.assertIn('Zrób prezent dla: N1 S1', outbox.outbox[1].body)
+
+    def test_toggle_in_panel(self):
+        AuthUser.objects.create_user('boss', password='pw', is_staff=True)
+        self.client.login(username='boss', password='pw')
+        page = self.client.get('/admin/')
+        self.assertContains(page, 'name="letters_enabled"')
+        self.assertContains(page, 'Przypomnij o liście do Mikołaja')
+        # unticked checkbox = letters off
+        self.client.post('/admin/event/', {'party_host': 'Agnieszki', 'gift_budget': '50 zł', 'site_url': 'https://example.com'})
+        self.assertFalse(SiteSettings.load().letters_enabled)
+        self.assertNotContains(self.client.get('/admin/'), 'Przypomnij o liście do Mikołaja')
+        self.client.post('/admin/event/', {'party_host': 'Agnieszki', 'gift_budget': '50 zł', 'site_url': 'https://example.com',
+                                           'letters_enabled': 'on'})
+        self.assertTrue(SiteSettings.load().letters_enabled)

@@ -66,6 +66,9 @@ class SiteSettings(models.Model):
     ]
 
     theme = models.CharField(max_length=20, choices=THEME_CHOICES, default=THEME_WINTER)
+    letters_enabled = models.BooleanField(
+        _('Listy do Mikołaja'), default=True,
+        help_text=_('Uczestnicy mogą wysyłać listy do Mikołaja (pliki z życzeniami).'))
 
     # event & draw details, editable in the organiser panel
     party_host = models.CharField(_('Gospodarz (w dopełniaczu, np. „Agnieszki”)'), max_length=100, default='Agnieszki')

@@ -28,7 +28,7 @@
   <li><span>{% translate "<strong>Zarejestruj się</strong> poniższym formularzem" %}</span></li>
   <li><span>{% translate "<strong>Potwierdź e-mail</strong> klikając link z wiadomości" %}</span></li>
   <li><span>{% translate "<strong>Poczekaj</strong> na akceptację organizatora" %}</span></li>
-  <li><span>{% translate "<strong>Wyślij list</strong> do Mikołaja (opcjonalnie)" %}</span></li>
+  {% if site.letters_enabled %}<li><span>{% translate "<strong>Wyślij list</strong> do Mikołaja (opcjonalnie)" %}</span></li>{% endif %}
 </ol>
 
 <form action="{% url 'register' %}" method="post" class="form" novalidate>
@@ -37,5 +37,5 @@
   <button type="submit" class="btn btn-primary">{% translate "Zarejestruj się" %}</button>
 </form>
 
-<p class="aside">{% translate "Masz już konto?" %} <a href="{% url 'wishlist' %}">{% translate "Wyślij list do Mikołaja" %} →</a></p>
+{% if site.letters_enabled %}<p class="aside">{% translate "Masz już konto?" %} <a href="{% url 'wishlist' %}">{% translate "Wyślij list do Mikołaja" %} →</a></p>{% endif %}
 {% endblock %}

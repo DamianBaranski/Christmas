@@ -1700,3 +1700,8 @@ body {
 /* home page welcome text (editable in the panel): first paragraph is the lead */
 .intro p + p { margin-top: 8px; }
 .intro p:first-child { font-size: 1.08rem; }
+
+/* checkbox fields in panel forms */
+.field-check .check { font-weight: 600; }
+.field-check .check input { margin-top: 3px; }
+.event-form .field-check { grid-column: 1 / -1; }

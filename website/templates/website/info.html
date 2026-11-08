@@ -13,8 +13,10 @@
 <div class="status status-warning">
   <div class="status-icon" aria-hidden="true">🔔</div>
   <h1>{% translate "Ten adres jest już zarejestrowany" %}</h1>
+  {% if site.letters_enabled %}
   <p>{% translate "Możesz od razu wysłać list do Mikołaja." %}</p>
   <a class="btn btn-primary" href="{% url 'wishlist' %}">{% translate "Wyślij list" %}</a>
+  {% endif %}
 </div>
 {% elif status == STATUS_ENUM.INTERNAL_ERROR %}
 <div class="status status-error">

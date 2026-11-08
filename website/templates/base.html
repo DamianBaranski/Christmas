@@ -68,7 +68,7 @@
       <div class="header-right">
         <nav class="nav" aria-label="{% translate 'Nawigacja' %}">
           <a href="{% url 'register' %}" class="{% block nav_register %}{% endblock %}">{% translate "Rejestracja" %}</a>
-          <a href="{% url 'wishlist' %}" class="{% block nav_wishlist %}{% endblock %}">{% translate "Wyślij list" %}</a>
+          {% if site.letters_enabled %}<a href="{% url 'wishlist' %}" class="{% block nav_wishlist %}{% endblock %}">{% translate "Wyślij list" %}</a>{% endif %}
           {% if user.is_staff %}<a href="{% url 'panel' %}" class="{% block nav_panel %}{% endblock %}">{% translate "Panel" %}</a>{% endif %}
         </nav>
         <form class="lang-switch" action="{% url 'set_language' %}" method="post" aria-label="{% translate 'Język' %}">

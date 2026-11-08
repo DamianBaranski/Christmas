@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-07 20:57+0100\n"
+"POT-Creation-Date: 2026-11-08 17:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: draw.py:30 templates/website/panel.html:133
+#: draw.py:30 templates/website/panel.html:135
 msgid "Do losowania potrzeba co najmniej 2 potwierdzonych osób."
 msgstr ""
 
@@ -39,15 +39,20 @@ msgid ""
 "\n"
 "Święty Mikołaj nie da rady samemu obdarować wszystkich, musisz mu pomóc.\n"
 "Zrób prezent dla: {receiver} (budżet: {budget}).\n"
+msgstr ""
+
+#: draw.py:56
+#, python-brace-format
+msgid ""
 "Pod tym adresem sprawdzisz, czy wylosowana osoba przesłała list: {check_url}\n"
 "Jeśli jeszcze nie przesłałeś(-aś) swojego listu, możesz to zrobić tutaj: {wishlist_url}\n"
 msgstr ""
 
-#: draw.py:60
+#: draw.py:64
 msgid "Do zobaczenia na wigilii!"
 msgstr ""
 
-#: draw.py:61
+#: draw.py:65
 msgid ""
 "Pozdrawiam\n"
 "Święty Mikołaj"
@@ -195,59 +200,67 @@ msgstr ""
 msgid "Wioska elfów"
 msgstr ""
 
+#: models.py:70
+msgid "Listy do Mikołaja"
+msgstr ""
+
 #: models.py:71
-msgid "Gospodarz (w dopełniaczu, np. „Agnieszki”)"
-msgstr ""
-
-#: models.py:72
-msgid "Data losowania"
-msgstr ""
-
-#: models.py:73 templates/website/register.html:22
-msgid "Budżet na prezent"
+msgid "Uczestnicy mogą wysyłać listy do Mikołaja (pliki z życzeniami)."
 msgstr ""
 
 #: models.py:74
-msgid "Adres strony (do linków w mailach)"
+msgid "Gospodarz (w dopełniaczu, np. „Agnieszki”)"
 msgstr ""
 
 #: models.py:75
-msgid "Data i godzina wigilii"
+msgid "Data losowania"
 msgstr ""
 
-#: models.py:76
-msgid "Adres"
+#: models.py:76 templates/website/register.html:22
+msgid "Budżet na prezent"
 msgstr ""
 
-#: models.py:77 templates/website/register.html:23
-msgid "Dodatkowe informacje"
+#: models.py:77
+msgid "Adres strony (do linków w mailach)"
 msgstr ""
 
 #: models.py:78
+msgid "Data i godzina wigilii"
+msgstr ""
+
+#: models.py:79
+msgid "Adres"
+msgstr ""
+
+#: models.py:80 templates/website/register.html:23
+msgid "Dodatkowe informacje"
+msgstr ""
+
+#: models.py:81
 msgid "Np. strój, co przynieść, parking."
 msgstr ""
 
-#: models.py:80
+#: models.py:83
 msgid "Tekst powitalny (polski)"
 msgstr ""
 
-#: models.py:81 models.py:83
+#: models.py:84 models.py:86
 msgid ""
 "Pusta linia rozdziela akapity. Zostaw puste, aby użyć tekstu domyślnego."
 msgstr ""
 
-#: models.py:82
+#: models.py:85
 msgid "Tekst powitalny (angielski)"
 msgstr ""
 
-#: models.py:94 templates/website/register.html:13
+#: models.py:97 templates/website/register.html:13
 #, python-format
 msgid ""
 "Zapraszamy na wigilię u %(party_host)s — spędźmy ten wspaniały, świąteczny "
 "czas razem, przy jednym stole."
 msgstr ""
 
-#: models.py:96 templates/website/register.html:14
+#: models.py:99 templates/website/register.html:14
 msgid "Zarejestruj się i weź udział w losowaniu prezentów."
 msgstr ""
 
@@ -279,23 +292,23 @@ msgstr[2] "Nie udało się wysłać %(n)d maili."
 msgid "Nie ma do kogo wysłać przypomnienia."
 msgstr ""
 
-#: panel.py:107
+#: panel.py:109
 msgid "Zapisano styl strony: {}."
 msgstr ""
 
-#: panel.py:120
+#: panel.py:122
 msgid "Zaakceptowano {} {}."
 msgstr ""
 
-#: panel.py:122
+#: panel.py:124
 msgid "Zaakceptowano {} {}, ale nie udało się wysłać maila: {}"
 msgstr ""
 
-#: panel.py:130
+#: panel.py:132
 msgid "Zaznacz potwierdzenie, aby uruchomić losowanie."
 msgstr ""
 
-#: panel.py:140
+#: panel.py:142
 #, python-format
 msgid "Losowanie zakończone! Wysłano %(n)d mail."
 msgid_plural "Losowanie zakończone! Wysłano %(n)d maili."
@@ -303,13 +316,13 @@ msgstr[0] "Losowanie zakończone! Wysłano %(n)d mail."
 msgstr[1] "Losowanie zakończone! Wysłano %(n)d maile."
 msgstr[2] "Losowanie zakończone! Wysłano %(n)d maili."
 
-#: panel.py:142
+#: panel.py:144
 msgid ""
 "Losowanie zakończone, ale wysłano tylko {} z {} maili. Możesz ponowić "
 "wysyłkę."
 msgstr ""
 
-#: panel.py:153
+#: panel.py:155
 #, python-format
 msgid "Nadal nie udało się wysłać %(n)d maila."
 msgid_plural "Nadal nie udało się wysłać %(n)d maili."
@@ -317,36 +330,36 @@ msgstr[0] "Nadal nie udało się wysłać %(n)d maila."
 msgstr[1] "Nadal nie udało się wysłać %(n)d maili."
 msgstr[2] "Nadal nie udało się wysłać %(n)d maili."
 
-#: panel.py:155
+#: panel.py:157
 msgid "Wszystkie maile zostały wysłane."
 msgstr ""
 
-#: panel.py:165
+#: panel.py:167
 msgid "Wybierz obie osoby."
 msgstr ""
 
-#: panel.py:168
+#: panel.py:170
 msgid "Wybierz dwie różne osoby."
 msgstr ""
 
-#: panel.py:180
+#: panel.py:182
 msgid "Dodano blokadę w obie strony: {} ↔ {}."
 msgstr ""
 
-#: panel.py:182
+#: panel.py:184
 msgid "Dodano blokadę: {} nie losuje {}."
 msgstr ""
 
-#: panel.py:184
+#: panel.py:186
 msgid "Taka blokada już istnieje."
 msgstr ""
 
-#: panel.py:192
+#: panel.py:194
 msgid "Usunięto blokadę."
 msgstr ""
 
-#: templates/base.html:7 templates/base.html:64 templates/website/info.html:74
-#: templates/website/info.html:85 templates/website/panel.html:4
+#: templates/base.html:7 templates/base.html:67 templates/website/info.html:76
+#: templates/website/info.html:87 templates/website/panel.html:4
 #: templates/website/register.html:4 templates/website/wishlist.html:4
 msgid "List do Mikołaja"
 msgstr ""
@@ -359,48 +372,48 @@ msgstr ""
 msgid "Losowanie…"
 msgstr ""
 
-#: templates/base.html:66
+#: templates/base.html:69
 msgid "Nawigacja"
 msgstr ""
 
-#: templates/base.html:67 templates/website/register.html:4
+#: templates/base.html:70 templates/website/register.html:4
 msgid "Rejestracja"
 msgstr ""
 
-#: templates/base.html:68 templates/website/info.html:17
+#: templates/base.html:71 templates/website/info.html:18
 #: templates/website/wishlist.html:4 templates/website/wishlist.html:17
 msgid "Wyślij list"
 msgstr ""
 
-#: templates/base.html:69
+#: templates/base.html:72
 msgid "Panel"
 msgstr ""
 
-#: templates/base.html:71
+#: templates/base.html:74
 msgid "Język"
 msgstr ""
 
-#: templates/base.html:86
+#: templates/base.html:89
 msgid "Do wielkiego losowania zostało"
 msgstr ""
 
-#: templates/base.html:88
+#: templates/base.html:91
 msgid "dni"
 msgstr ""
 
-#: templates/base.html:89
+#: templates/base.html:92
 msgid "godz."
 msgstr ""
 
-#: templates/base.html:90
+#: templates/base.html:93
 msgid "min"
 msgstr ""
 
-#: templates/base.html:91
+#: templates/base.html:94
 msgid "sek"
 msgstr ""
 
-#: templates/base.html:93
+#: templates/base.html:96
 msgid "Losowanie już się odbyło"
 msgstr ""
 
@@ -421,111 +434,111 @@ msgstr ""
 msgid "Ten adres jest już zarejestrowany"
 msgstr ""
 
-#: templates/website/info.html:16
+#: templates/website/info.html:17
 msgid "Możesz od razu wysłać list do Mikołaja."
 msgstr ""
 
-#: templates/website/info.html:22
+#: templates/website/info.html:24
 msgid "Coś poszło nie tak"
 msgstr ""
 
-#: templates/website/info.html:23
+#: templates/website/info.html:25
 msgid ""
 "Link mógł wygasnąć lub być nieprawidłowy. Jeśli problem się powtarza, "
 "skontaktuj się z organizatorem."
 msgstr ""
 
-#: templates/website/info.html:24
+#: templates/website/info.html:26
 msgid "Wróć na stronę główną"
 msgstr ""
 
-#: templates/website/info.html:29
+#: templates/website/info.html:31
 msgid "E-mail potwierdzony"
 msgstr ""
 
-#: templates/website/info.html:30
+#: templates/website/info.html:32
 #, python-format
 msgid ""
 "%(user_name)s, dziękujemy! Teraz poczekaj na akceptację organizatora — "
 "dostaniesz wiadomość, gdy konto będzie aktywne."
 msgstr ""
 
-#: templates/website/info.html:35
+#: templates/website/info.html:37
 msgid "Konto zaakceptowane"
 msgstr ""
 
-#: templates/website/info.html:36
+#: templates/website/info.html:38
 #, python-format
 msgid "Konto %(user_name)s zostało potwierdzone."
 msgstr ""
 
-#: templates/website/info.html:41
+#: templates/website/info.html:43
 msgid "Nieobsługiwany format pliku"
 msgstr ""
 
-#: templates/website/info.html:42
+#: templates/website/info.html:44
 msgid ""
 "Akceptowane są tylko pliki: pdf, doc, docx, jpg, jpeg, png, gif, svg, txt, "
 "rtf."
 msgstr ""
 
-#: templates/website/info.html:43 templates/website/info.html:50
+#: templates/website/info.html:45 templates/website/info.html:52
 msgid "Spróbuj ponownie"
 msgstr ""
 
-#: templates/website/info.html:48
+#: templates/website/info.html:50
 msgid "Plik jest za duży"
 msgstr ""
 
-#: templates/website/info.html:49
+#: templates/website/info.html:51
 msgid "Maksymalny rozmiar pliku to 3 MB."
 msgstr ""
 
-#: templates/website/info.html:55
+#: templates/website/info.html:57
 msgid "List wysłany!"
 msgstr ""
 
-#: templates/website/info.html:56
+#: templates/website/info.html:58
 msgid ""
 "Sprawdź skrzynkę e-mail i kliknij link, aby potwierdzić przesłanie listu."
 msgstr ""
 
-#: templates/website/info.html:61
+#: templates/website/info.html:63
 msgid "Nie znaleziono konta"
 msgstr ""
 
-#: templates/website/info.html:62
+#: templates/website/info.html:64
 msgid ""
 "Ten adres e-mail nie jest zarejestrowany albo konto nie zostało jeszcze "
 "potwierdzone."
 msgstr ""
 
-#: templates/website/info.html:63 templates/website/register.html:37
+#: templates/website/info.html:65 templates/website/register.html:37
 #: templates/website/wishlist.html:20
 msgid "Zarejestruj się"
 msgstr ""
 
-#: templates/website/info.html:68
+#: templates/website/info.html:70
 msgid "Brak listu"
 msgstr ""
 
-#: templates/website/info.html:69
+#: templates/website/info.html:71
 msgid "Ta osoba nie przesłała listu do Mikołaja."
 msgstr ""
 
-#: templates/website/info.html:75
+#: templates/website/info.html:77
 msgid "Otwórz list"
 msgstr ""
 
-#: templates/website/info.html:80
+#: templates/website/info.html:82
 msgid "List został potwierdzony"
 msgstr ""
 
-#: templates/website/info.html:81
+#: templates/website/info.html:83
 msgid "Zobacz swój list"
 msgstr ""
 
-#: templates/website/info.html:86
+#: templates/website/info.html:88
 msgid "Przejdź do rejestracji"
 msgstr ""
 
@@ -598,7 +611,7 @@ msgstr ""
 msgid "Przypomnienia"
 msgstr ""
 
-#: templates/website/panel.html:60 templates/website/panel.html:65
+#: templates/website/panel.html:60 templates/website/panel.html:66
 #, python-format
 msgid "Wysłać przypomnienie do %(n)s osoby?"
 msgid_plural "Wysłać przypomnienie do %(n)s osób?"
@@ -610,74 +623,74 @@ msgstr[2] "Wysłać przypomnienie do %(n)s osób?"
 msgid "Przypomnij o potwierdzeniu e-maila"
 msgstr ""
 
-#: templates/website/panel.html:67
+#: templates/website/panel.html:68
 msgid "Przypomnij o liście do Mikołaja"
 msgstr ""
 
-#: templates/website/panel.html:70
+#: templates/website/panel.html:72
 msgid "Bez listu:"
 msgstr ""
 
-#: templates/website/panel.html:75
+#: templates/website/panel.html:77
 msgid "Czekają na akceptację"
 msgstr ""
 
-#: templates/website/panel.html:82
+#: templates/website/panel.html:84
 msgid "Akceptuj"
 msgstr ""
 
-#: templates/website/panel.html:91
+#: templates/website/panel.html:93
 msgid "Losowanie"
 msgstr ""
 
-#: templates/website/panel.html:95
+#: templates/website/panel.html:97
 #, python-format
 msgid ""
 "Ostatnie losowanie: <strong>%(date)s</strong> — wysłano %(sent_count)s z "
 "%(total)s maili."
 msgstr ""
 
-#: templates/website/panel.html:105
+#: templates/website/panel.html:107
 msgid "Wyślij ponownie nieudane"
 msgstr ""
 
-#: templates/website/panel.html:109
+#: templates/website/panel.html:111
 msgid "Pokaż wylosowane pary (spoiler!)"
 msgstr ""
 
-#: templates/website/panel.html:112
+#: templates/website/panel.html:114
 msgid "niewysłane"
 msgstr ""
 
-#: templates/website/panel.html:118
+#: templates/website/panel.html:120
 msgid "Uczestnicy:"
 msgstr ""
 
-#: templates/website/panel.html:119
+#: templates/website/panel.html:121
 msgid "Blokady:"
 msgstr ""
 
-#: templates/website/panel.html:119
+#: templates/website/panel.html:121
 msgid "zarządzaj"
 msgstr ""
 
-#: templates/website/panel.html:121
+#: templates/website/panel.html:123
 msgid ""
 "Przy obecnych blokadach losowanie jest niemożliwe. Usuń część blokad "
 "poniżej."
 msgstr ""
 
-#: templates/website/panel.html:124
+#: templates/website/panel.html:126
 msgid ""
 "Losowanie już się odbyło. Na pewno losować od nowa i wysłać nowe maile do "
 "wszystkich?"
 msgstr ""
 
-#: templates/website/panel.html:124
+#: templates/website/panel.html:126
 msgid "Uruchomić losowanie i wysłać maile?"
 msgstr ""
 
-#: templates/website/panel.html:128
+#: templates/website/panel.html:130
 #, python-format
 msgid "Rozumiem, że %(n)s osoba dostanie e-mail z wynikiem losowania."
 msgid_plural ""
@@ -688,61 +701,61 @@ msgstr[1] ""
 msgstr[2] ""
 "Rozumiem, że każda z %(n)s osób dostanie e-mail z wynikiem losowania."
 
-#: templates/website/panel.html:128
+#: templates/website/panel.html:130
 msgid "Poprzednie wyniki przestaną obowiązywać."
 msgstr ""
 
-#: templates/website/panel.html:131
+#: templates/website/panel.html:133
 msgid "Losuj ponownie i wyślij"
 msgstr ""
 
-#: templates/website/panel.html:131
+#: templates/website/panel.html:133
 msgid "Losuj i wyślij maile"
 msgstr ""
 
-#: templates/website/panel.html:138
+#: templates/website/panel.html:140
 msgid "Blokady"
 msgstr ""
 
-#: templates/website/panel.html:139
+#: templates/website/panel.html:141
 msgid ""
 "Osoba po lewej nie wylosuje osoby po prawej — np. partnerzy albo osoby "
 "mieszkające razem."
 msgstr ""
 
-#: templates/website/panel.html:145 templates/website/panel.html:167
+#: templates/website/panel.html:147 templates/website/panel.html:169
 msgid "nie losuje"
 msgstr ""
 
-#: templates/website/panel.html:148
+#: templates/website/panel.html:150
 msgid "Usuń"
 msgstr ""
 
-#: templates/website/panel.html:154
+#: templates/website/panel.html:156
 msgid "Brak blokad — każdy może wylosować każdego."
 msgstr ""
 
-#: templates/website/panel.html:161
+#: templates/website/panel.html:163
 msgid "Kto"
 msgstr ""
 
-#: templates/website/panel.html:163 templates/website/panel.html:171
+#: templates/website/panel.html:165 templates/website/panel.html:173
 msgid "wybierz"
 msgstr ""
 
-#: templates/website/panel.html:169
+#: templates/website/panel.html:171
 msgid "Kogo"
 msgstr ""
 
-#: templates/website/panel.html:177
+#: templates/website/panel.html:179
 msgid "W obie strony (żadna z tych osób nie wylosuje drugiej)"
 msgstr ""
 
-#: templates/website/panel.html:179
+#: templates/website/panel.html:181
 msgid "Dodaj blokadę"
 msgstr ""
 
-#: templates/website/panel.html:183
+#: templates/website/panel.html:185
 #, python-format
 msgid ""
 "Formularz dodawania blokad pojawi się, gdy zarejestrują się co najmniej 2 "
@@ -805,7 +818,11 @@ msgstr ""
 msgid "Nie masz jeszcze konta?"
 msgstr ""
 
-#: views.py:126
+#: views.py:113
+msgid "Wysyłanie listów do Mikołaja jest w tym roku wyłączone."
+msgstr ""
+
+#: views.py:130
 msgid ""
 "Ten adres nie jest zarejestrowany albo konto nie zostało jeszcze "
 "potwierdzone."

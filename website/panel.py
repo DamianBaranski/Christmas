@@ -92,6 +92,8 @@ def remind_confirm(request):
 @staff_member_required
 @require_POST
 def remind_letter(request):
+    if not SiteSettings.load().letters_enabled:
+        return redirect('panel')
     _report(request, *_send_each(_without_letter(), letter_reminder_mail))
     return redirect('panel')
 

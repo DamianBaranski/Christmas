@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.http import HttpResponse, FileResponse, Http404
 from django.urls import reverse
 from django.conf import settings as django_settings
 from .forms import RegisterForm, WishlistForm
-from .models import UserActivationSteps, FileActivationSteps, User, WishlistFile
+from .models import UserActivationSteps, FileActivationSteps, User, WishlistFile, SiteSettings
 import secrets
 from christmas_base import settings
 from enum import Enum, auto
@@ -108,6 +109,9 @@ def confirm_wishlist(request, token):
 #used to send wishlist to server
 def wishlist(request):
     context = getGlobalContext()
+    if not SiteSettings.load().letters_enabled:
+        messages.info(request, _('Wysyłanie listów do Mikołaja jest w tym roku wyłączone.'))
+        return redirect('register')
  
     if request.method != "POST":
         context['form'] = WishlistForm()

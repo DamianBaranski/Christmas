@@ -69,7 +69,7 @@ class EventSettingsForm(forms.ModelForm):
     class Meta:
         model = SiteSettings
         fields = ('party_host', 'intro_pl', 'intro_en', 'event_at', 'event_address', 'event_details',
-                  'draw_at', 'gift_budget', 'site_url')
+                  'draw_at', 'gift_budget', 'site_url', 'letters_enabled')
         widgets = {
             'intro_pl': forms.Textarea(attrs={'rows': 4}),
             'intro_en': forms.Textarea(attrs={'rows': 4}),

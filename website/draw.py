@@ -46,15 +46,19 @@ def send_draw_mail(giver, receiver):
             "{giver},\n\n"
             "Święty Mikołaj nie da rady samemu obdarować wszystkich, musisz mu pomóc.\n"
             "Zrób prezent dla: {receiver} (budżet: {budget}).\n"
-            "Pod tym adresem sprawdzisz, czy wylosowana osoba przesłała list: {check_url}\n"
-            "Jeśli jeszcze nie przesłałeś(-aś) swojego listu, możesz to zrobić tutaj: {wishlist_url}\n"
         ).format(
             giver=giver.name,
             receiver=receiver.name + ' ' + receiver.surname,
             budget=site.gift_budget,
-            check_url=mail.site_url() + '/checkwishlist/' + receiver.activation_token + '/',
-            wishlist_url=mail.site_url() + '/wishlist/',
         )
+        if site.letters_enabled:
+            message += _(
+                "Pod tym adresem sprawdzisz, czy wylosowana osoba przesłała list: {check_url}\n"
+                "Jeśli jeszcze nie przesłałeś(-aś) swojego listu, możesz to zrobić tutaj: {wishlist_url}\n"
+            ).format(
+                check_url=mail.site_url() + '/checkwishlist/' + receiver.activation_token + '/',
+                wishlist_url=mail.site_url() + '/wishlist/',
+            )
         event = mail.event_summary(site)
         if event:
             message += "\n" + _("Do zobaczenia na wigilii!") + "\n" + event + "\n"
