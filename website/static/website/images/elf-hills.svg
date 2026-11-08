@@ -1,0 +1,424 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 500" preserveAspectRatio="xMidYMax slice">
+  <style>
+    .smoke circle { animation: puff 4s ease-out infinite; opacity: 0; }
+    .smoke circle:nth-child(2) { animation-delay: 1.3s; }
+    .smoke circle:nth-child(3) { animation-delay: 2.6s; }
+    @keyframes puff {
+      0%   { opacity: 0; transform: translate(0, 0) scale(.6); }
+      20%  { opacity: .8; }
+      100% { opacity: 0; transform: translate(14px, -46px) scale(1.6); }
+    }
+    .win { animation: glow 3s ease-in-out infinite alternate; }
+    .w2 { animation-delay: 1.5s; }
+    @keyframes glow { from { fill: #ffd77a; } to { fill: #ffbf4d; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .smoke circle { opacity: .6; } }
+  </style>
+  <defs>
+    <symbol id="pine" viewBox="0 0 40 80">
+      <path d="M20 0 L34 26 H27 L38 48 H29 L40 70 H0 L11 48 H2 L13 26 H6 Z"/>
+      <path d="M20 0 L28 15 Q20 19 12 15 Z M9 30 Q20 35 31 30 L27 26 H13 Z M6 52 Q20 58 34 52 L29 48 H11 Z" fill="#fff"/>
+      <rect x="17" y="70" width="6" height="10" fill="#6b3e26"/>
+    </symbol>
+    <!-- atmospheric haze: mix each colour with the lavender of the evening sky -->
+    <filter id="hazeFar" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values=".55 0 0 0 .27  0 .55 0 0 .25  0 0 .55 0 .34  0 0 0 1 0"/>
+    </filter>
+    <filter id="hazeNear" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values=".78 0 0 0 .13  0 .78 0 0 .12  0 0 .78 0 .17  0 0 0 1 0"/>
+    </filter>
+    <g id="smoke" class="smoke" fill="#fff"><circle r="7"/><circle r="7"/><circle r="7"/></g>
+    <linearGradient id="wallShade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity=".16"/><stop offset=".3" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f2fb" stop-opacity="0"/><stop offset="1" stop-color="#f4f2fb"/>
+    </linearGradient>
+  </defs>
+  <g filter="url(#hazeFar)">
+  <path d="M0 348.4 L0 348.4 L20 346.0 L40 344.1 L60 342.8 L80 341.9 L100 341.5 L120 341.6 L140 342.0 L160 342.7 L180 343.6 L200 344.5 L220 345.5 L240 346.4 L260 347.0 L280 347.5 L300 347.6 L320 347.4 L340 346.8 L360 345.9 L380 344.7 L400 343.1 L420 341.3 L440 339.4 L460 337.4 L480 335.4 L500 333.5 L520 331.9 L540 330.6 L560 329.8 L580 329.4 L600 329.6 L620 330.3 L640 331.7 L660 333.6 L680 336.2 L700 339.2 L720 342.8 L740 346.7 L760 350.9 L780 355.3 L800 359.8 L820 364.2 L840 368.4 L860 372.4 L880 376.0 L900 379.1 L920 381.8 L940 383.9 L960 385.4 L980 386.3 L1000 386.7 L1020 386.5 L1040 385.9 L1060 384.9 L1080 383.6 L1100 382.2 L1120 380.6 L1140 379.0 L1160 377.5 L1180 376.2 L1200 375.2 L1220 374.4 L1240 374.0 L1260 373.9 L1280 374.2 L1300 374.8 L1320 375.7 L1340 376.8 L1360 378.1 L1380 379.4 L1400 380.6 L1420 381.8 L1440 382.7 L1460 383.3 L1480 383.5 L1500 383.2 L1520 382.4 L1540 381.1 L1560 379.2 L1580 376.8 L1600 373.8 V500 H0 Z" fill="#a99fcf"/>
+  <g transform="translate(40.0 347.1) scale(0.24)">
+  <rect x="-34" y="-48" width="68" height="50" fill="#b9773f"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#6b3418"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(190.0 347.0) scale(0.24)">
+  <rect x="-34" y="-48" width="68" height="50" fill="#c27d3e"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#8a4520"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(330.0 350.2) scale(0.24)">
+  <rect x="-34" y="-48" width="68" height="50" fill="#c27d3e"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#5a2a12"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(480.0 338.4) scale(0.24)">
+  <rect x="-34" y="-48" width="68" height="50" fill="#c27d3e"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#5a2a12"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(640.0 334.7) scale(0.24)">
+  <rect x="-34" y="-48" width="68" height="50" fill="#b9773f"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#7a3f1d"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(900.0 382.1) scale(0.24)">
+  <rect x="-34" y="-48" width="68" height="50" fill="#c98544"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#8a4520"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(1060.0 387.9) scale(0.24)">
+  <rect x="-34" y="-48" width="68" height="50" fill="#c27d3e"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#7a3f1d"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(1200.0 378.2) scale(0.24)">
+  <rect x="-34" y="-48" width="68" height="50" fill="#b9773f"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#5a2a12"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(1340.0 379.8) scale(0.24)">
+  <rect x="-34" y="-48" width="68" height="50" fill="#b9773f"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#7a3f1d"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(1500.0 386.2) scale(0.24)">
+  <rect x="-34" y="-48" width="68" height="50" fill="#c27d3e"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#6b3418"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <use href="#pine" x="80.1" y="326.2" width="9.7" height="19.5" fill="#5d6a8c"/>
+  <use href="#pine" x="372.7" y="328.1" width="10.6" height="21.2" fill="#5d6a8c"/>
+  <use href="#pine" x="450.0" y="327.3" width="8.1" height="16.1" fill="#5d6a8c"/>
+  <use href="#pine" x="513.5" y="318.5" width="9.1" height="18.2" fill="#5d6a8c"/>
+  <use href="#pine" x="564.9" y="313.1" width="10.1" height="20.3" fill="#5d6a8c"/>
+  <use href="#pine" x="656.6" y="319.1" width="8.8" height="17.5" fill="#5d6a8c"/>
+  <use href="#pine" x="794.6" y="339.8" width="10.9" height="21.7" fill="#5d6a8c"/>
+  <use href="#pine" x="1135.1" y="363.4" width="9.8" height="19.6" fill="#5d6a8c"/>
+  <use href="#pine" x="1199.5" y="356.8" width="11.0" height="21.9" fill="#5d6a8c"/>
+  <use href="#pine" x="1340.5" y="359.3" width="11.1" height="22.1" fill="#5d6a8c"/>
+  <use href="#pine" x="1409.4" y="363.4" width="11.2" height="22.4" fill="#5d6a8c"/>
+  <use href="#pine" x="1469.7" y="366.1" width="10.7" height="21.3" fill="#5d6a8c"/>
+  <use href="#pine" x="1561.4" y="360.8" width="11.2" height="22.4" fill="#5d6a8c"/>
+  </g>
+  <g filter="url(#hazeNear)">
+  <path d="M0 386.0 L0 386.0 L20 385.0 L40 384.3 L60 384.0 L80 384.1 L100 384.8 L120 386.1 L140 388.0 L160 390.5 L180 393.5 L200 397.0 L220 400.9 L240 405.0 L260 409.2 L280 413.4 L300 417.4 L320 421.1 L340 424.4 L360 427.1 L380 429.2 L400 430.7 L420 431.5 L440 431.6 L460 431.1 L480 430.2 L500 428.7 L520 427.0 L540 425.0 L560 422.9 L580 420.9 L600 419.0 L620 417.4 L640 416.0 L660 415.0 L680 414.3 L700 414.0 L720 413.9 L740 414.1 L760 414.4 L780 414.7 L800 414.9 L820 415.0 L840 414.8 L860 414.2 L880 413.2 L900 411.6 L920 409.6 L940 407.2 L960 404.2 L980 401.0 L1000 397.4 L1020 393.7 L1040 390.0 L1060 386.4 L1080 383.1 L1100 380.2 L1120 377.7 L1140 375.9 L1160 374.7 L1180 374.2 L1200 374.5 L1220 375.4 L1240 377.0 L1260 379.1 L1280 381.7 L1300 384.7 L1320 387.8 L1340 391.0 L1360 394.1 L1380 397.1 L1400 399.8 L1420 402.1 L1440 404.1 L1460 405.6 L1480 406.6 L1500 407.3 L1520 407.7 L1540 407.8 L1560 407.8 L1580 407.7 L1600 407.6 V500 H0 Z" fill="#d9d3ee"/>
+  <g transform="translate(30.0 388.6) scale(0.38976064592726467)">
+  <use href="#smoke" x="22" y="-86"/>
+  <rect x="16" y="-84" width="11" height="26" fill="#9a5a2c"/><rect x="14" y="-87" width="15" height="6" rx="3" fill="#fff"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="#c27d3e"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#7a3f1d"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(115.0 389.7) scale(0.3930258539018235)">
+  <use href="#smoke" x="22" y="-86"/>
+  <rect x="16" y="-84" width="11" height="26" fill="#9a5a2c"/><rect x="14" y="-87" width="15" height="6" rx="3" fill="#fff"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="#b9773f"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#8a4520"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(205.0 402.0) scale(0.39338922007977745)">
+  <use href="#smoke" x="22" y="-86"/>
+  <rect x="16" y="-84" width="11" height="26" fill="#9a5a2c"/><rect x="14" y="-87" width="15" height="6" rx="3" fill="#fff"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="#c98544"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#5a2a12"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(300.0 421.4) scale(0.4001805747315698)">
+  <use href="#smoke" x="22" y="-86"/>
+  <rect x="16" y="-84" width="11" height="26" fill="#9a5a2c"/><rect x="14" y="-87" width="15" height="6" rx="3" fill="#fff"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="#d39352"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#8a4520"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(395.0 434.4) scale(0.38079680521570985)">
+  <use href="#smoke" x="22" y="-86"/>
+  <rect x="16" y="-84" width="11" height="26" fill="#9a5a2c"/><rect x="14" y="-87" width="15" height="6" rx="3" fill="#fff"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="#d39352"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#5a2a12"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(490.0 433.5) scale(0.36619639374406293)">
+  <use href="#smoke" x="22" y="-86"/>
+  <rect x="16" y="-84" width="11" height="26" fill="#9a5a2c"/><rect x="14" y="-87" width="15" height="6" rx="3" fill="#fff"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="#c98544"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#5a2a12"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(1110.0 382.9) scale(0.4066211152503112)">
+  <use href="#smoke" x="22" y="-86"/>
+  <rect x="16" y="-84" width="11" height="26" fill="#9a5a2c"/><rect x="14" y="-87" width="15" height="6" rx="3" fill="#fff"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="#d39352"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#5a2a12"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(1205.0 378.6) scale(0.40100110756011187)">
+  <use href="#smoke" x="22" y="-86"/>
+  <rect x="16" y="-84" width="11" height="26" fill="#9a5a2c"/><rect x="14" y="-87" width="15" height="6" rx="3" fill="#fff"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="#b9773f"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#6b3418"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(1300.0 388.7) scale(0.41506702824940217)">
+  <use href="#smoke" x="22" y="-86"/>
+  <rect x="16" y="-84" width="11" height="26" fill="#9a5a2c"/><rect x="14" y="-87" width="15" height="6" rx="3" fill="#fff"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="#b9773f"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#7a3f1d"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(1395.0 403.2) scale(0.4129901792168361)">
+  <use href="#smoke" x="22" y="-86"/>
+  <rect x="16" y="-84" width="11" height="26" fill="#9a5a2c"/><rect x="14" y="-87" width="15" height="6" rx="3" fill="#fff"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="#c27d3e"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#6b3418"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(1490.0 411.0) scale(0.40001617010558)">
+  <use href="#smoke" x="22" y="-86"/>
+  <rect x="16" y="-84" width="11" height="26" fill="#9a5a2c"/><rect x="14" y="-87" width="15" height="6" rx="3" fill="#fff"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="#b9773f"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#5a2a12"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(1575.0 411.7) scale(0.39370900470137676)">
+  <use href="#smoke" x="22" y="-86"/>
+  <rect x="16" y="-84" width="11" height="26" fill="#9a5a2c"/><rect x="14" y="-87" width="15" height="6" rx="3" fill="#fff"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="#c27d3e"/>
+  <rect x="-34" y="-48" width="68" height="50" fill="url(#wallShade)"/>
+  <polygon points="-44,-44 0,-82 44,-44" fill="#6b3418"/>
+  <path d="M-46 -42 L0 -86 L46 -42" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M-40 -40 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0 q5 7 10 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M-32.2 -58.7 q4 -10 8 0 z" fill="#ff4d6d"/>
+  <path d="M-16.3 -72.4 q4 -10 8 0 z" fill="#ffd34d"/>
+  <path d="M-4.0 -83.0 q4 -10 8 0 z" fill="#4dd47d"/>
+  <path d="M8.3 -72.4 q4 -10 8 0 z" fill="#4db8ff"/>
+  <path d="M24.2 -58.7 q4 -10 8 0 z" fill="#c77dff"/>
+  <rect class="win" x="-26" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <rect class="win w2" x="8" y="-34" width="18" height="16" rx="2" fill="#ffd77a" stroke="#fff" stroke-width="3"/>
+  <path d="M-7 2 v-20 q7 -8 14 0 v20 z" fill="#7a3a1c" stroke="#fff" stroke-width="2.5"/>
+  </g>
+  <use href="#pine" x="61.7" y="356.6" width="16.7" height="33.4" fill="#3d6b5a"/>
+  <use href="#pine" x="152.2" y="365.4" width="15.5" height="31.1" fill="#3d6b5a"/>
+  <use href="#pine" x="241.5" y="379.2" width="16.9" height="33.9" fill="#3d6b5a"/>
+  <use href="#pine" x="338.1" y="403.5" width="13.8" height="27.6" fill="#3d6b5a"/>
+  <use href="#pine" x="432.7" y="408.3" width="14.6" height="29.3" fill="#3d6b5a"/>
+  <use href="#pine" x="537.6" y="401.0" width="14.8" height="29.5" fill="#3d6b5a"/>
+  <use href="#pine" x="632.4" y="391.5" width="15.3" height="30.6" fill="#3d6b5a"/>
+  <use href="#pine" x="952.9" y="381.7" width="14.3" height="28.6" fill="#3d6b5a"/>
+  <use href="#pine" x="1053.1" y="364.7" width="13.9" height="27.8" fill="#3d6b5a"/>
+  <use href="#pine" x="1147.5" y="351.0" width="15.0" height="29.9" fill="#3d6b5a"/>
+  <use href="#pine" x="1241.4" y="349.6" width="17.2" height="34.4" fill="#3d6b5a"/>
+  <use href="#pine" x="1336.2" y="362.7" width="17.5" height="35.1" fill="#3d6b5a"/>
+  <use href="#pine" x="1431.7" y="376.9" width="16.6" height="33.2" fill="#3d6b5a"/>
+  <use href="#pine" x="1527.2" y="382.8" width="15.5" height="31.0" fill="#3d6b5a"/>
+  </g>
+</svg>

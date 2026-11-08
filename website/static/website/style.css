@@ -1617,12 +1617,12 @@ body {
 }
 
 .decor-workshop {
-    height: clamp(210px, 37vh, 350px);
+    height: clamp(240px, 42vh, 400px);
     bottom: clamp(20px, 4vh, 44px);
 }
 
 .decor-santa-elf {
-    height: clamp(230px, 42vh, 400px);
+    height: clamp(220px, 38vh, 370px);
     bottom: clamp(20px, 4vh, 44px);
 }
 
@@ -1639,8 +1639,58 @@ body {
     .north-star { animation: none; }
 }
 
-[data-theme="elves"] .village {
-    height: clamp(170px, 31vh, 330px);
+/* background: snowy hills full of little elf houses */
+.elf-hills {
+    position: absolute;
+    left: 0;
+    bottom: clamp(80px, 15vh, 170px);
+    width: 100%;
+    height: clamp(170px, 32vh, 340px);   /* small and low = far away */
+    object-fit: cover;
+    object-position: center bottom;
+}
+
+/* foreground: snow, candy-cane lamps and the toy train */
+[data-theme="elves"] .elf-strip {
+    height: clamp(140px, 27vh, 290px);   /* its snowbank always overlaps the bottom of the hills */
+}
+
+/* Santa's house stands on the right, right behind Santa */
+/* centered in the free space right of the form: (form's right edge + screen edge) / 2 */
+.decor-santa-house {
+    right: auto;
+    left: calc(75vw + 155px);
+    transform: translateX(-50%);
+    height: clamp(260px, 48vh, 480px);
+    bottom: clamp(12px, 2.5vh, 30px);
+}
+
+/* Santa stands at the left side of the house door, the elf at the right side */
+[data-theme="elves"] .decor-santa-elf {
+    right: auto;
+    left: calc(75vw + 155px);
+    transform: translateX(-50%);
+}
+
+/* the workbench, Santa and his house stand on the snowbank, behind the train track */
+[data-theme="elves"] .decor-workshop,
+[data-theme="elves"] .decor-santa-elf {
+    bottom: clamp(56px, 10vh, 105px);
+}
+
+[data-theme="elves"] .decor-santa-house {
+    bottom: clamp(48px, 9vh, 95px);
+}
+
+/* toy train: the very front layer, in front of everything else */
+.elf-train {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: clamp(72px, 13vh, 130px);
+    object-fit: cover;
+    object-position: center bottom;
 }
 
 @media (max-width: 600px) {

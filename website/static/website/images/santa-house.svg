@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 460">
+  <style>
+    .smoke circle { animation: puff 4s ease-out infinite; opacity: 0; }
+    .smoke circle:nth-child(2) { animation-delay: 1.3s; }
+    .smoke circle:nth-child(3) { animation-delay: 2.6s; }
+    @keyframes puff {
+      0%   { opacity: 0; transform: translate(0, 0) scale(.6); }
+      20%  { opacity: .85; }
+      100% { opacity: 0; transform: translate(18px, -60px) scale(1.7); }
+    }
+    .bulb { animation: tw 1.4s ease-in-out infinite alternate; }
+    .b1 { animation-delay: .45s; } .b2 { animation-delay: .9s; }
+    @keyframes tw { from { opacity: .35; } to { opacity: 1; } }
+    .glow { animation: glow 3s ease-in-out infinite alternate; }
+    @keyframes glow { from { opacity: .55; } to { opacity: .85; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .smoke circle { opacity: .6; } }
+  </style>
+  <defs>
+    <pattern id="cane" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <rect width="14" height="14" fill="#fff"/><rect width="7" height="14" fill="#d42f3a"/>
+    </pattern>
+    <pattern id="planks" width="40" height="22" patternUnits="userSpaceOnUse">
+      <rect width="40" height="22" fill="#b5302a"/>
+      <path d="M0 21.5 H40" stroke="#93231f" stroke-width="1.5"/>
+    </pattern>
+    <radialGradient id="winGlow">
+      <stop offset="0" stop-color="#ffd77a" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#ffd77a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="winLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe9a8"/><stop offset="1" stop-color="#ffbf4d"/>
+    </linearGradient>
+    <g id="smoke" class="smoke" fill="#fff"><circle r="9"/><circle r="9"/><circle r="9"/></g>
+  </defs>
+
+  <!-- warm light spilling onto the snow -->
+  <ellipse class="glow" cx="190" cy="440" rx="190" ry="40" fill="url(#winGlow)"/>
+
+  <!-- chimney (behind the roof) -->
+  <use href="#smoke" x="290" y="86"/>
+  <rect x="270" y="92" width="38" height="80" fill="#8a3b2b"/>
+  <path d="M270 110 H308 M270 130 H308 M270 150 H308 M289 92 V110 M280 110 V130 M298 110 V130 M289 130 V150" stroke="#6e2c20" stroke-width="1.5"/>
+  <rect x="264" y="84" width="50" height="12" rx="6" fill="#fff"/>
+
+  <!-- walls -->
+  <rect x="30" y="196" width="320" height="254" fill="url(#planks)"/>
+  <rect x="30" y="196" width="320" height="254" fill="#000" opacity=".06"/>
+
+  <!-- roof with heavy snow -->
+  <polygon points="6,206 190,66 374,206" fill="#2f6b4f"/>
+  <path d="M2 210 L190 60 L378 210 Q360 222 344 206 Q326 222 306 204 L190 98 L74 204 Q54 222 36 206 Q20 222 2 210 Z" fill="#fff"/>
+  <!-- icicles -->
+  <g fill="#e3f1ff">
+    <path d="M44 206 l4 16 l4 -16z"/><path d="M78 204 l3 11 l3 -11z"/><path d="M110 206 l4 18 l4 -18z"/>
+    <path d="M150 206 l3 12 l3 -12z"/><path d="M228 206 l3 13 l3 -13z"/><path d="M262 206 l4 17 l4 -17z"/>
+    <path d="M296 204 l3 11 l3 -11z"/><path d="M330 206 l4 15 l4 -15z"/>
+  </g>
+  <!-- string of lights under the eaves -->
+  <path d="M30 214 Q110 232 190 214 Q270 232 350 214" stroke="#2f4f3a" stroke-width="2" fill="none"/>
+  <g>
+    <circle class="bulb" cx="46" cy="222" r="5" fill="#ff4d4d"/><circle class="bulb b1" cx="72" cy="227" r="5" fill="#ffd34d"/>
+    <circle class="bulb b2" cx="98" cy="230" r="5" fill="#4dd47d"/><circle class="bulb" cx="124" cy="230" r="5" fill="#4db8ff"/>
+    <circle class="bulb b1" cx="150" cy="226" r="5" fill="#ff8ad8"/><circle class="bulb b2" cx="174" cy="221" r="5" fill="#ff4d4d"/>
+    <circle class="bulb" cx="206" cy="221" r="5" fill="#ffd34d"/><circle class="bulb b1" cx="230" cy="226" r="5" fill="#4dd47d"/>
+    <circle class="bulb b2" cx="256" cy="230" r="5" fill="#4db8ff"/><circle class="bulb" cx="282" cy="230" r="5" fill="#ff8ad8"/>
+    <circle class="bulb b1" cx="308" cy="227" r="5" fill="#ff4d4d"/><circle class="bulb b2" cx="334" cy="222" r="5" fill="#ffd34d"/>
+  </g>
+
+  <!-- round gable window with a wreath -->
+  <circle class="glow" cx="190" cy="152" r="44" fill="url(#winGlow)"/>
+  <circle cx="190" cy="152" r="24" fill="url(#winLight)" stroke="#fff" stroke-width="5"/>
+  <path d="M190 128 V176 M166 152 H214" stroke="#fff" stroke-width="3"/>
+  <circle cx="190" cy="152" r="31" fill="none" stroke="#1f6b3e" stroke-width="9"/>
+  <circle cx="190" cy="152" r="31" fill="none" stroke="#2f9e5f" stroke-width="4" stroke-dasharray="3 6"/>
+  <g fill="#d42f3a"><circle cx="164" cy="140" r="3"/><circle cx="214" cy="136" r="3"/><circle cx="160" cy="166" r="3"/><circle cx="220" cy="168" r="3"/></g>
+  <path d="M190 182 q-12 -10 -16 0 q4 6 16 0 q12 -10 16 0 q-4 6 -16 0" fill="#d42f3a"/>
+
+  <!-- sign with toy icons -->
+  <rect x="112" y="244" width="156" height="42" rx="10" fill="#ffd34d" stroke="#7a3a2c" stroke-width="4"/>
+  <path d="M134 274 l9 -16 l9 16 z" fill="#d42f3a"/>
+  <circle cx="172" cy="266" r="9" fill="#4db8ff"/>
+  <rect x="190" y="257" width="18" height="18" rx="2" fill="#2f9e5f"/><rect x="197" y="257" width="4" height="18" fill="#ffd34d"/>
+  <path d="M236 254 l5 10 l10 1 l-8 7 l3 10 l-10 -5 l-10 5 l3 -10 l-8 -7 l10 -1 z" fill="#d42f3a"/>
+
+  <!-- windows with shutters and snowy sills -->
+  <g>
+    <circle class="glow" cx="80" cy="330" r="56" fill="url(#winGlow)"/>
+    <rect x="50" y="300" width="60" height="58" rx="4" fill="url(#winLight)" stroke="#fff" stroke-width="5"/>
+    <path d="M80 300 V358 M50 329 H110" stroke="#fff" stroke-width="3"/>
+    <rect x="34" y="298" width="14" height="62" rx="2" fill="#2f6b4f"/><rect x="112" y="298" width="14" height="62" rx="2" fill="#2f6b4f"/>
+    <path d="M44 360 h72 q4 8 -4 9 h-64 q-8 -1 -4 -9z" fill="#fff"/>
+  </g>
+  <g>
+    <circle class="glow" cx="300" cy="330" r="56" fill="url(#winGlow)"/>
+    <rect x="270" y="300" width="60" height="58" rx="4" fill="url(#winLight)" stroke="#fff" stroke-width="5"/>
+    <path d="M300 300 V358 M270 329 H330" stroke="#fff" stroke-width="3"/>
+    <rect x="254" y="298" width="14" height="62" rx="2" fill="#2f6b4f"/><rect x="332" y="298" width="14" height="62" rx="2" fill="#2f6b4f"/>
+    <path d="M264 360 h72 q4 8 -4 9 h-64 q-8 -1 -4 -9z" fill="#fff"/>
+  </g>
+
+  <!-- big front door -->
+  <path d="M152 450 V340 Q190 300 228 340 V450 Z" fill="#6b3418" stroke="#ffd34d" stroke-width="5"/>
+  <path d="M190 318 V450" stroke="#4e2510" stroke-width="3"/>
+  <circle cx="180" cy="396" r="4" fill="#ffd34d"/><circle cx="200" cy="396" r="4" fill="#ffd34d"/>
+
+  <!-- candy cane corner posts -->
+  <rect x="24" y="196" width="14" height="254" fill="url(#cane)"/>
+  <rect x="342" y="196" width="14" height="254" fill="url(#cane)"/>
+
+  <!-- snow drifts at the base -->
+  <path d="M0 460 V440 Q40 424 90 438 Q140 428 160 444 L160 460 Z" fill="#fff"/>
+  <path d="M220 460 V444 Q260 426 310 438 Q350 426 380 440 V460 Z" fill="#fff"/>
+</svg>
